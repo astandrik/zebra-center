@@ -1,0 +1,126 @@
+.search {
+    width: auto;
+    height: auto;
+    margin: 10px 5px;
+    padding: 4px;
+    clear: both;
+    background: #fff;
+    box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);
+    color: gray;
+    border-radius: 5px;
+    font-size: smaller;
+}
+
+.accordion {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, 'Open Sans',sans-serif;
+    font-size: 14px;
+    color: #353535;
+    position: static;
+    z-index: 1;
+}
+
+.accordion .accordion_item {
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.accordion .title_block {
+    font-weight: 400;
+    font-size: 17px;
+    color: #444444;
+    cursor: pointer;
+    padding: 10px 55px 10px 15px;
+    -webkit-transition: all .2s linear 0;
+    -webkit-transition-delay: .2s 0;
+    transition: all .2s linear 0;
+    background: -moz-linear-gradient(#ACE5A3, #6CBF59);
+    background: -ms-linear-gradient(#ACE5A3, #6CBF59);
+    background: -o-linear-gradient(#ACE5A3, #6CBF59);
+    background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
+    margin: 0;
+    padding: 0;
+}
+
+.accordion h1, .accordion h2, .accordion h3, .accordion h4 {
+    text-align: left;
+}
+
+.accordion .info {
+    display: none;
+    padding: 10px 15px;
+    overflow: hidden;
+    background: #f7f7f7;
+}
+
+.accordion .accordion_item {
+    margin-bottom: 0px;
+    position: relative;
+}
+
+.accordion .info_item {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+aside {
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    width: 260px;
+    margin: 0;
+    background: rgba(189, 229, 132, 0);
+    box-shadow: 0.4em 0 5px rgba(122,122,122,0.5);
+    /* border: 1px solid blue; */
+}
+
+.accordion .title_block:before {
+    content: '';
+    height: 8px;
+    width: 8px;
+    display: block;
+    border: 2px solid #fefefe;
+    border-right-width: 0;
+    border-top-width: 0;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    right: 20px;
+    top: 18px;
+}
+
+.accordion {
+  h3 {
+    height:39px;
+    line-height: 30px;
+    padding-left: 10px!important;
+  }
+}
+
+.accordion ul li a {
+    display: block;
+    padding: 0px 0px 2px 17px;
+    background-image: url('../../images/lmenu_14x14.png');
+    background-position: 0 3px;
+    background-repeat: no-repeat;
+    color: #353535;
+    text-decoration: none;
+}
+
+.accordion ul li a:visited {
+    color: #3D3D3D;
+    text-decoration: none;
+}
+
+.accordion ul li {
+    list-style-type: none;
+    list-style-position: outside;
+    border-bottom: 1px solid #3FCCBD;
+}
+
+.accordion ul {
+  margin:0;
+  padding:0;
+}

@@ -1,0 +1,14 @@
+/* line 2, C:/zebra-center/app/styles/components/header.scss */
+header {
+  width: auto;
+  height: 156px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  clear: both; }
+
+/* line 11, C:/zebra-center/app/styles/components/header.scss */
+.logo {
+  float: right; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImhlYWRlci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsK0RBQStEO0FBQy9EO0VBQ0UsWUFBWTtFQUNaLGNBQWM7RUFDZCxVQUFVO0VBQ1YsV0FBVztFQUNYLGVBQWU7RUFDZixZQUFZLEVBQUU7O0FBRWhCLGdFQUFnRTtBQUNoRTtFQUNFLGFBQWEsRUFBRSIsImZpbGUiOiJjb21wb25lbnRzL2hlYWRlci5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBsaW5lIDIsIEM6L3plYnJhLWNlbnRlci9hcHAvc3R5bGVzL2NvbXBvbmVudHMvaGVhZGVyLnNjc3MgKi9cbmhlYWRlciB7XG4gIHdpZHRoOiBhdXRvO1xuICBoZWlnaHQ6IDE1NnB4O1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBjbGVhcjogYm90aDsgfVxuXG4vKiBsaW5lIDExLCBDOi96ZWJyYS1jZW50ZXIvYXBwL3N0eWxlcy9jb21wb25lbnRzL2hlYWRlci5zY3NzICovXG4ubG9nbyB7XG4gIGZsb2F0OiByaWdodDsgfVxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9 */
