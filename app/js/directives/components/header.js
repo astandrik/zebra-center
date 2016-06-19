@@ -1,8 +1,8 @@
 var header = {
-  templateUrl: 'components/header.html',
+  templateUrl: 'views/components/header.html',
 }
 
-export default {
+module.exports =  {
   name: 'headerDirective',
   type: 'component',
   component: header

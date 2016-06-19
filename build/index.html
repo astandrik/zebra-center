@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head>
-      <base href="/">
+      <base href="/" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title ng-bind="pageTitle"></title>
@@ -14,13 +14,14 @@
       <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-      <div class="global" >
+      <div class="global">
         <header-directive></header-directive>
         <navbar-directive></navbar-directive>
         <section id="page">
-        <sidebar-directive></sidebar-directive>
-        <div ui-view="content"></div>
+            <sidebar-directive></sidebar-directive>
+            <div ui-view="content"></div>
         </section>
+        <div ui-view="pidor"></div>
       </div>
       <script src="js/main.js"></script>
   </body>

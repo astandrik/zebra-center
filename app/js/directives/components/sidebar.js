@@ -1,8 +1,8 @@
 var sidebar = {
-  templateUrl: 'components/sidebar.html',
+  templateUrl: 'views/components/sidebar.html',
   controller: ['$timeout','$scope',function($timeout, $scope) {
     $scope.zebraCenter = [	'Раз два три',
-	'Программа реабилитации',
+	'Три четыре пять',
 	'Православное просвещение',
 	'Обучение специалистов',
 	'Рабочие тетради',
@@ -25,7 +25,7 @@ var sidebar = {
   }]
 }
 
-export default {
+module.exports = {
   name: 'sidebarDirective',
   type: 'component',
   component: sidebar

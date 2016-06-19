@@ -49,7 +49,7 @@ export default {
 
   views: {
     index: 'app/index.html',
-    src: 'app/views/**/*.html',
+    src: 'app/**/*.html',
     dest: 'app/js'
   },
 

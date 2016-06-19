@@ -12,6 +12,15 @@ function OnRun($rootScope, AppSettings) {
 
     $rootScope.pageTitle += AppSettings.appTitle;
   });
+  $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams, options) {
+     
+  });
+  $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
+      debugger;
+  });
+  $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
+    debugger;
+  });
 
 }
 

@@ -1,8 +1,8 @@
 var navbar = {
-  templateUrl: 'components/navbar.html',
+  templateUrl: 'views/components/navbar.html',
 }
 
-export default {
+module.exports = {
   name: 'navbarDirective',
   type: 'component',
   component: navbar

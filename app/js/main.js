@@ -9,7 +9,9 @@ import './templates';
 import './filters';
 import './controllers';
 import './services';
-import './directives';
+require('./directives/index.js');
+require ('./router.js');
+import '../Entities/entities.js';
 
 // create and bootstrap application
 const requires = [
@@ -18,19 +20,38 @@ const requires = [
   'app.filters',
   'app.controllers',
   'app.services',
-  'app.directives'
+  'app.directives',
+  'router',
+  'entities'
 ];
 
 // mount on window for testing
 window.app = angular.module('app', requires);
 
 
-angular.module('app').constant('AppSettings', constants);
+var app = window.app;
 
-angular.module('app').config(onConfig);
+app.config([
+  '$locationProvider',
+  '$urlRouterProvider',
+  '$stateProvider',
+  '$routerProvider',
+  '$provide',
+  function ($locationProvider,$urlRouterProvider, $stateProvider, $routerProvider, $provide) {
+    //$locationProvider.html5Mode(true);
+    for (var e in $routerProvider.$get.routes) {
+      $stateProvider.state(e, $routerProvider.$get.routes[e]);
+    }
+    
+    $urlRouterProvider.otherwise('/');
+  }
+]);
+
+angular.module('app').constant('AppSettings', constants);
 
 angular.module('app').run(onRun);
 
+
 angular.bootstrap(document, ['app'], {
-  strictDi: true
+ 
 });
