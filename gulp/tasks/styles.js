@@ -8,6 +8,7 @@ import sass         from 'gulp-sass';
 import handleErrors from '../util/handleErrors';
 import browserSync  from 'browser-sync';
 import autoprefixer from 'gulp-autoprefixer';
+var concatCss = require('gulp-concat-css');
 
 gulp.task('styles', function () {
 
@@ -26,6 +27,7 @@ gulp.task('styles', function () {
       createSourcemap,
       sourcemaps.write( global.isProd ? './' : null ))
     )
+    .pipe(concatCss("styles/main.css"))
     .pipe(gulp.dest(config.styles.dest))
     .pipe(browserSync.stream());
 

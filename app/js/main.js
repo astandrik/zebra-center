@@ -5,6 +5,9 @@ import constants from './constants';
 import onConfig  from './on_config';
 import onRun     from './on_run';
 import 'angular-ui-router';
+import 'textAngular';
+import 'textAngular/dist/textAngular-sanitize';
+import 'angular-material-icons';
 import './templates';
 import './filters';
 import './controllers';
@@ -12,7 +15,7 @@ import './services';
 require('./directives/index.js');
 require ('./router.js');
 import '../Entities/entities.js';
-
+require('textangular/dist/textAngular-sanitize.min');
 // create and bootstrap application
 const requires = [
   'ui.router',
@@ -22,7 +25,9 @@ const requires = [
   'app.services',
   'app.directives',
   'router',
-  'entities'
+  'entities',
+  'ngMdIcons',
+  require('textAngular')
 ];
 
 // mount on window for testing
@@ -42,7 +47,7 @@ app.config([
     for (var e in $routerProvider.$get.routes) {
       $stateProvider.state(e, $routerProvider.$get.routes[e]);
     }
-    
+
     $urlRouterProvider.otherwise('/');
   }
 ]);
@@ -53,5 +58,5 @@ angular.module('app').run(onRun);
 
 
 angular.bootstrap(document, ['app'], {
- 
+
 });

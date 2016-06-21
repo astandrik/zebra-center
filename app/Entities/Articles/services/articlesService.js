@@ -7,6 +7,7 @@ function fn ($http) {
                     var article = {};
                     article.text = item.TEXT;
                     article.title = item.TITLE;
+                    article.id = item.ID;
                     entities.push(article);
                 });
                 return entities;

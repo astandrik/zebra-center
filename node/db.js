@@ -18,7 +18,7 @@ entities['articles'] = function(res) {
 
 
     client.query('SET search_path TO public');
-    client.query('SELECT "TITLE", "TEXT" FROM "ARTICLES"', function(err, result) {
+    client.query('SELECT "ID","TITLE", "TEXT" FROM "ARTICLES"', function(err, result) {
      //call `done()` to release the client back to the pool
      done();
      sendJson(res,result.rows);
@@ -26,7 +26,7 @@ entities['articles'] = function(res) {
        return console.error('error running query', err);
      }
      //output: 1
-      });   
+      });
     });
 }
 
