@@ -30,4 +30,14 @@
         }
         margin-top:10px;
     }
+    .add-article {
+        &:hover {
+            fill: blue;
+        }
+        float:left;
+        cursor: pointer;
+    }
+    .non-visible{
+        visibility: hidden;
+    }
 }

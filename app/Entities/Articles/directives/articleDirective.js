@@ -1,11 +1,11 @@
 var _ = require('lodash');
 
 function htmlArticle(title,text) {
-          var pencil = "<ng-md-icon class='pencil' ng-show='!isEditing' ng-click='toggleEditing()' icon='mode_edit' size=30></ng-md-icon>";
+          var pencil = "<ng-md-icon class='pencil' ng-class='{\"non-visible\": isEditing}' ng-click='toggleEditing()' icon='mode_edit' size=30></ng-md-icon>";
           var header = "<div class='article-header'><div></div><h1>"+title+"</h1>"+pencil+"</div>";
           var html = '<div>' + header + '<div ng-show="!isEditing">' + text + '</div>' + '</div>';
-          html += '<text-angular ng-model="article.text" ng-show="isEditing"></text-angular>';
-          html += '<div ng-show="isEditing" class="btn-group addedit-buttons" role="group" aria-label="...">\
+          html += '<text-angular ng-model="article.text" ng-class="{\'non-visible\': !isEditing}"></text-angular>';
+          html += '<div ng-class="{\'non-visible\': !isEditing}" class="btn-group addedit-buttons" role="group" aria-label="...">\
             <button type="button" class="btn btn-default" ng-click="cancel()">Отменить</button>\
             <button type="button" class="btn btn-default" ng-click="save()">Добавить</button>\
             </div></div>';

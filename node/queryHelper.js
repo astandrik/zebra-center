@@ -53,7 +53,36 @@ function makeUpdateQuery(TableName, item, res) {
     });
 }
 
+function makeCreateQuery(TableName, item, res) {
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+    var params = [];
+    var values = [];
+    for(var e in item) {
+        if(e != "ID") {
+            params.push(`"${e}"`);
+            values.push(`'${item[e]}'`);
+        }
+    }
+    var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${values.join()})`;  
+    client.query('SET search_path TO public');
+    
+    client.query(query, function(err, result) {
+     //call `done()` to release the client back to the pool
+     done();
+     sendJson(res,result);
+     if(err) {
+       return console.error('error running query', err);
+     }
+     //output: 1
+      });
+    });
+}
+
 module.exports = {
     Read: makeReadQuery,
-    Update: makeUpdateQuery
+    Update: makeUpdateQuery,
+    Create: makeCreateQuery
 }

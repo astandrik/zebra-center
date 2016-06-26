@@ -12,6 +12,9 @@ var Article = function(item) {
     };
     obj.Update = function(res) {
         qHelper.Update("ARTICLES", obj.Article, res);
+    };
+    obj.Create = function(res) {
+        qHelper.Create("ARTICLES", obj.Article, res);
     }
     return obj;
 }

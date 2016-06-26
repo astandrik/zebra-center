@@ -20,6 +20,10 @@ app.use(express.static(appDir));
 
 app.post('/data/addArticle', function(req, res) {
     var name = req.body;
+    dbWorker.entities['articles'].create(req.body, res);
+});
+app.post('/data/updateArticle', function(req, res) {
+    var name = req.body;
     dbWorker.entities['articles'].update(req.body, res);
 });
 app.get('/data/articles', function(req,res) {

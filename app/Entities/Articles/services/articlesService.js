@@ -14,6 +14,11 @@ function fn ($http) {
             });
         },
         update: function(json, postBack) {
+            return $http.post('/data/updateArticle',json).then(() => {
+                if(postBack) postBack();
+            });
+        },
+        add: function(json, postBack) {
             return $http.post('/data/addArticle',json).then(() => {
                 if(postBack) postBack();
             });
