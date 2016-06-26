@@ -12,6 +12,11 @@ function fn ($http) {
                 });
                 return entities;
             });
+        },
+        update: function(json, postBack) {
+            return $http.post('/data/addArticle',json).then(() => {
+                if(postBack) postBack();
+            });
         }
     }
 }
