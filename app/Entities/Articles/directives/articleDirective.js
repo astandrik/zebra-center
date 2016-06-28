@@ -8,7 +8,7 @@ function htmlArticle(title,text) {
           html += '<text-angular ng-model="article.text" ng-class="{\'non-visible\': !isEditing}"></text-angular>';
           html += '<div ng-class="{\'non-visible\': !isEditing}" class="btn-group addedit-buttons" role="group" aria-label="...">\
             <button type="button" class="btn btn-default" ng-click="cancel()">Отменить</button>\
-            <button type="button" class="btn btn-default" ng-click="save()">Добавить</button>\
+            <button type="button" class="btn btn-default" ng-click="save()">Сохранить</button>\
             </div></div>';
           return html;
 }

@@ -35,12 +35,17 @@ function makeUpdateQuery(TableName, item, res) {
         return console.error('error fetching client from pool', err);
       }
     var params = [];
+    var where = "";
     for(var e in item) {
-        params.push(`"${e}" = '${item[e]}'`);
+        if(e != "ID") {
+            params.push(`"${e}" = '${item[e]}'`);
+        } else {
+            where = ' WHERE "ID" = ' + item[e];
+        }
     }
-    var query = "UPDATE " + `"${TableName}"` + " SET " + params.join();
+    var query = "UPDATE " + `"${TableName}"` + " SET " + params.join() + where;
+    console.log(query);
     client.query('SET search_path TO public');
-
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
      done();

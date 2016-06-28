@@ -3,12 +3,14 @@
     height:100%;
     background: rgba(255, 255, 255, 0.8);
     padding: 10px 40px;
-    h1 {
-      color: #00B000;
-      line-height: 1.5em;
-      text-align: center;
-      margin-top: 1em;
-      margin-bottom: 1em;
+    .article-header {
+        h1 {
+            color: #00B000;
+            line-height: 1.5em;
+            text-align: center;
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
     }
     .article-header{
         border-bottom: 1px solid #82B7DF;
