@@ -36,11 +36,11 @@ function makeUpdateQuery(TableName, item, res) {
       }
     var params = [];
     for(var e in item) {
-        params.push(`"${e}" = '${item[e]}'`); 
+        params.push(`"${e}" = '${item[e]}'`);
     }
-    var query = "UPDATE " + `"${TableName}"` + " SET " + params.join();  
+    var query = "UPDATE " + `"${TableName}"` + " SET " + params.join();
     client.query('SET search_path TO public');
-    
+
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
      done();
@@ -66,9 +66,10 @@ function makeCreateQuery(TableName, item, res) {
             values.push(`'${item[e]}'`);
         }
     }
-    var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${values.join()})`;  
+    var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${values.join()})`;
+    console.log(query); 
     client.query('SET search_path TO public');
-    
+
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
      done();
