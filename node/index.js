@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 80;
 var server = app.listen(port, function() {
   console.log(this.address());
 });
