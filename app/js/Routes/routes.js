@@ -1,4 +1,5 @@
 'use strict';
 module.exports = {
-    articles: require('./Articles/articlesList.js')
+    testArticles: require('./Articles/articlesList.js'),
+    mainPage: require('./Home/home.js')
 };

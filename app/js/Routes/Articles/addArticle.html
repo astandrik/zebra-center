@@ -1,8 +1,30 @@
-<div class="row">
+<div class="form-group">
+  <label>Заголовок статьи</label>
+  <input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-model='article.header'></input>
+</div>
+<div class="form-group">
+  <label>Заголовок в браузере</label>
   <input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-model='article.title'></input>
 </div>
-<div class="row">
-  <text-angular ng-model="article.text"></text-angular>
+<div class="form-group">
+  <label>Алиас</label>
+  <input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-model='article.alias'></input>
+</div>
+<div class="form-group">
+  <label for="usr">Ключевые слова</label>
+  <input type="text" class="form-control" ng-model="article.keywords" id="usr">
+</div>
+<div class="form-group">
+  <label for="usr">Описание статьи</label>
+  <input type="text" class="form-control" ng-model="article.description" id="usr">
+</div>
+<div class="form-group">
+  <label>Аннотация</label>
+  <div ckeditor="options" ng-model="article.annotation" ></div>
+</div>
+<div class="form-group">
+  <label>Текст статьи</label>
+  <div ckeditor="options" ng-model="article.text" ></div>
 </div>
 <div class="row">
   <div class="btn-group addedit-buttons" role="group" aria-label="...">

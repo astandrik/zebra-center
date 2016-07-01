@@ -45,8 +45,11 @@
 }
 
 .modal-content {
+  .form-group {
+    margin: 30px 10px 0px 10px;
+  }
   .row {
-    margin:10px 20px;
+    margin: 10px 10px;
   }
   .btn-group {
     float:right;
