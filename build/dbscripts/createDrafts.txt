@@ -1,0 +1,15 @@
+CREATE TABLE public."DRAFTS"
+(
+  "ID" SERIAL,
+  "KEYWORDS" text,
+  "TITLE" text,
+  "DESCRIPTION" text,
+  "ALIAS" character(200),
+  "HEADER" character(200),
+  "TEXT" text,
+  "ANNOTATION" text,
+  CONSTRAINT "ID_DRAFTS" PRIMARY KEY ("ID")
+)
+WITH (
+  OIDS=FALSE
+);
