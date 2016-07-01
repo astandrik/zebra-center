@@ -1,7 +1,20 @@
 var Articles = require('./models/Articles');
+var qHelper = require('./queryHelper.js');
+var fs = require('fs');
 
 var entities = {};
 
+var schemaOps = {};
+schemaOps.drop = function() {
+  qHelper.Query('drop schema public cascade');
+}
+
+schemaOps.createDb = function() {
+  qHelper.Query('create schema public');
+  var script = fs.readFileSync('./node/dbscripts/createDrafts.txt','utf8');
+  console.log(script);
+  qHelper.Query(script, true);
+}
 
 entities['articles'] = {};
 
@@ -18,5 +31,6 @@ entities['articles'].create = function(item, res) {
 }
 
 module.exports = {
-    entities
+    entities,
+    schemaOps
 }

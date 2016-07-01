@@ -2,10 +2,28 @@ var pg = require('pg');
 var dbconf = require('./dbconfig');
 var conString = `postgres://${dbconf.username}:${dbconf.password}@localhost:5432/${dbconf.dbName}`;
 
+var setPath = function(client) {
+  client.query('SET search_path TO public');
+}
+
 function sendJson(res, json) {
     res.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
     res.write(JSON.stringify(json));
     res.end();
+}
+
+function makeSimpleQuery(queryString, needSetPath) {
+  pg.connect(conString, function(err, client, done) {
+    if(needSetPath) {
+      setPath(client);
+    }
+    client.query(queryString, function(err,result) {
+      console.log(err);
+      console.log(result);
+      console.log('----------------------------------------------------------------');
+      done();
+    });
+  });
 }
 
 
@@ -15,8 +33,7 @@ function makeReadQuery(queryString, res) {
         return console.error('error fetching client from pool', err);
       }
 
-
-    client.query('SET search_path TO public');
+    setPath(client);
     client.query(queryString, function(err, result) {
      //call `done()` to release the client back to the pool
      done();
@@ -44,8 +61,8 @@ function makeUpdateQuery(TableName, item, res) {
         }
     }
     var query = "UPDATE " + `"${TableName}"` + " SET " + params.join() + where;
-    console.log(query);
-    client.query('SET search_path TO public');
+
+    setPath(client);
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
      done();
@@ -72,8 +89,7 @@ function makeCreateQuery(TableName, item, res) {
         }
     }
     var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${values.join()})`;
-    console.log(query); 
-    client.query('SET search_path TO public');
+    setPath(client);
 
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
@@ -90,5 +106,6 @@ function makeCreateQuery(TableName, item, res) {
 module.exports = {
     Read: makeReadQuery,
     Update: makeUpdateQuery,
-    Create: makeCreateQuery
+    Create: makeCreateQuery,
+    Query: makeSimpleQuery
 }
