@@ -18,6 +18,14 @@ var server = app.listen(port, function() {
 app.use(express.static('build'));
 app.use(express.static(appDir));
 
+app.get('/database/drop',function(req,res) {
+    dbWorker.schemaOps.drop();
+});
+app.get('/database/create', function(req,res) {
+  dbWorker.schemaOps.createDb();
+  res.send('Db created successfully');
+})
+
 app.post('/data/addArticle', function(req, res) {
     var name = req.body;
     dbWorker.entities['articles'].create(req.body, res);
@@ -26,16 +34,15 @@ app.post('/data/updateArticle', function(req, res) {
     var name = req.body;
     dbWorker.entities['articles'].update(req.body, res);
 });
-app.get('/database/drop',function(req,res) {
-    dbWorker.schemaOps.drop();
-});
-app.get('/database/create', function(req,res) {
-  dbWorker.schemaOps.createDb();
-  res.send('Db created successfully');
-})
 app.get('/data/articles', function(req,res) {
-    var result = dbWorker.entities['articles'].get(res);
+    var result = dbWorker.entities['articles'].getAll(res);
 });
-app.get('/', function(req,res) {
+app.get('/data/articles/:alias', function(req,res) {
+    var result = dbWorker.entities['articles'].getSingle(req.params.alias, res);
+});
+app.get('/data/articles/byViewId/:id', function(req,res) {
+    var result = dbWorker.entities['articles'].getSingle(req.params.id, res);
+});
+app.get('/*', function(req,res) {
   res.sendFile(appDir + '/app/index.html');
 })

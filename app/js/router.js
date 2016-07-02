@@ -5,7 +5,8 @@ angular.module('router', []).provider('$router', function () {
     var self = this;
     self.routes = {
       'home': routes.mainPage,
-      'drafts': routes.testArticles
+      'drafts': routes.Drafts,
+      'single': routes.singleArticle
     };
     return this;
   }();

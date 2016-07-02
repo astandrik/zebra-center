@@ -1,5 +1,5 @@
-var fn = function($scope, $articles, $uibModalInstance,data) {
-  $scope.article = {};
+var fn = function($scope, $articles, $uibModalInstance,data,$articleViewids) {
+  $scope.article = {viewid: $articleViewids.default};
   $scope.save = () => $articles.add($scope.article, ()=> {$uibModalInstance.dismiss('Canceled'); data.reloader();});
   $scope.cancel = () => $uibModalInstance.dismiss('Canceled');
   $scope.options = {

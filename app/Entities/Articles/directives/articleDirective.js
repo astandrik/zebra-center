@@ -60,8 +60,7 @@ var fn = function($compile,$articles) {
             allowedContent: true,
             entities: false
           };
-
-          var article = htmlArticle(scope.article.title, scope.article.text);
+          var article = htmlArticle(scope.article.header, scope.article.text);
 
           scope.updateArticle = function() {
               element.empty();

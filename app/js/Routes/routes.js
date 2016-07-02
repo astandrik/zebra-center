@@ -1,5 +1,7 @@
 'use strict';
-module.exports = {
-    testArticles: require('./Articles/articlesList.js'),
-    mainPage: require('./Home/home.js')
-};
+var routes = {};
+Object.assign(routes,
+              require('./Articles/articlesList.js'),  
+              require('./Home/home.js')
+             );
+module.exports = routes;

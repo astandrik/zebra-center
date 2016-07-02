@@ -27,15 +27,16 @@ function makeSimpleQuery(queryString, needSetPath) {
 }
 
 
-function makeReadQuery(queryString, res) {
+function makeReadQuery(queryString, values, res) {
     pg.connect(conString, function(err, client, done) {
       if(err) {
         return console.error('error fetching client from pool', err);
       }
 
     setPath(client);
-    client.query(queryString, function(err, result) {
+    client.query(queryString, values, function(err, result) {
      //call `done()` to release the client back to the pool
+     if(err) console.log(err);
      done();
      sendJson(res,result.rows);
      if(err) {
@@ -82,18 +83,21 @@ function makeCreateQuery(TableName, item, res) {
       }
     var params = [];
     var values = [];
+    var numvalues = [];
     for(var e in item) {
         if(e != "ID") {
+            var i = 1;
             params.push(`"${e}"`);
-            values.push(`'${item[e]}'`);
+            values.push(item[e]);
+            numvalues.push('\'$'+i++ + '\'');
         }
     }
-    var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${values.join()})`;
+    var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${numvalues.join()})`;
     setPath(client);
-
-    client.query(query, function(err, result) {
+    client.query(query,values, function(err, result) {
      //call `done()` to release the client back to the pool
      done();
+    if(err) console.log(err);
      sendJson(res,result);
      if(err) {
        return console.error('error running query', err);

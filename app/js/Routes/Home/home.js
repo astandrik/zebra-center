@@ -13,8 +13,8 @@ var entity = {
                 }
             },
             resolve: {
-                articles: function($articles) {
-                return $articles.get().then(function(data) {
+                articles: function($articles, $articleViewids) {
+                return $articles.getByViewId($articleViewids.home).then(function(data) {
                     return data;
                 });
                 }
@@ -23,4 +23,24 @@ var entity = {
         }
       }
 
-module.exports = entity;
+var singleArticle = {
+        url: '/:articleAlias',
+        views: {
+          'content@' : {
+            templateUrl: 'js/Routes/Articles/singleArticle.html',
+            controller: function(article, $scope, dialogs, $state) {
+                $scope.article = article;
+                var refreshView =  function() {$state.go($state.current, {}, {reload: true});} ;
+            },
+            resolve: {
+                article: function($articles, $stateParams) {
+                return $articles.getSingle($stateParams.articleAlias).then(function(data) {
+                    return data;
+                });
+                }
+            }
+          }
+        }
+      }
+
+module.exports = {mainPage: entity, singleArticle: singleArticle};

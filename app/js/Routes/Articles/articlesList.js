@@ -14,7 +14,7 @@ var entity = {
             },
             resolve: {
                 articles: function($articles) {
-                return $articles.get().then(function(data) {
+                return $articles.getAll().then(function(data) {
                     return data;
                 });
                 }
@@ -23,4 +23,4 @@ var entity = {
         }
       }
 
-module.exports = entity;
+module.exports = {Drafts: entity};

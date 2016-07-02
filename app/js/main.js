@@ -56,6 +56,7 @@ app.config([
       $stateProvider.state(e, $routerProvider.$get.routes[e]);
     }
     dialogsProvider.useBackdrop('static');
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
   }
 ]);

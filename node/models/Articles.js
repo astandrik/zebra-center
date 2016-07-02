@@ -11,10 +11,17 @@ var Article = function(item) {
         obj.Article.ANNOTATION = item.annotation;
         obj.Article.ALIAS = item.alias;
         obj.Article.TEXT = item.text;
+        obj.Article.VIEWID = item.viewid;
     }
     obj.SelectAll = function(res) {
-        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS" FROM "DRAFTS"', res);
+        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS"', [] ,res);
     };
+    obj.SelectByAlias = function(alias, res) {
+        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "ALIAS"=$1',[alias],res);
+    }
+    obj.SelectByViewId = function(id, res) {
+         qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "VIEWID"=$1',[id],res);
+    }
     obj.Update = function(res) {
         qHelper.Update("DRAFTS", obj.Article, res);
     };

@@ -18,9 +18,17 @@ schemaOps.createDb = function() {
 
 entities['articles'] = {};
 
-entities['articles'].get = function(res) {
+entities['articles'].getAll = function(res) {
     Articles().SelectAll(res);
 };
+
+entities['articles'].getSingle = function(alias,res) {
+     Articles().SelectByAlias(alias, res);
+}
+
+entities['articles'].getSingle = function(id,res) {
+     Articles().SelectByViewId(id, res);
+}
 
 entities['articles'].update = function(item, res) {
     Articles(item).Update(res);
