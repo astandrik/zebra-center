@@ -1,4 +1,3 @@
 <div class="articles">
-  <ng-md-icon icon="add" size="45" class="add-article" ng-click="addArticle()"></ng-md-icon>
-  <article-template data="art" ng-repeat="art in articles | orderBy:'-id'"></article-template>
+  <article-template data="art" is-short="true" ng-repeat="art in articles | orderBy:'-id'"></article-template>
 </div>

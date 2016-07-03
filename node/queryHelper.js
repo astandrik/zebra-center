@@ -36,7 +36,11 @@ function makeReadQuery(queryString, values, res) {
     setPath(client);
     client.query(queryString, values, function(err, result) {
      //call `done()` to release the client back to the pool
-     if(err) console.log(err);
+     if(err) {
+         console.log(queryString);
+         console.log(values);
+         console.log(err);
+     }
      done();
      sendJson(res,result.rows);
      if(err) {
@@ -66,6 +70,11 @@ function makeUpdateQuery(TableName, item, res) {
     setPath(client);
     client.query(query, function(err, result) {
      //call `done()` to release the client back to the pool
+    if(err) {
+         console.log(query);
+         console.log(values);
+         console.log(err);
+     }
      done();
      sendJson(res,result);
      if(err) {
@@ -84,18 +93,23 @@ function makeCreateQuery(TableName, item, res) {
     var params = [];
     var values = [];
     var numvalues = [];
+    var i = 1;
     for(var e in item) {
-        if(e != "ID") {
-            var i = 1;
+        if(e != "ID") {          
             params.push(`"${e}"`);
-            values.push(item[e]);
-            numvalues.push('\'$'+i++ + '\'');
+            values.push(item[e] || !isNaN(item[e]) ? item[e].toString(): null);
+            numvalues.push('$'+i++);
         }
     }
     var query = "INSERT INTO " + `"${TableName}" (${params.join()}) VALUES (${numvalues.join()})`;
     setPath(client);
     client.query(query,values, function(err, result) {
      //call `done()` to release the client back to the pool
+     if(err) {
+         console.log(query);
+         console.log(values);
+         console.log(err);
+     }
      done();
     if(err) console.log(err);
      sendJson(res,result);

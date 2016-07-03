@@ -41,3 +41,9 @@ div.global {
     width: 100%;
     heigth:100%
 }
+
+.navbar {
+    li>a{
+        cursor: pointer;
+    }
+}

@@ -38,10 +38,10 @@ app.get('/data/articles', function(req,res) {
     var result = dbWorker.entities['articles'].getAll(res);
 });
 app.get('/data/articles/:alias', function(req,res) {
-    var result = dbWorker.entities['articles'].getSingle(req.params.alias, res);
+    var result = dbWorker.entities['articles'].getSingleByAlias(req.params.alias, res);
 });
 app.get('/data/articles/byViewId/:id', function(req,res) {
-    var result = dbWorker.entities['articles'].getSingle(req.params.id, res);
+    var result = dbWorker.entities['articles'].getSingleByViewId(req.params.id, res);
 });
 app.get('/*', function(req,res) {
   res.sendFile(appDir + '/app/index.html');

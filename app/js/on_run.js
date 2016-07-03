@@ -1,4 +1,4 @@
-function OnRun($rootScope, AppSettings) {
+function OnRun($rootScope, AppSettings, $state) {
   'ngInject';
 
   // change page title based on state
@@ -19,6 +19,9 @@ function OnRun($rootScope, AppSettings) {
   });
   $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
     debugger;
+  });
+  $rootScope.$on('refreshCurrent', function() {
+      var refreshView =  function() {$state.go($state.current, {}, {reload: true});} ;      
   });
 
 }

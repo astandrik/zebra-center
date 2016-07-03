@@ -22,11 +22,11 @@ entities['articles'].getAll = function(res) {
     Articles().SelectAll(res);
 };
 
-entities['articles'].getSingle = function(alias,res) {
+entities['articles'].getSingleByAlias = function(alias,res) {
      Articles().SelectByAlias(alias, res);
 }
 
-entities['articles'].getSingle = function(id,res) {
+entities['articles'].getSingleByViewId = function(id,res) {
      Articles().SelectByViewId(id, res);
 }
 
