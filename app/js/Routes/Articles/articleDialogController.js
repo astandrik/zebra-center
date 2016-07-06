@@ -16,7 +16,10 @@ var transliterate = (
 )();
 
 var fn = function($scope, $articles, $uibModalInstance,data,$articleViewids) {
-  $scope.article = {viewid: $articleViewids.default};
+  $scope.directories = $articleViewids;
+  $scope.directory = $articleViewids.default.id;
+  $scope.article = {viewid: $scope.directory};
+  $scope.close = () => $uibModalInstance.dismiss('Canceled');
   $scope.save = () => $articles.add($scope.article, ()=> {$uibModalInstance.dismiss('Canceled'); data.reloader();});
   $scope.cancel = () => $uibModalInstance.dismiss('Canceled');
   $scope.options = {
@@ -26,7 +29,7 @@ var fn = function($scope, $articles, $uibModalInstance,data,$articleViewids) {
   };
   $scope.changeAlias = function() {
      $scope.article.alias = transliterate($scope.article.header).replace(/\s/g, '_');
-  }    
+  };  
 }
 
 module.exports = fn;

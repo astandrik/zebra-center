@@ -4,6 +4,6 @@ var currentModule = angular.module('articles',[]);
 currentModule.factory('$articles', articlesService);
 currentModule.directive('articleTemplate', articleDirective);
 currentModule.constant('$articleViewids', {
-    default: 0,
-    home: 1
+    default: {id: 0, name: "Черновики"},
+    home: {id:1, name: "Главная"}
 })

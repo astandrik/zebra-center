@@ -75,7 +75,6 @@ var fn = function($compile,$articles) {
             scope.isEditing = !scope.isEditing;
           }
           scope.changeAlias = function() {
-              debugger;
               scope.article.alias = transliterate(scope.article.header,true).replace(/\s/g, '_');
           }
           scope.options = {

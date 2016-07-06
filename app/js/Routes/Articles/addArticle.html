@@ -1,3 +1,8 @@
+<ng-md-icon icon="close" size=30 style="float:right" ng-click="close()"></ng-md-icon>
+<div class="form-group">
+    <label>Раздел</label>
+    <select ng-model="directory" ng-options="item.id as item.name for item in directories"></select>
+</div>
 <div class="form-group">
   <label>Заголовок статьи</label>
   <input class='form-control' ng-keyup='changeAlias()'  style='margin:10px 0; text-align:center' type='text' ng-model='article.header'></input>

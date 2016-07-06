@@ -14,7 +14,7 @@ var entity = {
             },
             resolve: {
                 articles: function($articles, $articleViewids) {
-                return $articles.getByViewId($articleViewids.home).then(function(data) {
+                return $articles.getByViewId($articleViewids.home.id).then(function(data) {
                     return data;
                 });
                 }
