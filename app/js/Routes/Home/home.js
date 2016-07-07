@@ -5,7 +5,7 @@ var entity = {
         views: {
           'content@' : {
             templateUrl: 'js/Routes/Home/home.html',
-            controller: function(articles, $scope, dialogs, $state, $compile, $timeout) {
+            controller: function(articles, $scope, dialogs, $state, $compile, $timeout,$articles) {
               window.currentScope = $scope;
               $scope.gridsterOpts = {
                   columns: 4, // the width of the grid, in columns
@@ -34,15 +34,19 @@ var entity = {
                      handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
                      start: function(event, $element, widget) {}, // optional callback fired when resize is started,
                      resize: function(event, $element, widget) {
+
+                     }, // optional callback fired when item is resized,
+                     stop: function(event, $element, widget) {
                        var $scope = window.currentScope;
                        $timeout(() => {
                          for(var i = 0; i < $scope.articles.length; i++) {
                            var content = $('#article_'+i).find('div.ng-scope:first');
-                           $scope.articles[i].size.y = (content.height() + 100) / 100;
+                           $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
                          }
-                       },10);
-                     }, // optional callback fired when item is resized,
-                     stop: function(event, $element, widget) {} // optional callback fired when item is finished resizing
+                         var article = $scope.articles[$element.attr('id').split('_')[1]];
+                         $articles.updateGrid({size: article.size, position: article.position, id: article.id});
+                       },100);
+                     } // optional callback fired when item is finished resizing
                   },
                   draggable: {
                      enabled: true, // whether dragging items is supported
@@ -55,13 +59,13 @@ var entity = {
 
                 $scope.articles = articles;
                 for(var i = 0; i < $scope.articles.length; i++) {
-                  $scope.articles[i].size = {x:2, y:2};
-                  $scope.articles[i].position= [Math.floor(i/2), i%2];
-                  $scope.articles[i].id = "article_" + i;
+                  $scope.articles[i].size = $scope.articles[i].size || {x:2, y:2};
+                  $scope.articles[i].position= $scope.articles[i].position || [Math.floor(i/2), i%2];
+                  $scope.articles[i].tagid = "article_" + i;
                 }
                 $timeout(() => {
                   for(var i = 0; i < $scope.articles.length; i++) {
-                    var content = $('#article_'+i).find('div.ng-scope:first');
+                    var content = $('#article_'+i).find('article-template>div.ng-scope:first');
                     $scope.articles[i].size.y = (content.height() + 100) / 100;
                   }
                 },500);

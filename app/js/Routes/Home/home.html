@@ -1,8 +1,8 @@
 <div class="articles">
   <div gridster="gridsterOpts">
       <ul>
-          <li gridster-item row="item.position[0]" col="item.position[1]" size-x="item.size.x" size-y="item.size.y" ng-repeat="item in articles">
-            <article-template id={{item.id}} gridster-dynamic-height data=item is-short="true"></article-template>
+          <li gridster-item row="item.position[0]"  id={{item.tagid}} col="item.position[1]" size-x="item.size.x" size-y="item.size.y" ng-repeat="item in articles">
+            <article-template gridster-dynamic-height data=item is-short="true"></article-template>
           </li>
       </ul>
   </div>

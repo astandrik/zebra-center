@@ -53,7 +53,11 @@ CREATE TABLE "DRAFTS" (
     "HEADER" text,
     "TEXT" text,
     "ANNOTATION" text,
-    "VIEWID" numeric
+    "VIEWID" numeric,
+    "SIZEX" integer,
+    "SIZEY" integer,
+    "POSX" integer,
+    "POSY" integer
 );
 
 

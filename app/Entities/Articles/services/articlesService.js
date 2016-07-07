@@ -6,10 +6,12 @@ function fillArticle(article, item) {
                     article.keywords = item.KEYWORDS;
                     article.description = item.DESCRIPTION;
                     article.annotation = item.ANNOTATION;
-                    article.alias = item.ALIAS;   
+                    article.alias = item.ALIAS;
                     article.viewid = item.VIEWID;
+                    article.size = {x: item.SIZEX, y: item.SIZEY};
+                    article.position = [item.POSX, item.POSY];
     return article;
-} 
+}
 function fn ($http) {
     return {
         getAll: function() {
@@ -24,7 +26,7 @@ function fn ($http) {
             });
         },
         getSingle: function(alias) {
-            return $http.get('/data/articles/' + alias.trim()).then(function(data) {            
+            return $http.get('/data/articles/' + alias.trim()).then(function(data) {
                     var article = {};
                     var item = data.data;
                     fillArticle(article,item[0]);
@@ -32,7 +34,7 @@ function fn ($http) {
             });
         },
         getByViewId: function(id) {
-            return $http.get('/data/articles/byViewId/' + id).then(function(data) {            
+            return $http.get('/data/articles/byViewId/' + id).then(function(data) {
                 var entities = [];
                 data.data.forEach((item) => {
                     var article = {};
@@ -46,6 +48,11 @@ function fn ($http) {
             return $http.post('/data/updateArticle',json).then(() => {
                 if(postBack) postBack();
             });
+        },
+        updateGrid: function(json, postBack) {
+          return $http.post('/data/updateArticleGrid',json).then(() => {
+            if(postBack) postBack();
+          })
         },
         add: function(json, postBack) {
             return $http.post('/data/addArticle',json).then(() => {

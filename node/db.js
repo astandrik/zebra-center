@@ -1,4 +1,5 @@
-var Articles = require('./models/Articles');
+var Articles = require('./models/Articles').article;
+var GridItem = require('./models/Articles').gridItem;
 var qHelper = require('./queryHelper.js');
 var fs = require('fs');
 
@@ -36,6 +37,10 @@ entities['articles'].update = function(item, res) {
 
 entities['articles'].create = function(item, res) {
     Articles(item).Create(res);
+}
+
+entities['articles'].updateGrid = function(item, res) {
+  GridItem(item).Update(res);
 }
 
 module.exports = {

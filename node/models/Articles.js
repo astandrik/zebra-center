@@ -14,13 +14,13 @@ var Article = function(item) {
         obj.Article.VIEWID = item.viewid;
     }
     obj.SelectAll = function(res) {
-        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS"', [] ,res);
+        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS"', [] ,res);
     };
     obj.SelectByAlias = function(alias, res) {
         qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "ALIAS"=$1',[alias],res);
     }
     obj.SelectByViewId = function(id, res) {
-         qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "VIEWID"=$1',[id],res);
+         qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "VIEWID"=$1',[id],res);
     }
     obj.Update = function(res) {
         qHelper.Update("DRAFTS", obj.Article, res);
@@ -31,4 +31,23 @@ var Article = function(item) {
     return obj;
 }
 
-module.exports = Article;
+var gridItem = function(item) {
+    var obj = {};
+    if(item) {
+        obj.Article = {};
+        obj.Article.ID = item.id;
+        obj.Article.POSX = item.position[0];
+        obj.Article.POSY = item.position[1];
+        obj.Article.SIZEX = item.size.x;
+        obj.Article.SIZEY = item.size.y;
+    }
+    obj.Update = function(res) {
+        qHelper.Update("DRAFTS", obj.Article, res);
+    };
+    return obj;
+}
+
+module.exports = {
+  article: Article,
+  gridItem: gridItem
+}

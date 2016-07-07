@@ -34,6 +34,9 @@ app.post('/data/updateArticle', function(req, res) {
     var name = req.body;
     dbWorker.entities['articles'].update(req.body, res);
 });
+app.post('/data/updateArticleGrid', function(req, res) {
+  dbWorker.entities['articles'].updateGrid(req.body, res);
+});
 app.get('/data/articles', function(req,res) {
     var result = dbWorker.entities['articles'].getAll(res);
 });
