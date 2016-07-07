@@ -10,7 +10,7 @@ var transliterate = (
 			var x;
 			for(x = 0; x < rus.length; x++) {
 				text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
-				text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());	
+				text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
 			}
 			return text;
 		}
@@ -24,8 +24,12 @@ function htmlArticle(isShort, article) {
           + pencil+"</div>";
           var showMore = isShort ? '<div style="float:right"><a href="/'+article.alias+'">Подробнее...</a></div>' : '';
           var html = '<div>' + header + '<div ng-show="!isEditing">' + text + '</div>' + showMore + '</div>';
-          html += "<div ng-class='{\"non-visible\": !isEditing}'><div class=\"form-group\">\
-            <label>Заголовок статьи</label>\
+          html += "<div ng-class='{\"non-displayable\": !isEditing}'><div class=\"form-group\">\
+					<div class=\"form-group\">\
+					    <label>Раздел</label>\
+					    <select ng-model=\"directory\" ng-options=\"item.id as item.name for item in directories\"></select>\
+					</div>\
+						<label>Заголовок статьи</label>\
             <input class=\'form-control\' ng-keyup=\'changeAlias()\' style=\'margin:10px 0; text-align:center\' type=\'text\' ng-model=\'article.header\'></input>\
           </div>\
           <div class=\"form-group\">\
@@ -60,7 +64,7 @@ function htmlArticle(isShort, article) {
           return html;
 }
 
-var fn = function($compile,$articles) {
+var fn = function($compile,$articles,$articleViewids) {
     return {
         scope: {
             data: '=',
@@ -70,7 +74,11 @@ var fn = function($compile,$articles) {
         },
         link: function(scope, element, attrs, ctrl) {
           scope.article = _.cloneDeep(scope.data);
-
+					scope.directories = $articleViewids;
+				  scope.directory = parseInt(scope.article.viewid) || $articleViewids.default.id;
+					scope.$watch('directory', (newVal, oldVal) => {
+						scope.article.viewid = newVal;
+					});
          scope.toggleEditing = function() {
             scope.isEditing = !scope.isEditing;
           }

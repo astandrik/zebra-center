@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 
 gulp.task('vendors', function() {
-  return gulp.src(['node_modules/gridster/dist/jquery.gridster.min.js','node_modules/gridster/dist/jquery.gridster.min.css'])
-  .pipe(gulp.dest('build/vendors'))
+  return gulp.src(['node_modules/angular-gridster/dist/*','node_modules/javascript-detect-element-resize/jquery.resize.js'])
+  .pipe(gulp.dest('build/vendors'));
 })

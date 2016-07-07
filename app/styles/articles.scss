@@ -44,6 +44,10 @@
     }
 }
 
+.non-displayable{
+  display: none;
+}
+
 .modal-content {
   .form-group {
     margin: 30px 10px 0px 10px;
@@ -56,9 +60,25 @@
   }
 }
 
+.gridster {
+  ul {
+    list-style-type: none;
+  }
+}
+
 ng-md-icon[icon="close"] {
     cursor: pointer;
     &:hover {
         fill:blue;
     }
+}
+
+.red {
+  background-color: red;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
 }

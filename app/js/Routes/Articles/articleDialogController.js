@@ -8,7 +8,7 @@ var transliterate = (
 			var x;
 			for(x = 0; x < rus.length; x++) {
 				text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
-				text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());	
+				text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
 			}
 			return text;
 		}
@@ -29,7 +29,10 @@ var fn = function($scope, $articles, $uibModalInstance,data,$articleViewids) {
   };
   $scope.changeAlias = function() {
      $scope.article.alias = transliterate($scope.article.header).replace(/\s/g, '_');
-  };  
+  };
+	$scope.$watch('directory', (newVal, oldVal) => {
+		$scope.article.viewid = newVal;
+	});
 }
 
 module.exports = fn;
