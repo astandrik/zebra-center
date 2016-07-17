@@ -26,6 +26,15 @@ app.get('/database/create', function(req,res) {
   res.send('Db created successfully');
 })
 
+app.post('/structure/update',  function(req, res) {
+    var name = req.body;
+    dbWorker.entities['structure'].updateStructure(req.body, res);
+});
+app.get('/structure/get', function(req,res) {
+    var result = dbWorker.entities['structure'].getStructure(res);
+});
+
+
 app.post('/data/addArticle', function(req, res) {
     var name = req.body;
     dbWorker.entities['articles'].create(req.body, res);

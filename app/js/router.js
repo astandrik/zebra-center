@@ -6,7 +6,9 @@ angular.module('router', []).provider('$router', function () {
     self.routes = {
       'home': routes.mainPage,
       'drafts': routes.Drafts,
-      'single': routes.singleArticle
+      'drafts.single': routes.singleArticle,
+      'home.single': routes.singleArticle,
+      'structure': routes.Structure
     };
     return this;
   }();

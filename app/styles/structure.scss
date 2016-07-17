@@ -1,0 +1,23 @@
+.ui-tree{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .tree-node-content {
+        margin: 10px;
+    }
+    .tree-node {
+        border: 1px solid #dae2ea;
+        background: #f8faff;
+        color: #7c9eb2;
+    }
+    .angular-ui-tree-handle {
+        background: #f8faff;
+        border: 1px solid #dae2ea;
+        color: #7c9eb2;
+        padding: 10px 10px;
+        
+    }
+    #tree-root {
+        width:70%
+    }
+}

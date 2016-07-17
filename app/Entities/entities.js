@@ -1,4 +1,6 @@
-require('./Articles/articles.js')
+require('./Articles/articles.js');
+require('./Structure/structure.js');
 angular.module('entities', [
-    'articles'
+    'articles',
+    'structure'
 ])

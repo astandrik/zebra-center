@@ -76,7 +76,9 @@ function makeUpdateQuery(TableName, item, res) {
          console.log(err);
      }
      done();
-     sendJson(res,result);
+        if(!nores) {
+            sendJson(res,result);
+        }
      if(err) {
        return console.error('error running query', err);
      }
@@ -85,7 +87,7 @@ function makeUpdateQuery(TableName, item, res) {
     });
 }
 
-function makeCreateQuery(TableName, item, res) {
+function makeCreateQuery(TableName, item, res, nores) {
     pg.connect(conString, function(err, client, done) {
       if(err) {
         return console.error('error fetching client from pool', err);
@@ -112,7 +114,9 @@ function makeCreateQuery(TableName, item, res) {
      }
      done();
     if(err) console.log(err);
-     sendJson(res,result);
+        if(!nores) {
+            sendJson(res,result);
+        }
      if(err) {
        return console.error('error running query', err);
      }
@@ -125,5 +129,6 @@ module.exports = {
     Read: makeReadQuery,
     Update: makeUpdateQuery,
     Create: makeCreateQuery,
-    Query: makeSimpleQuery
+    Query: makeSimpleQuery,
+    sendJson: sendJson
 }

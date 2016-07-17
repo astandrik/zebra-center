@@ -20,6 +20,7 @@ import 'angular-translate';
 import 'angular-ckeditor/bower_components/ckeditor/ckeditor.js';
 import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
+import 'angular-ui-tree';
 require('./dialogs.js')();
 // create and bootstrap application
 const requires = [
@@ -36,6 +37,7 @@ const requires = [
   'dialogs.main',
   'ckeditor',
   'gridster',
+  'ui.tree',
   require('textAngular')
 ];
 
