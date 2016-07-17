@@ -40,11 +40,11 @@ var entity = {
                        var $scope = window.currentScope;
                        $timeout(() => {
                          for(var i = 0; i < $scope.articles.length; i++) {
-                           var content = $('#article_'+i).find('div.ng-scope:first');
+                           var content = $('#article_'+i).find('div.ng-scope:first');                             
                            $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
+                           var article = $scope.articles[i];
+                           $articles.updateGrid({size: article.size, position: article.position, id: article.id});
                          }
-                         var article = $scope.articles[$element.attr('id').split('_')[1]];
-                         $articles.updateGrid({size: article.size, position: article.position, id: article.id});
                        },100);
                      } // optional callback fired when item is finished resizing
                   },
@@ -53,7 +53,17 @@ var entity = {
                      handle: '.my-class', // optional selector for drag handle
                      start: function(event, $element, widget) {}, // optional callback fired when drag is started,
                      drag: function(event, $element, widget) {}, // optional callback fired when item is moved,
-                     stop: function(event, $element, widget) {} // optional callback fired when item is finished dragging
+                     stop: function(event, $element, widget) {
+                       var $scope = window.currentScope;
+                       $timeout(() => {
+                         for(var i = 0; i < $scope.articles.length; i++) {
+                           var content = $('#article_'+i).find('div.ng-scope:first');
+                           $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
+                           var article = $scope.articles[i];
+                           $articles.updateGrid({size: article.size, position: article.position, id: article.id});
+                         }                         
+                       },100);
+                     }// optional callback fired when item is finished dragging
                   }
               };
 

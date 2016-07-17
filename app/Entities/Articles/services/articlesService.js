@@ -49,7 +49,7 @@ function fn ($http) {
                 if(postBack) postBack();
             });
         },
-        updateGrid: function(json, postBack) {
+        updateGrid: function(json, postBack) {          
           return $http.post('/data/updateArticleGrid',json).then(() => {
             if(postBack) postBack();
           })
