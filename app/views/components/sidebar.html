@@ -7,10 +7,26 @@
     <aside>
         <div class="search" title="Имитатор модуля поиска">
             <i>Поиск по сайту...</i>
-        </div><!-- ************* блок аккордеон ******************* -->
-        <!-- Если нужно чтобы рубрика не закрывалась, надо: -->
-        <!-- div class="info" style="display: block;" -->
+        </div>
         <div class="accordion">
+
+            <script type="text/ng-template" id="section_renderer.html">
+                <div ng-if="node.nodes.length == 0">
+                    <h3 class="title_block" ><a ng-href="/{{node.alias}}">{{node.title}}</a></h3>
+                </div>
+                <div ng-if="node.nodes.length > 0">
+                    <h3 class="title_block" >{{node.title}}</h3>  
+                    <div class="info">                        
+                        <ul>
+                            <li>
+                                <a ng-repeat="subnode in node.nodes" ng-href="/{{subnode.alias}}">{{subnode.title}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </script>
+            <section class="accordion_item" ng-repeat="node in nodes" ng-include="'section_renderer.html'">
+            </section>
             <section class="accordion_item">
                 <h3 class="title_block"><a href='/Drafts'>Черновики</a></h3>
                 <!--<h3 class="title_block">Проблема и решение</h3>

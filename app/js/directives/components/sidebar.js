@@ -1,14 +1,9 @@
 var sidebar = {
   templateUrl: 'views/components/sidebar.html',
-  controller: ['$timeout','$scope',function($timeout, $scope) {
-    $scope.zebraCenter = [	'Раз два три',
-	'Три четыре пять',
-	'Православное просвещение',
-	'Обучение специалистов',
-	'Рабочие тетради',
-	'Иные виды помощи',
-	'Семья и близкие',
-	'Разное о выздоровлении']
+  controller: ['$timeout','$scope', '$structure',function($timeout, $scope, $structure) {
+    $structure.get().then((data) => {
+        $scope.nodes = data;
+    })
     $timeout(()=> 
              {
      (function(i) {
