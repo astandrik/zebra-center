@@ -60,6 +60,12 @@
   }
 }
 
+.articles {
+  li:hover {
+    outline:1px black dotted;
+  }
+}
+
 .gridster {
   ul {
     list-style-type: none;

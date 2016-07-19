@@ -4,8 +4,6 @@ import constants from './constants';
 import onConfig  from './on_config';
 import onRun     from './on_run';
 import 'angular-ui-router';
-import 'textAngular';
-import 'textAngular/dist/textAngular-sanitize';
 import 'angular-material-icons';
 import './templates';
 import './filters';
@@ -14,12 +12,12 @@ import './services';
 require('./directives/index.js');
 require ('./router.js');
 import '../Entities/entities.js';
-require('textangular/dist/textAngular-sanitize.min');
 import 'angular-ui-bootstrap';
 import 'angular-translate';
 import 'angular-ckeditor/bower_components/ckeditor/ckeditor.js';
 import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
+import 'angular-sanitize';
 import 'angular-ui-tree';
 require('./dialogs.js')();
 // create and bootstrap application
@@ -38,7 +36,7 @@ const requires = [
   'ckeditor',
   'gridster',
   'ui.tree',
-  require('textAngular')
+  'ngSanitize'
 ];
 
 // mount on window for testing

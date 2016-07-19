@@ -1,6 +1,6 @@
 var pg = require('pg');
 var dbconf = require('./dbconfig');
-var conString = `postgres://${dbconf.username}:${dbconf.password}@localhost:5432/${dbconf.dbName}`;
+var conString = `postgres://${dbconf.username}:${dbconf.password}@127.0.0.1:5432/${dbconf.dbName}`;
 
 var setPath = function(client) {
   client.query('SET search_path TO public');
@@ -97,7 +97,7 @@ function makeCreateQuery(TableName, item, res, nores) {
     var numvalues = [];
     var i = 1;
     for(var e in item) {
-        if(e != "ID") {          
+        if(e != "ID") {
             params.push(`"${e}"`);
             values.push(item[e] || !isNaN(item[e]) ? item[e].toString(): null);
             numvalues.push('$'+i++);

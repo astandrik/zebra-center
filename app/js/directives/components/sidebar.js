@@ -4,7 +4,7 @@ var sidebar = {
     $structure.get().then((data) => {
         $scope.nodes = data;
     })
-    $timeout(()=> 
+    $timeout(()=>
              {
      (function(i) {
         var o, n;
@@ -16,7 +16,7 @@ var sidebar = {
                 ".info").stop(!0, !0).slideUp())
         })
       })($);
-    })
+    },1000);
   }]
 }
 
