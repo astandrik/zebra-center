@@ -21,7 +21,7 @@ function OnRun($rootScope, AppSettings, $state) {
     debugger;
   });
   $rootScope.$on('refreshCurrent', function() {
-      var refreshView =  function() {$state.go($state.current, {}, {reload: true});} ;      
+      var refreshView =  function() {$state.go($state.current, {}, {reload: true});} ;
   });
 
 }

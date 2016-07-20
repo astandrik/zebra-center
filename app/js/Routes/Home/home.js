@@ -40,7 +40,7 @@ var entity = {
                        var $scope = window.currentScope;
                        $timeout(() => {
                          for(var i = 0; i < $scope.articles.length; i++) {
-                           var content = $('#article_'+i).find('div.ng-scope:first');                             
+                           var content = $('#article_'+i).find('div.ng-scope:first');
                            $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
                            var article = $scope.articles[i];
                            $articles.updateGrid({size: article.size, position: article.position, id: article.id});
@@ -61,7 +61,7 @@ var entity = {
                            $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
                            var article = $scope.articles[i];
                            $articles.updateGrid({size: article.size, position: article.position, id: article.id});
-                         }                         
+                         }
                        },100);
                      }// optional callback fired when item is finished dragging
                   }
@@ -96,7 +96,7 @@ var entity = {
       }
 
 var singleArticle = {
-        url: '/:articleAlias',
+        url: ':articleAlias',
         views: {
           'content@' : {
             templateUrl: 'js/Routes/Articles/singleArticle.html',

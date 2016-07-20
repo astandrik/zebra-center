@@ -59,7 +59,7 @@ app.config([
     }
     dialogsProvider.useBackdrop('static');
     $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise('/');
+  //  $urlRouterProvider.otherwise('/');
   }
 ]);
 
