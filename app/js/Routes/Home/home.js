@@ -95,8 +95,28 @@ var entity = {
         }
       }
 
+      var singleArticleSlash = {
+              url: '/article/:articleAlias',
+              views: {
+                'content@' : {
+                  templateUrl: 'js/Routes/Articles/singleArticle.html',
+                  controller: function(article, $scope, dialogs, $state) {
+                      $scope.article = article;
+                      var refreshView =  function() {$state.go($state.current, {}, {reload: true});} ;
+                  },
+                  resolve: {
+                      article: function($articles, $stateParams) {
+                      return $articles.getSingle($stateParams.articleAlias).then(function(data) {
+                          return data;
+                      });
+                      }
+                  }
+                }
+              }
+            }
+
 var singleArticle = {
-        url: ':articleAlias',
+        url: 'article/:articleAlias',
         views: {
           'content@' : {
             templateUrl: 'js/Routes/Articles/singleArticle.html',
@@ -115,4 +135,4 @@ var singleArticle = {
         }
       }
 
-module.exports = {mainPage: entity, singleArticle: singleArticle};
+module.exports = {mainPage: entity, singleArticle: singleArticle, singleArticleSlash: singleArticleSlash};

@@ -22,7 +22,9 @@ function htmlArticle(isShort, article) {
           var pencil = "<ng-md-icon class='pencil' ng-class='{\"non-visible\": isEditing}' ng-click='toggleEditing()' icon='mode_edit' size=30></ng-md-icon>";
           var header = "<div class='article-header'><div></div><h1 ng-show='!isEditing'>"+article.header+"</h1><input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-show='isEditing' ng-model='article.header'></input>"
           + pencil+"</div>";
-          var showMore = isShort ? '<div style="float:right"><a href="/'+article.alias+'">Подробнее...</a></div>' : '';
+          var showMore = isShort ? '<div style="float:right"><a href="'+window.location.href
+					+ (window.location.href.toString()[window.location.href.toString().length - 1] == '/' ? '' : '/') +
+					'article/'+article.alias+'">Подробнее...</a></div>' : '';
           var html = '<div>' + header + '<div ng-show="!isEditing">' + text + '</div>' + showMore + '</div>';
           html += "<div ng-class='{\"non-displayable\": !isEditing}'><div class=\"form-group\">\
 					<div class=\"form-group\">\
