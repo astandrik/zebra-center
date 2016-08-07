@@ -57,4 +57,9 @@ app.get('/data/articles/byViewId/:id', function(req,res) {
 });
 app.get('/*', function(req,res) {
   res.sendFile(appDir + '/app/index.html');
-})
+});
+
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});

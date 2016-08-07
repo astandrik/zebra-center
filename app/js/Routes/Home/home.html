@@ -1,7 +1,9 @@
 <div class="articles">
   <div gridster="gridsterOpts">
       <ul>
-          <li gridster-item row="item.position[0]"  id={{item.tagid}} col="item.position[1]" size-x="item.size.x" size-y="item.size.y" ng-repeat="item in articles">
+          <li gridster-item row="item.position[0]"  id={{item.tagid}} col="item.position[1]" size-x="item.size.x"
+          size-y="item.size.y" ng-repeat="item in articles">
+            <ng-md-icon icon= "shuffle" style="float:right; margin-top:5px, margin-left:5px" size =30 class="dragger"></ng-md-icon>
             <article-template gridster-dynamic-height data=item is-short="true"></article-template>
           </li>
       </ul>

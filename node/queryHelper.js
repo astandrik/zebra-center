@@ -76,7 +76,7 @@ function makeUpdateQuery(TableName, item, res) {
          console.log(err);
      }
      done();
-        if(!nores) {
+        if(!err) {
             sendJson(res,result);
         }
      if(err) {

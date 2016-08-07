@@ -60,9 +60,16 @@
   }
 }
 
+.dragger {
+  visibility: hidden;
+}
+
 .articles {
   li:hover {
     outline:1px black dotted;
+    .dragger {
+      visibility: visible;
+    }
   }
 }
 
