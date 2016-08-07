@@ -20,6 +20,7 @@ import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
 require('./dialogs.js')();
+require('./helpers.js');
 // create and bootstrap application
 const requires = [
   'ui.router',

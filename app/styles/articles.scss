@@ -64,6 +64,16 @@
   visibility: hidden;
 }
 
+.dragger.shuffle {
+  float:right;
+  margin-top:5px;
+  margin-right:5px;
+  &:hover{
+    cursor: pointer;
+    fill:blue;
+  }
+}
+
 .articles {
   li:hover {
     outline:1px black dotted;
@@ -72,6 +82,7 @@
     }
   }
 }
+
 
 .gridster {
   ul {
