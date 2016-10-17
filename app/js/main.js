@@ -20,7 +20,8 @@ import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
 require('./dialogs.js')();
-require('./helpers.js');
+var mapPromise = require('./helpers.js').mapPromise;
+Array.prototype.mapPromise = mapPromise;
 // create and bootstrap application
 const requires = [
   'ui.router',

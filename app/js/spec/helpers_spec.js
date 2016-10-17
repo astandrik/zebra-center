@@ -1,4 +1,6 @@
-require('../app/js/helpers.js')
+
+var mapPromise = require('../helpers.js').mapPromise;
+Array.prototype.mapPromise = mapPromise;
 
 describe("Testing helper functions", function(){
   var newArr = [333];
@@ -9,11 +11,7 @@ describe("Testing helper functions", function(){
                   });
     var arr = [1,2,3];
     arr.mapPromise(square).then((arr) => newArr = arr);
-    setTimeout(
-      () => {
-          done();
-        }
-    , 700);
+    setTimeout(() => {done();}, 700);
   });
   it('mapPromise should work', function() {
     expect(JSON.stringify([1,4,9])).toEqual(JSON.stringify(newArr));

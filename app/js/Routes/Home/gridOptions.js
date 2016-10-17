@@ -1,5 +1,5 @@
 var options = {
-    columns: 4, // the width of the grid, in columns
+    columns: 8, // the width of the grid, in columns
     pushing: true, // whether to push other items out of the way on move or resize
     floating: true, // whether to automatically float items up so they stack (you can temporarily disable if you are adding unsorted items with ng-repeat)
     swapping: true, // whether or not to have items of the same size switch places instead of pushing down if they are the same size
@@ -27,34 +27,14 @@ var options = {
        resize: function(event, $element, widget) {
 
        }, // optional callback fired when item is resized,
-       stop: function(event, $element, widget) {
-         var $scope = window.currentScope;
-         $timeout(() => {
-           for(var i = 0; i < $scope.articles.length; i++) {
-             var content = $('#article_'+i).find('div.ng-scope:first');
-             $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
-             var article = $scope.articles[i];
-             $articles.updateGrid({size: article.size, position: article.position, id: article.id});
-           }
-         },100);
-       } // optional callback fired when item is finished resizing
+       stop: {}
     },
     draggable: {
        enabled: true, // whether dragging items is supported
        handle: '.dragger', // optional selector for drag handle
        start: function(event, $element, widget) {}, // optional callback fired when drag is started,
        drag: function(event, $element, widget) {}, // optional callback fired when item is moved,
-       stop: function(event, $element, widget) {
-         var $scope = window.currentScope;
-         $timeout(() => {
-           for(var i = 0; i < $scope.articles.length; i++) {
-             var content = $('#article_'+i).find('div.ng-scope:first');
-             $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
-             var article = $scope.articles[i];
-             $articles.updateGrid({size: article.size, position: article.position, id: article.id});
-           }
-         },100);
-       }// optional callback fired when item is finished dragging
+       stop: function(event, $element, widget) {}
     }
 };
 

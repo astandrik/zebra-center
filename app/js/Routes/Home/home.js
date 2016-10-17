@@ -3,7 +3,7 @@ var gridOptions = require('./gridOptions');
 
 function processArticle(article) {
   var newArticle = Object.assign({},article);
-  newArticle.size = article.size || {x:2, y:2};
+  newArticle.size = article.size || {x:4, y:4};
   newArticle.position = article.position;
   newArticle.tagid = "article_" + article.id;
   return newArticle;
@@ -28,6 +28,19 @@ var entity = {
             templateUrl: 'js/Routes/Home/home.html',
             controller: function(articles, $scope, dialogs, $state, $compile, $timeout,$articles) {
               window.currentScope = $scope;
+              var stopFunction = function(event, $element, widget) {
+                var $scope = window.currentScope;
+                $timeout(() => {
+                  for(var i = 0; i < $scope.articles.length; i++) {
+                    var content = $('#article_'+i).find('div.ng-scope:first');
+                    $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
+                    var article = $scope.articles[i];
+                    $articles.updateGrid({size: article.size, position: article.position, id: article.id});
+                  }
+                },100);
+              } // optional callback fired when item is finished resizing
+              gridOptions.resizable.stop = stopFunction;
+              gridOptions.draggable.stop = stopFunction;
               $scope.gridsterOpts = gridOptions;
               $scope.articles = articles.map(processArticle);
               $scope.articles.mapPromise(fitHeight.bind(this,$timeout))
