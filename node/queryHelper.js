@@ -26,6 +26,24 @@ function makeSimpleQuery(queryString, needSetPath) {
   });
 }
 
+function readLocal(queryString, values, callback) {
+    pg.connect(conString, function(err, client, done) {
+      if(err) {
+        return console.error('error fetching client from pool', err);
+      }
+      setPath(client);
+      client.query(queryString, values, function(err,result, {
+        if(err) {
+            console.log(queryString);
+            console.log(values);
+            console.log(err);
+        }
+        done();
+        callback(result.rows);
+      });
+    }
+}
+
 
 function makeReadQuery(queryString, values, res) {
     pg.connect(conString, function(err, client, done) {
@@ -130,5 +148,6 @@ module.exports = {
     Update: makeUpdateQuery,
     Create: makeCreateQuery,
     Query: makeSimpleQuery,
-    sendJson: sendJson
+    sendJson: sendJson,
+    readLocal: readLocal
 }

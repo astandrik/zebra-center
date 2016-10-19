@@ -31,18 +31,19 @@ var entity = {
               var stopFunction = function(event, $element, widget) {
                 var $scope = window.currentScope;
                 $timeout(() => {
-                  for(var i = 0; i < $scope.articles.length; i++) {
-                    var content = $('#article_'+i).find('div.ng-scope:first');
-                    $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
+                  for(var i = 0; i < $scope.ids.length; i++) {
+                    var content = $('#article_'+ $scope.ids[i]).find('article-template>div.ng-scope:first');
+                    $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100); 
                     var article = $scope.articles[i];
                     $articles.updateGrid({size: article.size, position: article.position, id: article.id});
                   }
                 },100);
-              } // optional callback fired when item is finished resizing
+              }
               gridOptions.resizable.stop = stopFunction;
               gridOptions.draggable.stop = stopFunction;
               $scope.gridsterOpts = gridOptions;
               $scope.articles = articles.map(processArticle);
+              $scope.ids = $scope.articles.map(x => x.id);
               $scope.articles.mapPromise(fitHeight.bind(this,$timeout))
                 .then((data) =>
                   {

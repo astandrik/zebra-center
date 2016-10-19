@@ -26,26 +26,24 @@ var entity = {
         views: {
           'content@' : {
             templateUrl: 'js/Routes/Structure/structure.html',
-            controller: function($scope, $structure, structure) { 
+            controller: function($scope, $structure, structure) {
                 $scope.nodes = structure;
-                $scope.newCounter = 0;
                 $scope.save = function() {
                     $structure.update($scope.nodes);
                 }
-                $scope.newId = maxId(structure) + 1;
                 $scope.addDir = function() {
                     $scope.nodes.push({
-                        viewid: $scope.newId  + ($scope.newCounter++),
+                        viewid: -1,
                         title: "Новый раздел",
                         nodes: []
-                    });                    
+                    });
                 }
                 $scope.newSubItem = function(item) {
                     var id = item.viewid;
                     var node = searchTree(id, $scope.nodes);
                     if(node != -1) {
                         node.nodes.push({
-                            viewid: $scope.newId  + ($scope.newCounter++),
+                            viewid: -1,
                             title: "Новый раздел",
                             nodes: [],
                             parentid: id
@@ -56,12 +54,17 @@ var entity = {
                     var id = item.id;
                     var node = searchTree(id, $scope.nodes);
                     var parentid = node.parentid;
-                    
+
                     if(!parentid) parentNode = $scope;
                     else var parentNode = searchTree(parentid, $scope.nodes);
-                    
+
                     var removeIndex = parentNode.nodes.filter((child) => child.id == id)[0];
                     parentNode.nodes.splice(removeIndex, 1);
+                }
+                $scope.cancel = function() {
+                  return $structure.get().then(function(data) {
+                        $scope.nodes = data;
+                  })
                 }
             },
             resolve: {
@@ -70,7 +73,7 @@ var entity = {
                         return data;
                     })
                 }
-            } 
+            }
           }
         }
       }

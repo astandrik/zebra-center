@@ -5,9 +5,9 @@
         <input type="text" class="form-control" style="width:70%" ng-model="node.title" aria-describedby="basic-addon1">
         <input type="text" class="form-control" style="width:30%;margin-left:10px" ng-model="node.alias" aria-describedby="basic-addon1">
     </div>
-    <div ng-show="!node.parentid">
+    <div>
         <a class="pull-right btn btn-danger btn-xs" data-nodrag="" style="height:25px" ng-click="removeSubItem(node)"><span class="glyphicon glyphicon-remove"></span></a>
-        <a class="pull-right btn btn-primary btn-xs" data-nodrag="" ng-click="newSubItem(node)" style="margin-right: 8px;height:25px"><span class="glyphicon glyphicon-plus"></span></a>
+        <a ng-show="!node.parentid"  class="pull-right btn btn-primary btn-xs" data-nodrag="" ng-click="newSubItem(node)" style="margin-right: 8px;height:25px"><span class="glyphicon glyphicon-plus"></span></a>
     </div>
       <div ng-show="node.parentid">
       </div>
