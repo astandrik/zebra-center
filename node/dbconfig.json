@@ -1,5 +1,6 @@
 {
     "username": "postgres",
     "password": "123",
-    "dbName": "postgres"
+    "dbName": "postgres",
+    "conString":"postgres://postgres:123@127.0.0.1:5432/postgres"
 }

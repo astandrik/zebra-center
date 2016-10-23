@@ -1,9 +1,15 @@
 var qHelper = require('../queryHelper.js');
+var crud = require('../CRUD.js');
 
 function createFlat(struct, parentId) {
     var flat = struct.reduce((sum, current) => {
-        sum.push({alias: current.alias ,title: current.title, viewid: current.viewid, parentId: (parentId || -1)});
-        if(current.nodes) {
+        sum.push({
+            alias: current.alias,
+            title: current.title,
+            viewid: current.viewid,
+            parentId: (parentId || 0)
+        });
+        if (current.nodes) {
             sum = sum.concat(createFlat(current.nodes, current.viewid));
         }
         return sum;
@@ -11,28 +17,111 @@ function createFlat(struct, parentId) {
     return flat;
 }
 
-var Structure = function(struct) {
+var Structure = function (struct) {
     var obj = {};
-    if(struct) {
+    if (struct) {
         obj.struct = createFlat(struct);
     }
-    obj.deleteStructure = function() {
-        qHelper.Query('DELETE FROM VIEWS');
-        qHelper.Query('DELETE FROM VIEWS_JOINS');
+    obj.deleteStructure = function (callback) {
+        var deleteJoins = () => {
+            crud.Query('DELETE FROM VIEWS_JOINS', false, callback);
+        }
+        crud.Query('DELETE FROM VIEWS', true, deleteJoins);
     }
-    obj.updateStructure = function(res) {
-        obj.deleteStructure();
-        obj.struct.map((item) => {
-            qHelper.Create('views', {title: item.title, viewid: item.viewid, alias: item.alias}, res, true);
-            if(item.parentId != -1) qHelper.Create('views_joins', {childid: item.viewid, parentid: item.parentId},res, true);
-        });
-        qHelper.sendJson(res, {message: "Structure updated"});
+    obj.updateStructure = function (res) {
+        var createStructure = function () {
+            var joins_table = [];
+            obj.struct.forEach((x) => {
+                joins_table.push([x.parentId, x.viewid]);
+            });
+            var new_struct_creates = obj.struct.filter(x => x.viewid < 0).map((item) => {
+                return {
+                    item: item,
+                    promise: () => crud.Create('views', {
+                        title: item.title,
+                        viewid: item.viewid,
+                        alias: item.alias
+                    }, res)
+                }
+            });
+            var old_struct_creates = obj.struct.filter(x => x.viewid > 0).map((item) => {
+                return {
+                    item: item,
+                    promise: () => crud.Create('views', {
+                        title: item.title,
+                        viewid: item.viewid,
+                        alias: item.alias
+                    }, res)
+                }
+            });
+
+            var insertJoins = (resolve, reject) => {
+                var chained_joins_promise = (i) => {
+                    if (i == (joins_table.length)) {
+                        crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res)
+                            .then((data) => resolve(data), (data) => reject(data));
+                    } else {
+                        crud.Create('views_joins', {
+                            childid: joins_table[i][1],
+                            parentid: joins_table[i][0]
+                        }, res).then(() => {
+                                chained_joins_promise(i + 1);
+                            },
+                            (data) => reject(data));
+                    }
+                }
+                chained_joins_promise(0);
+            }
+            var body = function (resolve, reject) {
+                var promise;
+                var chained_promise_old = function (i) {
+                    if (i == old_struct_creates.length) {
+                        chained_promise_new(0);
+                    } else {
+                        old_struct_creates[i].promise().then(() =>
+                            chained_promise_old(i + 1),
+                            (data) => reject(data));
+                    }
+                }
+                var chained_promise_new = function (i) {
+                    if (i == new_struct_creates.length) {
+                        insertJoins(resolve, reject);
+                    } else {
+                        new_struct_creates[i].promise().then(() => {
+                            crud.Read("SELECT lastid FROM get_last_view_id() as lastid", [], res)
+                                .then(
+                                    (data) => {
+                                        var id = data.result[0].lastid;
+                                        joins_table.forEach((x) => {
+                                            if (x[0] == new_struct_creates[i].item.viewid) {
+                                                x[0] = id;
+                                            }
+                                            if (x[1] == new_struct_creates[i].item.viewid) {
+                                                x[1] = id;
+                                            }
+                                        });
+                                        chained_promise_new(i + 1);
+                                    },
+                                    (data) => reject(data));
+                        });
+                    }
+                }
+                chained_promise_old(0);
+            };
+            qHelper.makeTransaction(body);
+        };
+        obj.deleteStructure(createStructure);
     }
-    obj.getStructure = function(res) {
-        qHelper.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res);
+    obj.getStructure = function (res) {
+        var body = (resolve, reject) =>
+            crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res)
+            .then((data) => resolve(data), (data) => reject(data));
+        qHelper.makeTransaction(body);
     }
     return obj;
 }
 
 
-module.exports = {structure: Structure}
+module.exports = {
+    structure: Structure
+}

@@ -1,7 +1,8 @@
 var qHelper = require('../queryHelper.js');
-var Article = function(item) {
+var crud = require('../CRUD.js');
+var Article = function (item) {
     var obj = {};
-    if(item) {
+    if (item) {
         obj.Article = {};
         obj.Article.ID = item.id;
         obj.Article.TITLE = item.title;
@@ -13,27 +14,42 @@ var Article = function(item) {
         obj.Article.TEXT = item.text;
         obj.Article.VIEWID = item.viewid;
     }
-    obj.SelectAll = function(res) {
-        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS"', [] ,res);
+    obj.SelectAll = function (res) {
+        var body = (resolve, reject) =>
+            crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS"', [], res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     };
-    obj.SelectByAlias = function(alias, res) {
-        qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "ALIAS"=$1',[alias],res);
+    obj.SelectByAlias = function (alias, res) {
+        var body = (resolve, reject) =>
+            crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID" FROM "DRAFTS" WHERE "ALIAS"=$1', [alias], res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     }
-    obj.SelectByViewId = function(id, res) {
-         qHelper.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "VIEWID"=$1',[id],res);
+    obj.SelectByViewId = function (id, res) {
+        var body = (resolve, reject) =>
+            crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "VIEWID"=$1', [id], res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     }
-    obj.Update = function(res) {
-        qHelper.Update("DRAFTS", obj.Article, res);
+    obj.Update = function (res) {
+        var body = (resolve, reject) =>
+            crud.Update("DRAFTS", obj.Article, res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     };
-    obj.Create = function(res) {
-        qHelper.Create("DRAFTS", obj.Article, res);
+    obj.Create = function (res) {
+        var body = (resolve, reject) =>
+            crud.Create("DRAFTS", obj.Article, res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     }
     return obj;
 }
 
-var gridItem = function(item) {
+var gridItem = function (item) {
     var obj = {};
-    if(item) {
+    if (item) {
         obj.Article = {};
         obj.Article.ID = item.id;
         obj.Article.POSX = item.position[0];
@@ -41,13 +57,16 @@ var gridItem = function(item) {
         obj.Article.SIZEX = item.size.x;
         obj.Article.SIZEY = item.size.y;
     }
-    obj.Update = function(res) {
-        qHelper.Update("DRAFTS", obj.Article, res);
+    obj.Update = function (res) {
+        var body = (resolve, reject) =>
+            crud.Update("DRAFTS", obj.Article, res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
     };
     return obj;
 }
 
 module.exports = {
-  article: Article,
-  gridItem: gridItem
+    article: Article,
+    gridItem: gridItem
 }

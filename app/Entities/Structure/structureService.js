@@ -13,7 +13,7 @@ function getChildren(node, nodes) {
     else {
         return nodes
             .filter((item) => {
-                if (node.childid.indexOf(item.viewid) > -1) {  
+                if (node.childid.indexOf(item.viewid) > -1) {
                     return item;
                 } else {
                     return false;
@@ -22,9 +22,9 @@ function getChildren(node, nodes) {
             .map((item)=> {item.nodes = getChildren(item, nodes); return item});
     }
 }
- 
+
 function flatToArray(data) {
-    data.forEach((item) =>  item.nodes = getChildren(item, data)); 
+    data.forEach((item) =>  item.nodes = getChildren(item, data));
 }
 
 
@@ -38,8 +38,8 @@ function fn ($http) {
             });
         },
         update: function(json, postBack) {
-            return $http.post('/structure/update',json).then(() => {
-                if(postBack) postBack();
+            return $http.post('/structure/update',json).then((data) => {
+                if(postBack) postBack(data);
             });
         },
     }
