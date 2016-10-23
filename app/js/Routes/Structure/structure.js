@@ -1,9 +1,12 @@
 function searchTree(id, nodes) {
     var node = -1;
-    for(var i = 0; i < nodes.length; i++) {
-        if(node != -1) break;
-        if(nodes[i].viewid == id) {node = nodes[i]; break}
-        if(nodes[i].nodes.length > 0) {
+    for (var i = 0; i < nodes.length; i++) {
+        if (node != -1) break;
+        if (nodes[i].viewid == id) {
+            node = nodes[i];
+            break
+        }
+        if (nodes[i].nodes.length > 0) {
             node = searchTree(id, nodes[i].nodes);
         }
     }
@@ -11,8 +14,8 @@ function searchTree(id, nodes) {
 }
 
 function Max(arr) {
-    if(arr.length == 1) return arr[0];
-    else return Math.max(arr[0],Max(arr.slice(1)));
+    if (arr.length == 1) return arr[0];
+    else return Math.max(arr[0], Max(arr.slice(1)));
 }
 
 function maxId(nodes) {
@@ -22,7 +25,7 @@ function maxId(nodes) {
 }
 
 function getChildren(node, nodes) {
-    if(node.childid.length == 1 && !node.childid[0] ) return [];
+    if (node.childid.length == 1 && !node.childid[0]) return [];
     else {
         return nodes
             .filter((item) => {
@@ -32,33 +35,38 @@ function getChildren(node, nodes) {
                     return false;
                 }
             })
-            .map((item)=> {item.nodes = getChildren(item, nodes); return item});
+            .map((item) => {
+                item.nodes = getChildren(item, nodes);
+                return item
+            });
     }
 }
 
 function flatToArray(data) {
-    data.forEach((item) =>  item.nodes = getChildren(item, data));
+    data.forEach((item) => item.nodes = getChildren(item, data));
 }
 
 var entity = {
-        url: '/Structure',
-        views: {
-          'content@' : {
+    url: '/Structure',
+    views: {
+        'content@': {
             templateUrl: 'js/Routes/Structure/structure.html',
-            controller: function($scope, $structure, structure) {
+            controller: function ($scope, $structure, structure) {
                 $scope.nodes = structure;
                 var baseid = -1;
-                var refreshData = ()=> $structure.get().then(function(data) {
-                                          $scope.nodes = data;
-                                       });
-                $scope.save = function() {
-                    $structure.update($scope.nodes, function(data) {
-                      var entities = data.data;
-                      flatToArray(entities);
-                      $scope.nodes = entities.filter((item) => {return !item.parentid});
+                var refreshData = () => $structure.get().then(function (data) {
+                    $scope.nodes = data;
+                });
+                $scope.save = function () {
+                    $structure.update($scope.nodes, function (data) {
+                        var entities = data.data;
+                        flatToArray(entities);
+                        $scope.nodes = entities.filter((item) => {
+                            return !item.parentid
+                        });
                     });
-                }
-                $scope.addDir = function() {
+                };
+                $scope.addDir = function () {
                     $scope.nodes.push({
                         viewid: baseid--,
                         title: "Новый раздел",
@@ -66,10 +74,10 @@ var entity = {
                         isNew: true
                     });
                 };
-                $scope.newSubItem = function(item) {
+                $scope.newSubItem = function (item) {
                     var id = item.viewid;
                     var node = searchTree(id, $scope.nodes);
-                    if(node != -1) {
+                    if (node != -1) {
                         node.nodes.push({
                             viewid: baseid--,
                             title: "Новый раздел",
@@ -78,31 +86,37 @@ var entity = {
                             isNew: true
                         });
                     }
-                }
-                $scope.removeSubItem = function(item) {
+                };
+                $scope.removeSubItem = function (item) {
                     var id = item.viewid;
                     var node = searchTree(id, $scope.nodes);
                     var parentid = node.parentid;
 
-                    if(!parentid) parentNode = $scope;
+                    if (!parentid) parentNode = $scope;
                     else var parentNode = searchTree(parentid, $scope.nodes);
-
-                    var removeIndex = parentNode.nodes.filter((child) => child.id == id)[0];
+                    var removeIndex = -1;
+                    for (var i = 0; i < parentNode.nodes.length; i++) {
+                        if (parentNode.nodes[i].viewid == id) {
+                            removeIndex = i;
+                        }
+                    }
                     parentNode.nodes.splice(removeIndex, 1);
                 }
-                $scope.cancel = function() {
-                  refreshData();
+                $scope.cancel = function () {
+                    refreshData();
                 }
             },
             resolve: {
-                structure: function($structure) {
-                    return $structure.get().then(function(data) {
+                structure: function ($structure) {
+                    return $structure.get().then(function (data) {
                         return data;
                     })
                 }
             }
-          }
         }
-      }
+    }
+}
 
-module.exports = {Structure: entity};
+module.exports = {
+    Structure: entity
+};
