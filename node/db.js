@@ -7,49 +7,49 @@ var fs = require('fs');
 var entities = {};
 
 var schemaOps = {};
-schemaOps.drop = function() {
-  qHelper.Query('drop schema public cascade');
+schemaOps.drop = function () {
+    qHelper.Query('drop schema public cascade');
 }
 
-schemaOps.createDb = function() {
-  qHelper.Query('create schema public');
-  var script = fs.readFileSync('./node/dbscripts/createDrafts.txt','utf8');
-  console.log(script);
-  qHelper.Query(script, true);
+schemaOps.createDb = function () {
+    qHelper.Query('create schema public');
+    var script = fs.readFileSync('./node/dbscripts/createDrafts.txt', 'utf8');
+    console.log(script);
+    qHelper.Query(script, true);
 }
 
 entities['articles'] = {};
 entities['structure'] = {};
 
-entities['articles'].getAll = function(res) {
+entities['articles'].getAll = function (res) {
     Articles().SelectAll(res);
 };
 
-entities['articles'].getSingleByAlias = function(alias,res) {
-     Articles().SelectByAlias(alias, res);
+entities['articles'].getSingleByAlias = function (alias, res) {
+    Articles().SelectByAlias(alias, res);
 }
 
-entities['articles'].getSingleByViewId = function(id,res) {
-     Articles().SelectByViewId(id, res);
+entities['articles'].getSingleByViewId = function (id, res) {
+    Articles().SelectByViewId(id, res);
 }
 
-entities['articles'].update = function(item, res) {
+entities['articles'].update = function (item, res) {
     Articles(item).Update(res);
 };
 
-entities['articles'].create = function(item, res) {
+entities['articles'].create = function (item, res) {
     Articles(item).Create(res);
 }
 
-entities['articles'].updateGrid = function(item, res) {
-  GridItem(item).Update(res);
+entities['articles'].updateGrid = function (item, res) {
+    GridItem(item).Update(res);
 }
 
-entities['structure'].getStructure = function(res) {
+entities['structure'].getStructure = function (res) {
     Structure().getStructure(res);
 }
 
-entities['structure'].updateStructure = function(json, res) {
+entities['structure'].updateStructure = function (json, res) {
     Structure(json).updateStructure(res);
 }
 

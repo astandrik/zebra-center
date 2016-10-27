@@ -1,0 +1,435 @@
+body {
+	margin: 0; padding: 0;
+/* --- Градиент --- */
+background: rgba(222,229,213,0); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(222,229,213,0) 28%, rgba(165,201,86,1) 97%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(28%,rgba(222,229,213,0)), color-stop(97%,rgba(165,201,86,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%); /* IE10+ */
+background: linear-gradient(to bottom, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%); /* W3C */
+/* --- Градиент --- */
+ }
+
+div.global {
+	margin: 0 auto; /* если 0 auto - середина; если 0 5% - съезжает */
+	padding: 0;
+	max-width: 1300px;
+	/*min-width: 700px;*/
+background-image: url('../images/LA8des_top-1300.jpg'), url('../images/LA8des_bot-1300.jpg');
+background-position: top center, bottom center;
+background-repeat: repeat-x, repeat-y;
+background-size: 100%, 100%;
+background-color: #fff;
+	box-shadow: 0 0 2em rgba(122,122,122,0.5); /* тень вокруг */}
+
+header {
+	width: auto;
+	height: 154px;
+	margin: 0; padding: 0;
+	display: block;
+	clear: both; }
+
+.logo { /* для картинки зебры */
+text-align: center;
+ }
+
+/* ---- ВЕРХНЕЕ МЕНЮ - ЛЕНТОЧКА ---- */
+
+/* ВЕРХНЕЕ МЕНЮ - конец*/
+
+/* макет в 2 колонки одинаковой высоты - левое меню aside и статьи articles */
+#page {
+	display: -webkit-flex;
+	display: flex;
+/*border: 1px dashed gray;*/
+/* box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5);  Тень справа */
+}
+
+#articles { /* контент */
+	-webkit-flex-grow:1;
+	flex-grow:1;
+}
+
+/* -- Левое меню -- */
+aside {
+	-webkit-flex-shrink:0;
+	flex-shrink:0;
+	width: 260px; /* 240 + 2x10 = 320*/
+	margin: 0;
+	background: rgba(189, 229, 132, 0);
+box-shadow: 0.4em 0 5px rgba(122,122,122,0.5); /* Тень справа */
+/*border: 1px solid blue;*/
+}
+
+.search {  /* имитация поиска слева */
+	width: auto; height: auto;
+	margin: 10px 5px;
+	padding: 4px;
+	clear: both;
+	background:#fff;
+	box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5); /* Тень */
+	color: gray;
+	border-radius: 5px;
+	font-size: smaller; }
+
+/* ---- Разделы левого меню ---- */
+aside .module-menu {
+	margin: 10px 0;
+	padding: 0px 0px 2px 0px;
+	background: rgba(255, 255, 255, 0.8);
+	border-radius: 0 25px 0 25px;
+	box-shadow: 0.4em 0.4em 5px rgba(122,122,122,0.5); /* Тень */
+}
+
+aside .module-menu h3 {
+	margin: 0;
+	padding: 4px 4px 4px 10px;
+	background: rgba(99, 175, 86, 1); /* цвет как у ленточки */
+	color: #545454; /*#0026FF; цвет заголовка модуля*/
+	border-top-right-radius: 25px;
+}
+
+aside .module-menu ul li {
+	margin: 0 10px 0 -30px;
+	border-bottom: 1px solid #D7E0C9;
+	list-style-type: none;
+	list-style-position: outside; /*inside - подчерк весь, outside - подчерк без кольца */
+	text-align: left; }
+
+/* ---- Ссылки левого меню - перенесены в accordion.css!!! ---- */
+/*aside .module-menu ul li a
+aside .module-menu ul li a:visited
+aside .module-menu ul li a:hover*/
+
+/* текстовый модуль меню ??? */
+aside .module-menu-text {
+	padding: 0 10px;
+	text-align: left;
+	line-height: 1.25em; }
+/* ЛЕВОЕ МЕНЮ - конец стилей */
+
+/* --- Всплывающая подсказка над баннером ---*/
+.banner span {
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    padding: 0;
+    position: relative;
+    text-decoration:none; }
+
+.banner span i {
+    visibility: hidden;
+    border: 1px solid #C0C0C0;
+    bottom: 50px;
+    left: 42%;
+    margin-left: -110px;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    width: 260px;
+    z-index:99;
+    background-color: #eee;
+
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -ms-border-radius:5px;
+    -o-border-radius:5px;
+    border-radius:5px;
+
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
+    -o-transition:all 0.3s ease-in-out;
+    -ms-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+}
+.banner span:hover i {
+    bottom:30px;
+    opacity:0.95;
+    visibility:visible;
+}
+
+
+/* --- КОНЕЦ Всплывающая подсказка над баннером ---*/
+
+
+/* --- Стили для всплывающей карты района --- */
+
+/* Всплывающее окно */
+#parent_popup, #parent_popup_click {
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; }
+
+/* основное окно */
+#popup, #popup_click {
+  background: #fff;
+    max-width: 720px; /* ширина окна по картинке */
+    width:70%;
+    margin: 5% auto;
+	border: 5px solid #18A000;
+	position: relative;
+	/*--CSS3 CSS3 Тени для Блока--*/
+	/*-webkit-box-shadow: 0px 0px 20px #000;*/
+	/*-moz-box-shadow: 0px 0px 20px #000;*/
+	/*box-shadow: 0px 0px 20px #000;*/ }
+
+/* кнопка закрытия */
+.close {
+    background-color: rgba(0, 0, 0, 0.8);
+	border: 2px solid #ccc;
+    height: 24px;
+    line-height: 24px;
+    position: absolute;
+    right: -24px;
+	cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+	color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-family: Arial, Helvetica;
+    top: -24px;
+    width: 24px;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+	/*-moz-box-shadow: 1px 1px 3px rgba(122,122,122,0.5);*/
+	/*-webkit-box-shadow: 1px 1px 3px rgba(122,122,122,0.5);*/
+	/*box-shadow: 1px 1px 3px rgba(122,122,122,1);*/  }
+
+.close:hover { background-color: rgba(255, 69, 0, 0.8); } /* красный */
+
+/* Карта района на мобиле */
+		@media all and (max-width: 700px) {
+
+#popup, #popup_click {
+  background: #fff;
+    max-width: 600px; /* ширина окна по картинке */
+    width: 90%;
+    margin: 2% auto;
+	border: 0;
+	position: relative;
+	/*--CSS3 CSS3 Тени для Блока--
+	-webkit-box-shadow: 0px 0px 20px #000;
+	-moz-box-shadow: 0px 0px 20px #000;
+	box-shadow: 0px 0px 20px #000;*/ }
+
+#popup_click img {
+	max-width: 100%;
+	height: auto; }
+
+.close {
+    background-color: rgba(0, 0, 0, 0.7);
+	border: 0;   
+	height: 10px;
+	width: 14px;
+	position: absolute;
+	right: -4px;
+	top: -4px;
+	cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+	color: rgba(255, 255, 255, 0.9);
+-webkit-border-radius: 7px;
+-moz-border-radius: 7px;
+-ms-border-radius: 7px;
+-o-border-radius: 7px;
+    border-radius: 7px;
+ }
+div.logo img { max-width: 100%; height: auto; }
+/* логотип влезает в окно смартфона */
+}
+/* --- КОНЕЦ Стили для всплывающей карты района --- */
+
+/* ---- Стили для статей ---- */
+#articles {
+	background: rgba(255, 255, 255, 0.8);
+	padding: 10px 40px; }
+
+/* ---- 2 колонки статей на главной ---- */
+#favorit { /* контейнер */
+	display: -webkit-flex;
+	display: flex;
+	max-width: 100%;
+	margin: 0; padding: 0;
+/*border: 1px dashed blue;*/
+}
+
+/* левая колонка */
+#favcol1 {
+	-webkit-flex-shrink:0;
+	flex-shrink:0;
+	width: 48%; /* при 50% ширина больше половины?! */
+	margin: 0; padding-right: 20px;
+	/*padding: 10px 40px;*/
+/*border: 1px solid blue;*/
+}
+/* правая колонка */
+#favcol2 {
+	-webkit-flex-grow:1;
+	flex-grow:1;
+	width: 50%;
+	margin: 0; padding-left: 20px;
+	/*padding: 10px 40px;*/
+/*border: 1px solid red;*/
+}
+
+/* при 700px экрана контент уходит вниз */
+@media all and (max-width: 700px) {
+
+	#favorit {
+		-webkit-flex-flow:column;
+		flex-flow:column;	}
+
+	#favcol1 { width:auto; padding:0; }
+	#favcol2 { width:auto; padding:0; }
+}
+/* ---- КОНЕЦ 2 колонки статей на главной ---- */
+
+/* Макет в 2 колонки - левое меню aside и статьи articles */
+/* при 700px экрана контент уходит вниз */
+
+@media all and (max-width: 700px) {
+
+	#page {
+		-webkit-flex-flow:column;
+		flex-flow:column;	}
+
+	aside { width: auto; }
+
+	#articles { padding: 10px; }
+
+	ul.actions { visibility: hidden; } /* div.search, спрятать поиск чтобы не соскакивал вниз! */
+
+	.logo { max-width: 90%;}
+}
+
+@media all and (max-width: 400px) {
+
+	header { height: 85px;}
+}
+
+/* --- Подвал --- */
+footer {
+	width: auto;
+	height: auto;
+	margin: 0;
+	padding: 15px 5px 5px 5px;
+	display: block;
+	font-size: smaller;
+	background: url('../images/ruler.png') no-repeat bottom center rgba(118, 212, 102, 0.6);
+}
+
+
+footer  ul.bottom_menu {
+	display: block;
+	margin: 0;
+	list-style: none;
+	text-align: center;
+	font-size: 1.2em; }
+
+footer ul.bottom_menu li {
+	display: inline;
+	padding: 0 10px; }
+
+footer ul.bottom_menu li a {
+	 text-decoration: underline; }
+
+footer ul.bottom_menu li a:visited { color: #606060; }
+
+footer ul.bottom_menu  li a:hover {
+	color: #FF4A05;
+	text-decoration: underline; }
+
+/* Подвал конец */
+
+
+/* --- Типографика: абзацы, врезки, заголовки, ссылки и т.д. --- */
+body {
+	font-family: Verdana, 'Trebuchet MS', Tahoma, Arial;
+	font-size: 13.5px;
+	color:#000;
+	line-height: 1.5em; }
+
+footer p { text-align: center; line-height: 1.3em; }
+.predislovie { font-size: smaller;}
+pre, code { color: maroon; }
+
+/* нулевой отступ списка в Новостях на Главной */
+section#favorit ul { margin-left: -20px; }
+
+nav {	font-weight: bold; }
+
+/* Навигация breadcrumb */
+.breadcrumb { margin: 0px; color: #FF6A00; font-size: 85%; }
+
+#articles h1, #articles h2, #articles h3, #articles h4, #articles h5, #articles h6 {
+	color:#00B000;   /* 63AF56*/
+	line-height: 1.5em;
+	text-align: center;
+	margin-top: 1em; margin-bottom: 1em; }
+
+/* Заголовок на Главной */
+div.site_header h1
+{	font-family: Tahoma, Verdana, Georgia;
+	color: #00F800;
+	font-size: 200%;
+	font-weight: 700;
+-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=143, Color=#979998)";/*IE 8*/
+text-shadow: 4px 3px 2px rgba(151,153,152,0.6);/* FF3.5+, Opera 9+, Saf1+, Chrome, IE10 */
+filter: progid:DXImageTransform.Microsoft.Shadow(Strength=2, Direction=135, Color=#979998); /*IE 5.5-7*/
+	 }
+
+div.blog {} /* пустой блок как в оригинале для кнопок печати, почты */
+
+/* Заголовки статей во всех блогах; отдельно - ссылки на них */
+div.blog h1, div.blog h2 {
+  border-bottom: 1px solid #82B7DF; }
+
+/* класс подсветки активного пункта меню!!! */
+.current.active {
+  font-weight: bold; text-decoration: underline; }
+
+/* кнопки печати и почты */
+#articles ul.actions {
+	float: right;
+	position: relative;
+	bottom: 37px;
+	text-align: right; }
+#articles ul.actions li { display: inline; padding-left: 5px; margin-left: 0;}
+
+/* стиль "Подробнее" */
+p.readmore {
+	text-align: right !important;
+	font-style: italic; }
+p.readmore a:link, p.readmore a:visited { color: #000; }
+p.readmore a:hover { color: #CC0033; }
+
+.vrezka {
+	background: #D3E6D0;
+	border-bottom-left-radius: 20px;
+	border-left: 10px solid #4A8140;
+	border-top-left-radius: 20px;
+	float: right;
+	font-size: 90%;
+	font-style: italic;
+	margin-left: 15px;
+	padding: 10px 20px;
+	text-align: justify;
+	width: 30%; }
+
+#articles p, #articles li {
+	text-align: justify;
+	line-height: 1.2em;
+	margin-top: 0.8em;
+	margin-bottom: 0.8em; }
+
+#articles li {
+	margin-left: 2em; }

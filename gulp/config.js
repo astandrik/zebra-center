@@ -2,38 +2,38 @@
 
 export default {
 
-  browserPort: 3000,
-  UIPort: 3001,
-  testPort: 3002,
+    browserPort: 3000,
+    UIPort: 3001,
+    testPort: 3002,
 
-  sourceDir: './app/',
-  buildDir: './build/',
+    sourceDir: './app/',
+    buildDir: './build/',
 
-  styles: {
-    src: ['app/styles/**/*.scss','node_modules/bootstrap/dist/**/*.css', 'node_modules/textangular/**/*.css'],
-    dest: 'build/css',
-    prodSourcemap: false,
-    sassIncludePaths: []
-  },
+    styles: {
+        src: ['app/styles/**/*.scss', 'app/styles/**/*.css', 'node_modules/bootstrap/dist/**/*.css', 'node_modules/textangular/**/*.css'],
+        dest: 'build/css',
+        prodSourcemap: false,
+        sassIncludePaths: []
+    },
 
-  scripts: {
-    src: 'app/js/**/*.js',
-    dest: 'build/js',
-    test: 'test/**/*.js',
-    gulp: 'gulp/**/*.js'
-  },
+    scripts: {
+        src: 'app/js/**/*.js',
+        dest: 'build/js',
+        test: 'test/**/*.js',
+        gulp: 'gulp/**/*.js'
+    },
 
-  images: {
-    src: 'app/images/**/*',
-    dest: 'build/images'
-  },
+    images: {
+        src: 'app/images/**/*',
+        dest: 'build/images'
+    },
 
-  fonts: {
-    src: ['app/fonts/**/*','node_modules/bootstrap/dist/fonts/*'],
-    dest: 'build/fonts'
-  },
+    fonts: {
+        src: ['app/fonts/**/*', 'node_modules/bootstrap/dist/fonts/*'],
+        dest: 'build/fonts'
+    },
 
-  assetExtensions: [
+    assetExtensions: [
     'js',
     'css',
     'png',
@@ -47,35 +47,35 @@ export default {
     'woff2?'
   ],
 
-  views: {
-    index: 'app/index.html',
-    src: 'app/**/*.html',
-    dest: 'app/js'
-  },
+    views: {
+        index: 'app/index.html',
+        src: 'app/**/*.html',
+        dest: 'app/js'
+    },
 
-  gzip: {
-    src: 'build/**/*.{html,xml,json,css,js,js.map,css.map}',
-    dest: 'build/',
-    options: {}
-  },
+    gzip: {
+        src: 'build/**/*.{html,xml,json,css,js,js.map,css.map}',
+        dest: 'build/',
+        options: {}
+    },
 
-  browserify: {
-    bundleName: 'main.js',
-    prodSourcemap: false
-  },
+    browserify: {
+        bundleName: 'main.js',
+        prodSourcemap: false
+    },
 
-  test: {
-    karma: 'test/karma.conf.js',
-    protractor: 'test/protractor.conf.js'
-  },
+    test: {
+        karma: 'test/karma.conf.js',
+        protractor: 'test/protractor.conf.js'
+    },
 
-  init: function() {
-    this.views.watch = [
+    init: function () {
+        this.views.watch = [
       this.views.index,
       this.views.src
     ];
 
-    return this;
-  }
+        return this;
+    }
 
 }.init();

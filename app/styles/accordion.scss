@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/*
+* Лёгкийи и отзывчивый аккордеон - минимум кода, максимум функционала
+* автор: @dobrovoi dbmast.ru
+*/ 
+
+* { /* закавыка! без этого разбухает */
+  margin:0;
+  padding:0;
+  border:0;
+  outline:medium none; }
+
+
+
+/* стили блока аккордеон */
+.accordion {
+	width: auto;
+	margin: 0;
+	padding: 0;
+    font-family: Verdana, 'Open Sans',sans-serif;
+	font-size: 14px;
+	color: #353535;
+	position: static;
+	z-index: 1;
+ }
+
+/* секции аккордеона */
+.accordion .accordion_item {
+  margin-bottom: 0px;
+  position: relative;
+}
+/* заголовки панелей аккордеона */
+.accordion .title_block {
+  font-weight: 400;
+  font-size: 17px;
+  color: #444444;
+  cursor: pointer;
+  padding:10px 55px 10px 15px;
+  	-webkit-transition:all .2s linear 0;
+  	-webkit-transition-delay:.2s 0;
+  transition: all .2s linear 0;
+/*-префикс-linear-gradient(стартовый цвет,финишный цвет);*/
+background: -moz-linear-gradient(#ACE5A3, #6CBF59);
+background: -ms-linear-gradient(#ACE5A3, #6CBF59);
+background: -o-linear-gradient(#ACE5A3, #6CBF59);
+background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
+}
+/* переключатель панелей, положение вниз */
+.accordion .title_block:before {
+  content:'';
+  height:8px;
+  width:8px;
+  display:block;
+  border:2px solid #fefefe;
+  border-right-width:0;
+  border-top-width:0;
+	  -ms-transform:rotate(-45deg);
+	  -webkit-transform:rotate(-45deg);
+  transform: rotate(-45deg);
+  position:absolute;
+  right:20px;
+  top:18px;
+}
+/* активный переключатель, положение вверх */
+.accordion .active_block .title_block:before {
+  border: 2px solid #fefefe;
+  border-left-width:0;
+  border-bottom-width:0;
+  top:18px;
+}
+.accordion .title_block:hover {
+/*-префикс-linear-gradient(стартовый цвет,финишный цвет);*/
+background: -moz-linear-gradient(#00E0C9, #00AF9B);
+background: -ms-linear-gradient(#00E0C9, #00AF9B);
+background: -o-linear-gradient(#00E0C9, #00AF9B);
+background: -webkit-linear-gradient(#00E0C9, #00AF9B);
+}
+
+/* когда заголовки = ссылки */
+.title_block a,
+.title_block a:visited
+ {
+	text-decoration: none;
+  color: #eee;
+}
+/*.title_block  a:hover { color: red;}*/
+
+/* заголовок активного блока  */
+.accordion .active_block .title_block {
+  background: #2BBCAE; /*26A69A*/
+  color:#fefefe;
+}
+/* блоки с содержанием */
+.accordion .info {
+  display:none;
+  padding:10px 15px;
+  overflow: hidden;
+  background:#f7f7f7;
+}
+/* параграф внутри блоков с содержанием */
+.accordion .info_item {
+  margin-bottom: 10px;
+  font-style: italic; }
+
+.accordion ul li { 
+	list-style-type: none;
+	list-style-position: outside; /*inside - подчерк весь, outside - подчерк без кольца */
+	border-bottom: 1px solid #3FCCBD;} /*26A69A E1EAD3 D7E0C9*/
+
+.accordion ul li a {
+	display: block;
+	padding: 0 0 2px 17px;
+	background-image: url('../images/lmenu_14x14.png');
+	background-position: 0 3px; /* позиция кольца */
+	background-repeat:  no-repeat;
+	color: #353535;
+	text-decoration: none;
+} 
+.accordion ul li a:visited {
+	color: #3D3D3D;
+	text-decoration: none; }
+
+.accordion ul li a:hover {
+	background-image: url('../images/lmenu-hover484.gif');
+	background-color: #FFF5CC;
+	text-decoration: none; } 
+
+
+/* картинки внутри аккордеона */
+.accordion .info img {
+    height: auto;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+/* полноразмерная картинка */
+.large-img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+/* миниатюра слева */
+.img-left {
+    width: 25%;
+    float:left;
+    margin:5px 15px 5px 0;
+}
+/* миниатюра справа */
+.img-right {
+    width: 25%;
+    float:right;
+    margin:5px 0 5px 15px;
+}
+
+.accordion h1, .accordion h2, .accordion h3, .accordion h4 { text-align: left; }
