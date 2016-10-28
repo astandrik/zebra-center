@@ -1,6 +1,7 @@
 var sidebar = {
   templateUrl: 'views/components/sidebar.html',
   controller: ['$timeout','$scope', '$structure',function($timeout, $scope, $structure) {
+    var createDirective = () => {
     $structure.get().then((data) => {
         $scope.nodes = data;
     })
@@ -17,6 +18,11 @@ var sidebar = {
         })
       })($);
     },1000);
+    }
+    createDirective();
+    $scope.$on('refreshNavbars', function () {
+        createDirective();
+    });
   }]
 }
 

@@ -46,24 +46,32 @@ function flatToArray(data) {
     data.forEach((item) => item.nodes = getChildren(item, data));
 }
 
-var entity = {
+var entity = () => ({
     url: '/Structure',
     views: {
         'content@': {
             templateUrl: 'js/Routes/Structure/structure.html',
-            controller: function ($scope, $structure, structure) {
+            controller: function ($scope, $structure, structure, dialogs) {
                 $scope.nodes = structure;
                 var baseid = -1;
                 var refreshData = () => $structure.get().then(function (data) {
                     $scope.nodes = data;
                 });
+                var refreshNavbars = () => $scope.$emit('refreshNavbars');
                 $scope.save = function () {
+                    for(var i = 0; i < $scope.nodes.length; i++) {
+                      if(!$scope.nodes[i].alias || $scope.nodes[i].alias.length == 0) {
+                        dialogs.error('ВНИМАНИЕ', `У раздела "${$scope.nodes[i].title}" отсуствует поле алиас. Сохранение невозможно.`);
+                        return;
+                      }
+                    }
                     $structure.update($scope.nodes, function (data) {
                         var entities = data.data;
                         flatToArray(entities);
                         $scope.nodes = entities.filter((item) => {
                             return !item.parentid
                         });
+                        refreshNavbars();
                     });
                 };
                 $scope.addDir = function () {
@@ -104,6 +112,7 @@ var entity = {
                 }
                 $scope.cancel = function () {
                     refreshData();
+                    refreshNavbars();
                 }
             },
             resolve: {
@@ -115,7 +124,7 @@ var entity = {
             }
         }
     }
-}
+})
 
 module.exports = {
     Structure: entity

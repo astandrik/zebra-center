@@ -12,14 +12,14 @@
 
             <script type="text/ng-template" id="section_renderer.html">
                 <div ng-if="node.nodes.length == 0">
-                    <a ng-href="/{{node.alias}}"><h3 class="title_block no_children_block" >{{node.title}}</h3></a>
+                    <a ng-href="/section/{{node.alias}}"><h3 class="title_block no_children_block" >{{node.title}}</h3></a>
                 </div>
                 <div ng-if="node.nodes.length > 0">
                     <h3 class="title_block" >{{node.title}}</h3>
                     <div class="info">
                         <ul>
                             <li>
-                                <a ng-repeat="subnode in node.nodes" ng-href="/{{subnode.alias}}">{{subnode.title}}</a>
+                                <a ng-repeat="subnode in node.nodes" ng-href="/section/{{subnode.alias}}">{{subnode.title}}</a>
                             </li>
                         </ul>
                     </div>

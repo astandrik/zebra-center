@@ -55,6 +55,9 @@ app.get('/data/articles/:alias', function (req, res) {
 app.get('/data/articles/byViewId/:id', function (req, res) {
     var result = dbWorker.entities['articles'].getSingleByViewId(req.params.id, res);
 });
+app.get('/data/articles/byViewAlias/:alias', function (req, res) {
+    var result = dbWorker.entities['articles'].getSingleByViewAlias(req.params.alias, res);
+});
 app.get('/*', function (req, res) {
     res.sendFile(appDir + '/app/index.html');
 });

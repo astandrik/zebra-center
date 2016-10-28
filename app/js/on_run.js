@@ -24,6 +24,11 @@ function OnRun($rootScope, AppSettings, $state) {
             reload: true
         });
     });
+    $rootScope.$on('refreshNavbars', function (event, data) {
+        if(!data || !data.root) {
+          $rootScope.$broadcast('refreshNavbars', {root: true});
+        }
+    });
 
 }
 

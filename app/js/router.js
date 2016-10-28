@@ -4,11 +4,13 @@ angular.module('router', []).provider('$router', function () {
   this.$get = new function () {
     var self = this;
     self.routes = {
-      'home': routes.mainPage,
-      'drafts': routes.Drafts,
-      'drafts.single': routes.singleArticleSlash,
-      'home.single': routes.singleArticle,
-      'structure': routes.Structure
+      'home': routes.mainPage(),
+      'drafts': routes.Drafts(),
+      'drafts.single': routes.singleArticle(),
+      'home.single': routes.singleArticle(),
+      'structure': routes.Structure(),
+      'section': routes.Section(),
+      'section.single': routes.singleArticle()
     };
     return this;
   }();

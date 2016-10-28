@@ -17,7 +17,7 @@
 </script>
 <a class="btn btn-default" href="#" role="button" style="margin:10px" ng-click="addDir()">Добавить раздел</a>
 <div class="col-xs-12">
-    <div ui-tree data-drag-delay="100" class="ui-tree">
+    <div ui-tree data-nodrag class="ui-tree">
       <ol ui-tree-nodes="" ng-model="nodes" id="tree-root">
         <li ng-repeat="node in nodes" ui-tree-node ng-include="'nodes_renderer.html'"></li>
       </ol>

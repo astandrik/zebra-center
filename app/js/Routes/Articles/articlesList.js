@@ -1,10 +1,10 @@
-var entity = {
+var entity = () => ({
         url: '/Drafts',
         views: {
           'content@' : {
             templateUrl: 'js/Routes/Articles/articles.html',
             controller: function(articles, $scope) {
-                $scope.articles = articles;                
+                $scope.articles = articles;
             },
             resolve: {
                 articles: function($articles) {
@@ -15,6 +15,6 @@ var entity = {
             }
           }
         }
-      }
+      })
 
 module.exports = {Drafts: entity};

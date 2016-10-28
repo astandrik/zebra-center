@@ -14,7 +14,7 @@ function getChildren(node, nodes) {
         return nodes
             .filter((item) => {
                 if (node.childid.indexOf(item.viewid) > -1) {
-                    return item;
+                    return true;
                 } else {
                     return false;
                 }

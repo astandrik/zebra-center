@@ -24,7 +24,7 @@ function fitHeight(timeout, article) {
 }
 
 
-var entity = {
+var entity = () => ({
     url: '/',
     views: {
         'content@': {
@@ -72,9 +72,9 @@ var entity = {
             }
         }
     }
-}
+})
 
-var singleArticleSlash = {
+var singleArticle = () => ({
     url: '/article/:articleAlias',
     views: {
         'content@': {
@@ -91,29 +91,9 @@ var singleArticleSlash = {
             }
         }
     }
-}
-
-var singleArticle = {
-    url: 'article/:articleAlias',
-    views: {
-        'content@': {
-            templateUrl: 'js/Routes/Articles/singleArticle.html',
-            controller: function (article, $scope, dialogs, $state) {
-                $scope.article = article;
-            },
-            resolve: {
-                article: function ($articles, $stateParams) {
-                    return $articles.getSingle($stateParams.articleAlias).then(function (data) {
-                        return data;
-                    });
-                }
-            }
-        }
-    }
-}
+})
 
 module.exports = {
     mainPage: entity,
-    singleArticle: singleArticle,
-    singleArticleSlash: singleArticleSlash
+    singleArticle: singleArticle
 };

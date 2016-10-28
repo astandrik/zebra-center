@@ -84,6 +84,7 @@ var Structure = function (struct) {
                     }
                 }
                 var chained_promise_new = function (i) {
+                    debugger;
                     if (i == new_struct_creates.length) {
                         insertJoins(resolve, reject);
                     } else {

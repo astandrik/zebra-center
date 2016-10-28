@@ -44,12 +44,23 @@ function fn ($http) {
                 return entities;
             });
         },
+        getByViewAlias: function(alias) {
+            return $http.get('/data/articles/byViewAlias/' + alias).then(function(data) {
+                var entities = [];
+                data.data.forEach((item) => {
+                    var article = {};
+                    fillArticle(article, item);
+                    entities.push(article);
+                });
+                return entities;
+            });
+        },
         update: function(json, postBack) {
             return $http.post('/data/updateArticle',json).then(() => {
                 if(postBack) postBack();
             });
         },
-        updateGrid: function(json, postBack) {          
+        updateGrid: function(json, postBack) {
           return $http.post('/data/updateArticleGrid',json).then(() => {
             if(postBack) postBack();
           })

@@ -32,6 +32,12 @@ var Article = function (item) {
             .then((data) => resolve(data), () => reject(data));
         qHelper.makeTransaction(body);
     }
+    obj.SelectByViewAlias = function (alias, res) {
+        var body = (resolve, reject) =>
+            crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "ALIAS"=$1', [alias], res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
+    }
     obj.Update = function (res) {
         var body = (resolve, reject) =>
             crud.Update("DRAFTS", obj.Article, res)

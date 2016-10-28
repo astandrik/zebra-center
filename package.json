@@ -75,7 +75,6 @@
     "gulp-util": "^3.0.1",
     "imagemin-pngcrush": "^4.1.0",
     "isparta": "^4.0.0",
-    "istanbul": "^0.4.4",
     "jasmine-spec-reporter": "^2.5.0",
     "javascript-detect-element-resize": "git+https://github.com/sdecima/javascript-detect-element-resize.git",
     "jquery": "^2.2.4",
