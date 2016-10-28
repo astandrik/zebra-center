@@ -7,7 +7,7 @@ angular.module('router', []).provider('$router', function () {
       'home': routes.mainPage(),
       'drafts': routes.Drafts(),
       'drafts.single': routes.singleArticle(),
-      'home.single': routes.singleArticle(),
+      'home.single': routes.singleArticleHome(),
       'structure': routes.Structure(),
       'section': routes.Section(),
       'section.single': routes.singleArticle()

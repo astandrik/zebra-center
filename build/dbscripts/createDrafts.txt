@@ -1,5 +1,6 @@
 \pg_restore.exe --host localhost --port 5432 --username "postgres" --dbname "postgres" --no-password  --section pre-data --section data --section post-data --clean --schema public --verbose "C:\projects\zebra-center\backup"
 
+\pg_dump.exe --host localhost --port 5432 --username "postgres" --no-password  --format custom --blobs --section pre-data --section data --section post-data --inserts --column-inserts --verbose --file "C:\projects\zebra-center\backup.backup" --schema "public" "postgres"
 
 --
 -- PostgreSQL database dump
