@@ -120,6 +120,12 @@ aside {
     border-bottom: 1px solid #3FCCBD;
 }
 
+@media (max-width: 700px) {
+aside {
+    width: auto;
+}
+}
+ 
 .accordion ul {
   margin:0;
   padding:0;

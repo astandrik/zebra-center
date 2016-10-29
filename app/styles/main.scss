@@ -26,10 +26,9 @@ body {
 }
 
 div.global {
-    margin: 0 auto;
+    margin: 0 auto; 
     padding: 0;
     max-width: 1300px;
-    min-width: 700px;
     background-image: url('../images/LA8des_top-1300.jpg'), url('../images/LA8des_bot-1300.jpg');
     background-position: top center, bottom center;
     background-repeat: repeat-x, repeat-y;
