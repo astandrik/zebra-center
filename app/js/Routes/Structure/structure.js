@@ -51,6 +51,7 @@ var entity = () => ({
     views: {
         'content@': {
             templateUrl: 'js/Routes/Structure/structure.html',
+            /*@ngInject*/
             controller: function ($scope, $structure, structure, dialogs) {
                 $scope.nodes = structure;
                 var baseid = -1;
@@ -59,11 +60,11 @@ var entity = () => ({
                 });
                 var refreshNavbars = () => $scope.$emit('refreshNavbars');
                 $scope.save = function () {
-                    for(var i = 0; i < $scope.nodes.length; i++) {
-                      if(!$scope.nodes[i].alias || $scope.nodes[i].alias.length == 0) {
-                        dialogs.error('ВНИМАНИЕ', `У раздела "${$scope.nodes[i].title}" отсуствует поле алиас. Сохранение невозможно.`);
-                        return;
-                      }
+                    for (var i = 0; i < $scope.nodes.length; i++) {
+                        if (!$scope.nodes[i].alias || $scope.nodes[i].alias.length == 0) {
+                            dialogs.error('ВНИМАНИЕ', `У раздела "${$scope.nodes[i].title}" отсуствует поле алиас. Сохранение невозможно.`);
+                            return;
+                        }
                     }
                     $structure.update($scope.nodes, function (data) {
                         var entities = data.data;
@@ -116,6 +117,7 @@ var entity = () => ({
                 }
             },
             resolve: {
+                /*@ngInject*/
                 structure: function ($structure) {
                     return $structure.get().then(function (data) {
                         return data;

@@ -1,15 +1,13 @@
-Array.prototype.myIndexOf = function(f)
-{
-    for(var i=0; i<this.length; ++i)
-    {
-        if( f(this[i]) )
+Array.prototype.myIndexOf = function (f) {
+    for (var i = 0; i < this.length; ++i) {
+        if (f(this[i]))
             return i;
     }
     return -1;
 };
 
 function getChildren(node, nodes) {
-    if(node.childid.length == 1 && !node.childid[0] ) return [];
+    if (node.childid.length == 1 && !node.childid[0]) return [];
     else {
         return nodes
             .filter((item) => {
@@ -19,27 +17,32 @@ function getChildren(node, nodes) {
                     return false;
                 }
             })
-            .map((item)=> {item.nodes = getChildren(item, nodes); return item});
+            .map((item) => {
+                item.nodes = getChildren(item, nodes);
+                return item
+            });
     }
 }
 
 function flatToArray(data) {
-    data.forEach((item) =>  item.nodes = getChildren(item, data));
+    data.forEach((item) => item.nodes = getChildren(item, data));
 }
 
-
-function fn ($http) {
+/*@ngInject*/
+function fn($http) {
     return {
-        get: function() {
-            return $http.get('/structure/get').then(function(data) {
+        get: function () {
+            return $http.get('/structure/get').then(function (data) {
                 var entities = data.data;
                 flatToArray(entities);
-                return entities.filter((item) => {return !item.parentid});
+                return entities.filter((item) => {
+                    return !item.parentid
+                });
             });
         },
-        update: function(json, postBack) {
-            return $http.post('/structure/update',json).then((data) => {
-                if(postBack) postBack(data);
+        update: function (json, postBack) {
+            return $http.post('/structure/update', json).then((data) => {
+                if (postBack) postBack(data);
             });
         },
     }

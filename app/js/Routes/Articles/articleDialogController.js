@@ -14,6 +14,7 @@ var transliterate = (
     }
 )();
 
+/*@ngInject*/
 var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) {
 
     $scope.directories = $articleViewids;

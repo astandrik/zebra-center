@@ -47,13 +47,14 @@ function htmlArticle(isShort, article) {
 }
 
 var articleCtrl = require('../../../js/Routes/Articles/articleDialogController');
-
+/*@ngInject*/
 var fn = function ($compile, $articles, $articleViewids, $http, dialogs) {
     return {
         scope: {
             data: '=',
             isShort: '='
         },
+        /*@ngInject*/
         controller: function ($scope) {},
         link: function (scope, element, attrs, ctrl) {
             scope.article = _.cloneDeep(scope.data);

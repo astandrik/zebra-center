@@ -29,6 +29,7 @@ var entity = () => ({
     views: {
         'content@': {
             templateUrl: 'js/Routes/Home/home.html',
+            /*@ngInject*/
             controller: function (articles, $scope, dialogs, $state, $compile, $timeout, $articles) {
                 window.currentScope = $scope;
                 var stopFunction = function (event, $element, widget) {
@@ -64,6 +65,7 @@ var entity = () => ({
                 }
             },
             resolve: {
+                /*@ngInject*/
                 articles: function ($articles, $articleViewids) {
                     return $articles.getByViewId($articleViewids.home.id).then(function (data) {
                         return data;
@@ -79,10 +81,12 @@ var singleArticle = () => ({
     views: {
         'content@': {
             templateUrl: 'js/Routes/Articles/singleArticle.html',
+            /*@ngInject*/
             controller: function (article, $scope, dialogs, $state) {
                 $scope.article = article;
             },
             resolve: {
+                /*@ngInject*/
                 article: function ($articles, $stateParams) {
                     return $articles.getSingle($stateParams.articleAlias).then(function (data) {
                         return data;
@@ -98,10 +102,12 @@ var singleArticleHome = () => ({
     views: {
         'content@': {
             templateUrl: 'js/Routes/Articles/singleArticle.html',
+            /*@ngInject*/
             controller: function (article, $scope, dialogs, $state) {
                 $scope.article = article;
             },
             resolve: {
+                /*@ngInject*/
                 article: function ($articles, $stateParams) {
                     return $articles.getSingle($stateParams.articleAlias).then(function (data) {
                         return data;

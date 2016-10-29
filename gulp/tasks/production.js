@@ -1,14 +1,14 @@
 'use strict';
 
-import gulp        from 'gulp';
+import gulp from 'gulp';
 import runSequence from 'run-sequence';
 
-gulp.task('prod', ['clean'], function(cb) {
+gulp.task('prod', ['clean'], function (cb) {
 
-  cb = cb || function() {};
+    cb = cb || function () {};
 
-  global.isProd = true;
+    global.isProd = true;
 
-  runSequence(['styles', 'images', 'fonts', 'views', 'folders','vendors'], 'browserify', 'gzip', cb);
+    runSequence(['styles', 'images', 'fonts', 'views', 'folders', 'vendors'], 'browserify', 'gzip', cb);
 
 });

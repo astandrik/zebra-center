@@ -6,9 +6,6 @@ import onRun from './on_run';
 import 'angular-ui-router';
 import 'angular-material-icons';
 import './templates';
-import './filters';
-import './controllers';
-import './services';
 require('./directives/index.js');
 require('./router.js');
 import '../Entities/entities.js';
@@ -26,9 +23,6 @@ Array.prototype.mapPromise = mapPromise;
 const requires = [
   'ui.router',
   'templates',
-  'app.filters',
-  'app.controllers',
-  'app.services',
   'app.directives',
   'router',
   'entities',
