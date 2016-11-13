@@ -10,7 +10,7 @@ var entity = () => ({
             resolve: {
                 /*@ngInject*/
                 articles: function ($articles) {
-                    return $articles.getAll().then(function (data) {
+                    return $articles.getByViewId(9999).then(function (data) {
                         return data;
                     });
                 }

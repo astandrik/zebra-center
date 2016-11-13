@@ -16,14 +16,24 @@ var transliterate = (
 
 /*@ngInject*/
 var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) {
+    $scope.isEditing = data.isEditing;
 
-    $scope.directories = $articleViewids;
-    $scope.directory = $articleViewids.default.id;
+    $articleViewids.getList().then((data) => {
+        data.push({
+            viewid: 0,
+            title: "Главная"
+        })
+        data.push({
+            viewid: 9999,
+            title: "Черновики"
+        });
+        $scope.directories = data;
+    });
     if (data.editingArticle) {
         $scope.article = data.editingArticle;
     } else {
         $scope.article = {
-            viewid: $scope.directory
+            viewid: 9999
         };
     }
     $scope.close = () => $uibModalInstance.dismiss('Canceled');
@@ -44,14 +54,18 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
     $scope.options = {
         language: 'en',
         allowedContent: true,
-        entities: false
+        entities: false,
+        baseHref: "/",
+        filebrowserBrowseUrl: '/node_modules/angular-ckeditor/bower_components/ckeditor/plugins/filemanager/browser/default/browser.html?Connector=/browse_url',
+        filebrowserUploadUrl: '/upload_url?Type=File',
+        filebrowserImageUploadUrl: '/upload_url?Type=Image',
+        filebrowserFlashUploadUrl: '/upload_url?Type=Flash',
+        filebrowserWindowWidth: 800,
+        filebrowserWindowHeight: 500
     };
     $scope.changeAlias = function () {
         $scope.article.alias = transliterate($scope.article.header).replace(/\s/g, '_');
     };
-    $scope.$watch('directory', (newVal, oldVal) => {
-        $scope.article.viewid = newVal;
-    });
 }
 
 module.exports = fn;

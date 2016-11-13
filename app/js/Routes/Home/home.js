@@ -66,8 +66,8 @@ var entity = () => ({
             },
             resolve: {
                 /*@ngInject*/
-                articles: function ($articles, $articleViewids) {
-                    return $articles.getByViewId($articleViewids.home.id).then(function (data) {
+                articles: function ($articles) {
+                    return $articles.getByViewId(0).then(function (data) {
                         return data;
                     });
                 }
@@ -84,6 +84,7 @@ var singleArticle = () => ({
             /*@ngInject*/
             controller: function (article, $scope, dialogs, $state) {
                 $scope.article = article;
+                $("body").scrollTop(157);
             },
             resolve: {
                 /*@ngInject*/
@@ -105,6 +106,7 @@ var singleArticleHome = () => ({
             /*@ngInject*/
             controller: function (article, $scope, dialogs, $state) {
                 $scope.article = article;
+                $("body").scrollTop(157);
             },
             resolve: {
                 /*@ngInject*/

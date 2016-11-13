@@ -57,6 +57,10 @@ entities['structure'].updateStructure = function (json, res) {
     Structure(json).updateStructure(res);
 }
 
+entities['structure'].getViewsList = function (res) {
+    Structure().selectAllViews(res);
+}
+
 module.exports = {
     entities,
     schemaOps

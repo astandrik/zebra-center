@@ -36,7 +36,7 @@ function fn($http) {
                 var entities = data.data;
                 flatToArray(entities);
                 return entities.filter((item) => {
-                    return !item.parentid
+                    return item.parentid == 10000;
                 });
             });
         },

@@ -7,7 +7,7 @@ function createFlat(struct, parentId) {
             alias: current.alias,
             title: current.title,
             viewid: current.viewid,
-            parentId: (parentId || 0)
+            parentId: (parentId || 10000)
         });
         if (current.nodes) {
             sum = sum.concat(createFlat(current.nodes, current.viewid));
@@ -112,13 +112,19 @@ var Structure = function (struct) {
             qHelper.makeTransaction(body);
         };
         obj.deleteStructure(createStructure);
-    }
+    };
     obj.getStructure = function (res) {
         var body = (resolve, reject) =>
             crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res)
             .then((data) => resolve(data), (data) => reject(data));
         qHelper.makeTransaction(body);
     }
+    obj.selectAllViews = function (res) {
+        var body = (resolve, reject) =>
+            crud.Read("SELECT PARENTID, VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE where childid[1] is null ", [], res)
+            .then((data) => resolve(data), (data) => reject(data));
+        qHelper.makeTransaction(body);
+    };
     return obj;
 }
 

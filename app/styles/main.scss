@@ -26,7 +26,7 @@ body {
 }
 
 div.global {
-    margin: 0 auto; 
+    margin: 0 auto;
     padding: 0;
     max-width: 1300px;
     background-image: url('../images/LA8des_top-1300.jpg'), url('../images/LA8des_bot-1300.jpg');
@@ -51,6 +51,7 @@ div.global {
 }
 
 .navbar {
+      min-height: 42px!important;
     li>a{
         cursor: pointer;
     }

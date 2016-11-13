@@ -34,7 +34,8 @@ var Article = function (item) {
     }
     obj.SelectByViewAlias = function (alias, res) {
         var body = (resolve, reject) =>
-            crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "ALIAS"=$1', [alias], res)
+            crud.Read('SELECT a."ID",a."TITLE", a."TEXT", a."HEADER", a."DESCRIPTION", a."ANNOTATION", a."ALIAS", a."KEYWORDS", a."VIEWID", a."SIZEX", a."SIZEY", a."POSX", a."POSY" FROM "DRAFTS" a \
+inner join views b on b.viewid = a."VIEWID" WHERE b.alias=$1', [alias], res)
             .then((data) => resolve(data), () => reject(data));
         qHelper.makeTransaction(body);
     }

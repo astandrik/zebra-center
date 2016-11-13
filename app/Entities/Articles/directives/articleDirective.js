@@ -25,7 +25,7 @@ function fillArticle(article, item) {
     article.description = item.DESCRIPTION;
     article.annotation = item.ANNOTATION;
     article.alias = item.ALIAS;
-    article.viewid = item.VIEWID;
+    article.viewid = parseInt(item.VIEWID);
     article.size = {
         x: item.SIZEX,
         y: item.SIZEY
@@ -48,7 +48,7 @@ function htmlArticle(isShort, article) {
 
 var articleCtrl = require('../../../js/Routes/Articles/articleDialogController');
 /*@ngInject*/
-var fn = function ($compile, $articles, $articleViewids, $http, dialogs) {
+var fn = function ($compile, $articles, $http, dialogs) {
     return {
         scope: {
             data: '=',
@@ -58,8 +58,6 @@ var fn = function ($compile, $articles, $articleViewids, $http, dialogs) {
         controller: function ($scope) {},
         link: function (scope, element, attrs, ctrl) {
             scope.article = _.cloneDeep(scope.data);
-            scope.directories = $articleViewids;
-            scope.directory = parseInt(scope.article.viewid) || $articleViewids.default.id;
             scope.$watch('directory', (newVal, oldVal) => {
                 scope.article.viewid = newVal;
             });
@@ -71,7 +69,8 @@ var fn = function ($compile, $articles, $articleViewids, $http, dialogs) {
                     fillArticle(article, item[0]);
                     dialogs.create('js/Routes/Articles/addArticle.html', articleCtrl, {
                         reloader: refreshView,
-                        editingArticle: article
+                        editingArticle: article,
+                        isEditing: true
                     }, {
                         backdrop: false
                     }, 'lg');
@@ -111,4 +110,4 @@ var fn = function ($compile, $articles, $articleViewids, $http, dialogs) {
     }
 }
 
-module.exports = fn;
+module.exports = fn;;

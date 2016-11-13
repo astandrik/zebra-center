@@ -6,7 +6,8 @@ var navbar = {
         $scope.addArticle = function () {
             var refreshView = () => $scope.$emit('refreshCurrent');
             dialogs.create('js/Routes/Articles/addArticle.html', articleCtrl, {
-                reloader: refreshView
+                reloader: refreshView,
+                isEditing: false
             }, {
                 backdrop: false
             }, 'lg');

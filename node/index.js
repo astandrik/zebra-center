@@ -8,6 +8,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
+app.use(require('skipper')());
 
 var port = process.env.PORT || 80;
 var server = app.listen(port, function () {
@@ -17,6 +18,10 @@ var server = app.listen(port, function () {
 
 app.use(express.static('build'));
 app.use(express.static(appDir));
+
+var browser = require('file-manager-js');
+app.all('/browse_url', browser.browse);
+app.post('/upload_url', browser.upload);
 
 app.get('/database/drop', function (req, res) {
     dbWorker.schemaOps.drop();
@@ -33,7 +38,9 @@ app.post('/structure/update', function (req, res) {
 app.get('/structure/get', function (req, res) {
     var result = dbWorker.entities['structure'].getStructure(res);
 });
-
+app.get('/data/viewsList', function (req, res) {
+    dbWorker.entities['structure'].getViewsList(res);
+});
 
 app.post('/data/addArticle', function (req, res) {
     var name = req.body;
