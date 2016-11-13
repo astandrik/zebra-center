@@ -26,3 +26,4 @@ bower_components
 .idea
 
 !node_modules/file-manager-js
+!node_modules/skipper
