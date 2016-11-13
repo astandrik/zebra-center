@@ -28,4 +28,5 @@ bower_components
 !node_modules/file-manager-js
 !node_modules/skipper
 !node_modules/angular-ckeditor
+!node_modules/multiparty
 !node_modules/angular-ckeditor/bower_components
