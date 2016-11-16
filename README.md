@@ -2,5 +2,5 @@
 <ol>
 <li>npm install</li>
 <li>./node/dbscripts/restore.pg</li>
-<li>npm start</li>
+<li>npm starts</li>
 </ol>
