@@ -70,7 +70,7 @@ var entity = () => ({
                         var entities = data.data;
                         flatToArray(entities);
                         $scope.nodes = entities.filter((item) => {
-                            return !item.parentid
+                            return item.parentid == 10000;
                         });
                         refreshNavbars();
                     });

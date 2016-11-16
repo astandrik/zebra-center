@@ -82,9 +82,11 @@ var singleArticle = () => ({
         'content@': {
             templateUrl: 'js/Routes/Articles/singleArticle.html',
             /*@ngInject*/
-            controller: function (article, $scope, dialogs, $state) {
+            controller: function (article, $scope, dialogs, $state, $anchorScroll, $timeout) {
                 $scope.article = article;
-                $("body").scrollTop(157);
+                $timeout(function () {
+                    $anchorScroll(article.alias + article.id);
+                });
             },
             resolve: {
                 /*@ngInject*/
@@ -104,9 +106,11 @@ var singleArticleHome = () => ({
         'content@': {
             templateUrl: 'js/Routes/Articles/singleArticle.html',
             /*@ngInject*/
-            controller: function (article, $scope, dialogs, $state) {
+            controller: function (article, $scope, dialogs, $state, $anchorScroll, $timeout) {
                 $scope.article = article;
-                $("body").scrollTop(157);
+                $timeout(function () {
+                    $anchorScroll(article.alias + article.id);
+                });
             },
             resolve: {
                 /*@ngInject*/

@@ -37,7 +37,7 @@ function fillArticle(article, item) {
 function htmlArticle(isShort, article) {
     var text = isShort ? article.annotation : article.text;
     var pencil = "<ng-md-icon class='pencil' ng-class='{\"non-visible\": isEditing}' ng-click='toggleEditing(\"" + article.alias + "\")' icon='mode_edit' size=30></ng-md-icon>";
-    var header = "<div class='article-header'><div></div><h1 ng-show='!isEditing'>" + article.header + "</h1><input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-show='isEditing' ng-model='article.header'></input>" +
+    var header = "<div id='" + article.alias + article.id + "' class='article-header'><div></div><h1 ng-show='!isEditing'>" + article.header + "</h1><input class='form-control' style='margin:10px 0; text-align:center' type='text' ng-show='isEditing' ng-model='article.header'></input>" +
         pencil + "</div>";
     var showMore = isShort ? '<div ><a href="' + window.location.href +
         (window.location.href.toString()[window.location.href.toString().length - 1] == '/' ? '' : '/') +
@@ -48,7 +48,7 @@ function htmlArticle(isShort, article) {
 
 var articleCtrl = require('../../../js/Routes/Articles/articleDialogController');
 /*@ngInject*/
-var fn = function ($compile, $articles, $http, dialogs) {
+var fn = function ($compile, $articles, $http, dialogs, $location) {
     return {
         scope: {
             data: '=',
