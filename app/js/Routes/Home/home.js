@@ -30,7 +30,7 @@ var entity = () => ({
         'content@': {
             templateUrl: 'js/Routes/Home/home.html',
             /*@ngInject*/
-            controller: function (articles, $scope, dialogs, $state, $compile, $timeout, $articles) {
+            controller: function (articles, $scope, dialogs, $state, $compile, $timeout, $articles, $rootScope) {
                 window.currentScope = $scope;
                 var stopFunction = function (event, $element, widget) {
                     var $scope = window.currentScope;
@@ -47,6 +47,9 @@ var entity = () => ({
                         }
                     }, 100);
                 }
+                var isUserAdmin = $rootScope.enableEditing;
+                gridOptions.resizable.enabled = isUserAdmin;
+                gridOptions.draggable.enabled = isUserAdmin;
                 gridOptions.resizable.stop = stopFunction;
                 gridOptions.draggable.stop = stopFunction;
                 $scope.gridsterOpts = gridOptions;

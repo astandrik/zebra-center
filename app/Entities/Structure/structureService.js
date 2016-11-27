@@ -41,9 +41,16 @@ function fn($http) {
             });
         },
         update: function (json, postBack) {
-            return $http.post('/structure/update', json).then((data) => {
-                if (postBack) postBack(data);
-            });
+            var token = $admin.getToken();
+            if (token) {
+                return $http.post('/structure/update', json, {
+                    headers: {
+                        'x-access-token': token
+                    }
+                }).then((data) => {
+                    if (postBack) postBack(data);
+                });
+            }
         },
     }
 }

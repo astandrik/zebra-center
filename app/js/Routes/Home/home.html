@@ -2,9 +2,9 @@
   <div gridster="gridsterOpts">
       <ul>
           <li gridster-item row="item.position[0]"  id={{item.tagid}} col="item.position[1]" size-x="item.size.x"
-          size-y="item.size.y" ng-repeat="item in articles">
+          size-y="item.size.y" ng-repeat="item in articles" ng-class={"user-admin":enableEditing}>
             <ng-md-icon icon= "shuffle" size =30 class="dragger shuffle"></ng-md-icon>
-            <article-template gridster-dynamic-height data=item is-short="true"></article-template>
+            <article-template enable-editing="enableEditing" gridster-dynamic-height data=item is-short="true"></article-template>
           </li>
       </ul>
   </div>

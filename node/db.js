@@ -1,6 +1,7 @@
 var Articles = require('./models/Articles').article;
 var GridItem = require('./models/Articles').gridItem;
 var Structure = require('./models/Structure').structure;
+var Admin = require("./models/Admin");
 var qHelper = require('./queryHelper.js');
 var fs = require('fs');
 
@@ -20,6 +21,7 @@ schemaOps.createDb = function () {
 
 entities['articles'] = {};
 entities['structure'] = {};
+entities['admin'] = {};
 
 entities['articles'].getAll = function (res) {
     Articles().SelectAll(res);
@@ -59,6 +61,10 @@ entities['structure'].updateStructure = function (json, res) {
 
 entities['structure'].getViewsList = function (res) {
     Structure().selectAllViews(res);
+}
+
+entities['admin'].checkPassword = function (json, res) {
+    Admin(json).checkPassword(res);
 }
 
 module.exports = {

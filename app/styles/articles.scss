@@ -75,7 +75,7 @@
 }
 
 .articles {
-  li:hover {
+  li.user-admin:hover {
     outline:1px black dotted;
     .dragger {
       visibility: visible;

@@ -32,7 +32,7 @@ var entity = () => ({
         'content@': {
             templateUrl: 'js/Routes/Section/articles.html',
             /*@ngInject*/
-            controller: function (articles, $scope, $timeout, $articles) {
+            controller: function (articles, $scope, $timeout, $articles, $rootScope) {
                 $scope.articles = articles;
                 window.currentScope = $scope;
                 var stopFunction = function (event, $element, widget) {
@@ -50,6 +50,9 @@ var entity = () => ({
                         }
                     }, 100);
                 }
+                var isUserAdmin = $rootScope.enableEditing;
+                gridOptions.resizable.enabled = isUserAdmin;
+                gridOptions.draggable.enabled = isUserAdmin;
                 gridOptions.resizable.stop = stopFunction;
                 gridOptions.draggable.stop = stopFunction;
                 $scope.gridsterOpts = gridOptions;

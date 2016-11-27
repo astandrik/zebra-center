@@ -16,7 +16,7 @@ function fillArticle(article, item) {
     return article;
 }
 /*@ngInject*/
-function fn($http) {
+function fn($http, $cookies, $admin) {
     return {
         getAll: function () {
             return $http.get('/data/articles').then(function (data) {
@@ -60,19 +60,46 @@ function fn($http) {
             });
         },
         update: function (json, postBack) {
-            return $http.post('/data/updateArticle', json).then(() => {
-                if (postBack) postBack();
-            });
+            var token = $admin.getToken();
+            if (token) {
+                return $http.post('/data/updateArticle', json, {
+                    headers: {
+                        'x-access-token': token
+                    }
+                }).then(() => {
+                    if (postBack) postBack();
+                });
+            } else {
+                postBack();
+            }
         },
         updateGrid: function (json, postBack) {
-            return $http.post('/data/updateArticleGrid', json).then(() => {
-                if (postBack) postBack();
-            })
+            var token = $admin.getToken();
+            if (token) {
+                return $http.post('/data/updateArticleGrid', json, {
+                    headers: {
+                        'x-access-token': token
+                    }
+                }).then(() => {
+                    if (postBack) postBack();
+                });
+            } else {
+                postBack();
+            }
         },
         add: function (json, postBack) {
-            return $http.post('/data/addArticle', json).then(() => {
-                if (postBack) postBack();
-            });
+            var token = $admin.getToken();
+            if (token) {
+                return $http.post('/data/addArticle', json, {
+                    headers: {
+                        'x-access-token': token
+                    }
+                }).then(() => {
+                    if (postBack) postBack();
+                });
+            } else {
+                postBack();
+            }
         }
     }
 }

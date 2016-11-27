@@ -65,7 +65,7 @@ function makeReadQuery(queryString, values, res) {
                 done();
                 resolve({
                     res: res,
-                    result: result.rows
+                    result: result ? result.rows : ''
                 });
                 if (err) {
                     console.error('error running query', err);

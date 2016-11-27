@@ -27,7 +27,7 @@
             </script>
             <section class="accordion_item" ng-repeat="node in nodes" ng-include="'section_renderer.html'">
             </section>
-            <section class="accordion_item">
+            <section class="accordion_item" ng-show="$ctrl.enableEditing">
                 <a href='/Drafts'><h3 class="title_block no_children_block">Черновики</h3></a>
                 <!--<h3 class="title_block">Проблема и решение</h3>
                 <div class="info">

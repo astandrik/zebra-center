@@ -16,6 +16,8 @@ import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
+import 'angular-cookies';
+
 require('./dialogs.js')();
 var mapPromise = require('./helpers.js').mapPromise;
 Array.prototype.mapPromise = mapPromise;
@@ -32,7 +34,8 @@ const requires = [
   'ckeditor',
   'gridster',
   'ui.tree',
-  'ngSanitize'
+  'ngSanitize',
+  'ngCookies'
 ];
 
 // mount on window for testing

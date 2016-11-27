@@ -1,0 +1,14 @@
+<div class="form-group" style="display: flex; flex-direction:row">
+  <label for="usr" class="col-sm-2">Логин</label>
+  <input type="text" class="form-control col-sm-8 col-sm-offset-1"   ng-model="name" id="usr">
+</div>
+<div class="form-group" style="display: flex; flex-direction:row">
+  <label for="usr"  class="col-sm-2">Пароль</label>
+  <input type="password" class="form-control col-sm-8 col-sm-offset-1" ng-model="password" id="usr">
+</div>
+<div class="row">
+  <div class="btn-group addedit-buttons" role="group" aria-label="...">
+    <button type="button" class="btn btn-default" ng-click="cancel()">Отменить</button>
+    <button type="button" class="btn btn-primary" ng-click="login()">Войти</button>
+  </div>
+</div>

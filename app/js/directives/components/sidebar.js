@@ -22,7 +22,10 @@ var sidebar = {
         $scope.$on('refreshNavbars', function () {
             createDirective();
         });
-  }]
+  }],
+    bindings: {
+        enableEditing: '='
+    }
 }
 
 module.exports = {
