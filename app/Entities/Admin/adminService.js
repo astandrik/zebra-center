@@ -1,4 +1,4 @@
-/*ngInject*/
+/*@ngInject*/
 function fn($http, $cookies) {
     return {
         login: function (json, postBack) {

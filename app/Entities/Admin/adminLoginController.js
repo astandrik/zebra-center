@@ -1,4 +1,4 @@
-/*ngInject*/
+/*@ngInject*/
 function Controller($scope, data, $admin, $uibModalInstance) {
     const postBack = (x) => {
         data.dataHandler(x.data, $uibModalInstance);
