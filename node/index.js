@@ -25,7 +25,7 @@ var server = app.listen(port, function () {
 app.use(express.static('build'));
 app.use(express.static(appDir));
 
-app.use(morgan('combined', {
+app.use(morgan(':method :url :response-time :remote-addr', {
     stream: accessLogStream
 }));
 var browser = require('file-manager-js');
