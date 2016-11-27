@@ -3,11 +3,17 @@ var express = require("express"),
     dbWorker = require('./db.js');
 var path = require('path');
 var appDir = path.resolve('./');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var fs = require("fs");
+var morgan = require('morgan');
+
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
+const accessLogStream = fs.createWriteStream(__dirname + '/server_logs.log', {
+    flags: 'a'
+});
 app.use(require('skipper')());
 
 var port = process.env.PORT || 80;
@@ -19,6 +25,9 @@ var server = app.listen(port, function () {
 app.use(express.static('build'));
 app.use(express.static(appDir));
 
+app.use(morgan('combined', {
+    stream: accessLogStream
+}));
 var browser = require('file-manager-js');
 app.all('/browse_url', browser.browse);
 app.post('/upload_url', browser.upload);
