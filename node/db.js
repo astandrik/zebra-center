@@ -19,6 +19,10 @@ schemaOps.createDb = function () {
     qHelper.Query(script, true);
 }
 
+schemaOps.createCrypto = function () {
+    qHelper.Query('create extension pgcrypto');
+}
+
 entities['articles'] = {};
 entities['structure'] = {};
 entities['admin'] = {};

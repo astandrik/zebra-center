@@ -76,6 +76,11 @@ app.get('/database/drop', function (req, res) {
     res.send("Don't even try")
 });
 
+app.get('/dbprepare',
+    function (req, res) {
+        dbWorker.schemaOps.createCrypto();
+    });
+
 var userSessions = {};
 
 app.post("/checkSession", function (req, res) {
