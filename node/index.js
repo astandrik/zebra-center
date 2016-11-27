@@ -64,7 +64,7 @@ const checkToken = function (req, res, callback) {
 app.use(express.static('build'));
 app.use(express.static(appDir));
 
-app.use(morgan(':method :url :response-time :remote-addr', {
+app.use(morgan(':method :url :response-time :remote-addr :date', {
     stream: accessLogStream
 }));
 var browser = require('file-manager-js');
