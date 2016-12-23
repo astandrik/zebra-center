@@ -7,6 +7,7 @@ var morgan = require('morgan');
 var jwt = require('jwt-simple');
 var app = require("./app").app;
 var express = require("./app").express;
+var compression = require('compression');
 
 app.set('jwtTokenSecret', 'Big Beardy Beary Gnome');
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
+app.use(compression());
 const accessLogStream = fs.createWriteStream(__dirname + '/server_logs.log', {
     flags: 'a'
 });
