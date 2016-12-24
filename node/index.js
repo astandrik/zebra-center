@@ -81,8 +81,8 @@ app.get('/database/drop', function (req, res) {
     res.send("Don't even try")
 });
 
-app.get('/googlee0b3bf85105efcd60.html', function (req, res) {
-    res.sendFile(appDir + "/node/googlee0b3bf85105efcd60.html");
+app.get('/googlee*.html', function (req, res) {
+    res.sendFile(appDir + "/node/googlee0b3bf85105efcd6.html");
 })
 
 app.get('/dbprepare',
