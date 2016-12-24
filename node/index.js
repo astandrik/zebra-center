@@ -10,7 +10,7 @@ var express = require("./app").express;
 var compression = require('compression');
 var gzipStatic = require('connect-gzip-static');
 app.use(gzipStatic(appDir + '/build'));
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://localhost:3000'));
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://127.0.0.1:3000'));
 
 app.set('jwtTokenSecret', 'Big Beardy Beary Gnome');
 
