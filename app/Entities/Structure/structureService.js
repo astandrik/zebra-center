@@ -29,7 +29,7 @@ function flatToArray(data) {
 }
 
 /*@ngInject*/
-function fn($http) {
+function fn($http, $admin) {
     return {
         get: function () {
             return $http.get('/structure/get').then(function (data) {
