@@ -36,10 +36,7 @@
     -webkit-transition: all .2s linear 0;
     -webkit-transition-delay: .2s 0;
     transition: all .2s linear 0;
-    background: -moz-linear-gradient(#ACE5A3, #6CBF59);
-    background: -ms-linear-gradient(#ACE5A3, #6CBF59);
-    background: -o-linear-gradient(#ACE5A3, #6CBF59);
-    background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
+    background: linear-gradient(#ACE5A3, #6CBF59);
     margin: 0;
     padding: 0;
 }
@@ -125,7 +122,7 @@ aside {
     width: auto;
 }
 }
- 
+
 .accordion ul {
   margin:0;
   padding:0;

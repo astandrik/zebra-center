@@ -467,7 +467,6 @@ p.readmore a:hover {
   -webkit-transition: all .2s linear 0;
   -webkit-transition-delay: .2s 0;
   transition: all .2s linear 0;
-  background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
 }
 
 .accordion .title_block:before {
@@ -492,7 +491,7 @@ p.readmore a:hover {
 }
 
 .accordion .title_block:hover {
-  background: -webkit-linear-gradient(#00E0C9, #00AF9B);
+  background: linear-gradient(#00E0C9, #00AF9B);
 }
 
 .title_block a,
@@ -788,7 +787,7 @@ nav {
   -webkit-transition: all .2s linear 0;
   -webkit-transition-delay: .2s 0;
   transition: all .2s linear 0;
-  background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
+  background: linear-gradient(#ACE5A3, #6CBF59);
   margin: 0;
   padding: 0;
 }
@@ -1280,7 +1279,7 @@ nav {
   -webkit-transition: all .2s linear 0;
   -webkit-transition-delay: .2s 0;
   transition: all .2s linear 0;
-  background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
+  background: linear-gradient(#ACE5A3, #6CBF59);
   margin: 0;
   padding: 0;
 }

@@ -2,7 +2,7 @@
 /*
 * Лёгкийи и отзывчивый аккордеон - минимум кода, максимум функционала
 * автор: @dobrovoi dbmast.ru
-*/ 
+*/
 
 * { /* закавыка! без этого разбухает */
   margin:0;
@@ -40,10 +40,6 @@
   	-webkit-transition-delay:.2s 0;
   transition: all .2s linear 0;
 /*-префикс-linear-gradient(стартовый цвет,финишный цвет);*/
-background: -moz-linear-gradient(#ACE5A3, #6CBF59);
-background: -ms-linear-gradient(#ACE5A3, #6CBF59);
-background: -o-linear-gradient(#ACE5A3, #6CBF59);
-background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
 }
 /* переключатель панелей, положение вниз */
 .accordion .title_block:before {
@@ -69,11 +65,7 @@ background: -webkit-linear-gradient(#ACE5A3, #6CBF59);
   top:18px;
 }
 .accordion .title_block:hover {
-/*-префикс-linear-gradient(стартовый цвет,финишный цвет);*/
-background: -moz-linear-gradient(#00E0C9, #00AF9B);
-background: -ms-linear-gradient(#00E0C9, #00AF9B);
-background: -o-linear-gradient(#00E0C9, #00AF9B);
-background: -webkit-linear-gradient(#00E0C9, #00AF9B);
+  background: linear-gradient(#00E0C9, #00AF9B);
 }
 
 /* когда заголовки = ссылки */
@@ -102,7 +94,7 @@ background: -webkit-linear-gradient(#00E0C9, #00AF9B);
   margin-bottom: 10px;
   font-style: italic; }
 
-.accordion ul li { 
+.accordion ul li {
 	list-style-type: none;
 	list-style-position: outside; /*inside - подчерк весь, outside - подчерк без кольца */
 	border-bottom: 1px solid #3FCCBD;} /*26A69A E1EAD3 D7E0C9*/
@@ -115,7 +107,7 @@ background: -webkit-linear-gradient(#00E0C9, #00AF9B);
 	background-repeat:  no-repeat;
 	color: #353535;
 	text-decoration: none;
-} 
+}
 .accordion ul li a:visited {
 	color: #3D3D3D;
 	text-decoration: none; }
@@ -123,7 +115,7 @@ background: -webkit-linear-gradient(#00E0C9, #00AF9B);
 .accordion ul li a:hover {
 	background-image: url('../images/lmenu-hover484.gif');
 	background-color: #FFF5CC;
-	text-decoration: none; } 
+	text-decoration: none; }
 
 
 /* картинки внутри аккордеона */
