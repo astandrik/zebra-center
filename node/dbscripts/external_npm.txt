@@ -8,3 +8,4 @@ npm i jwt-simple
 npm i moment
 npm install connect-gzip-static
 npm install compression
+npm install prerender-node
