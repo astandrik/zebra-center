@@ -17,6 +17,12 @@ import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
 import 'angular-cookies';
+import Promise from 'promise-polyfill';
+
+// To add to window
+if (!window.Promise) {
+    window.Promise = Promise;
+}
 
 require('./dialogs.js')();
 var mapPromise = require('./helpers.js').mapPromise;
