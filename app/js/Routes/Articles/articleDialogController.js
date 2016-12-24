@@ -38,17 +38,44 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
     }
     $scope.close = () => $uibModalInstance.dismiss('Canceled');
     $scope.save = () => {
-        if (data.editingArticle) {
-            $articles.update($scope.article, () => {
-                $uibModalInstance.dismiss('Canceled');
-                data.reloader();
-            });
-        } else {
-            $articles.add($scope.article, () => {
-                $uibModalInstance.dismiss('Canceled');
-                data.reloader();
-            });
+        const dataSaver = () => {
+            if (data.editingArticle) {
+                $articles.update($scope.article, () => {
+                    $uibModalInstance.dismiss('Canceled');
+                    data.reloader();
+                });
+            } else {
+                $articles.add($scope.article, () => {
+                    $uibModalInstance.dismiss('Canceled');
+                    data.reloader();
+                });
+            }
         }
+        var i = 0;
+        var instances = Object.keys(CKEDITOR.instances);
+
+        const wysiwygSetter = () => {
+            if (CKEDITOR.instances[instances[i]].mode == "source") {
+                CKEDITOR.instances[instances[i]].setMode('wysiwyg',
+                    function () {
+                        i++;
+                        if (i == instances.length) {
+                            dataSaver();
+                        } else {
+                            wysiwygSetter();
+                        }
+                    });
+            } else {
+                i++;
+                if (i == instances.length) {
+                    dataSaver();
+                } else {
+                    wysiwygSetter();
+                }
+            }
+        }
+        wysiwygSetter();
+
     }
     $scope.cancel = () => $uibModalInstance.dismiss('Canceled');
     $scope.options = {

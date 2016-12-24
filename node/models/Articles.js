@@ -5,13 +5,13 @@ var Article = function (item) {
     if (item) {
         obj.Article = {};
         obj.Article.ID = item.id;
-        obj.Article.TITLE = item.title.replace(/\'/g, '\'\'');
+        obj.Article.TITLE = item.title ? item.title.replace(/\'/g, '\'\'') : '';
         obj.Article.HEADER = item.header;
         obj.Article.KEYWORDS = item.keywords;
-        obj.Article.DESCRIPTION = item.description.replace(/\'/g, '\'\'');
-        obj.Article.ANNOTATION = item.annotation.replace(/\'/g, '\'\'');
+        obj.Article.DESCRIPTION = item.description ? item.description.replace(/\'/g, '\'\'') : '';
+        obj.Article.ANNOTATION = item.annotation ? item.annotation.replace(/\'/g, '\'\'') : '';
         obj.Article.ALIAS = item.alias;
-        obj.Article.TEXT = item.text.replace(/\'/g, '\'\'');;
+        obj.Article.TEXT = item.text ? item.text.replace(/\'/g, '\'\'') : '';
         obj.Article.VIEWID = item.viewid;
     }
     obj.SelectAll = function (res) {
