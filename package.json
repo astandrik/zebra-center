@@ -113,6 +113,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
+    "prerender-node": "^2.6.0",
     "skipper": "^0.6.4"
   }
 }
