@@ -107,7 +107,6 @@ function makeUpdateQuery(TableName, item, res) {
             client.query(query, function (err, result) {
                 if (err) {
                     console.log(query);
-                    console.log(values);
                     console.log(err);
                     reject({
                         client,
