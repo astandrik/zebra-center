@@ -4,7 +4,7 @@
       <base href="/" />
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <meta name="fragment" content="!"> 
+      <meta name="fragment" content="!">
       <title ng-bind="pageTitle"></title>
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,6 +23,7 @@
             <sidebar-directive enable-editing="enableEditing"></sidebar-directive>
             <div ui-view="content" class="content"></div>
         </section>
+        <footer-directive></footer-directive>
       </div>
       <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
       <script src="//cdn.ckeditor.com/4.5.9/full/ckeditor.js"></script>

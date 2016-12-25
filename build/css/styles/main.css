@@ -728,7 +728,7 @@ h3 {
 
 header {
   width: auto;
-  height: 156px;
+  height: 154px;
   margin: 0;
   padding: 0;
   display: block;
@@ -738,16 +738,6 @@ header {
 .logo {
   float: right;
   width: 100%;
-}
-
-nav {
-  width: 100%;
-  position: relative;
-  font-family: Verdana, 'PT Sans', Arial, sans-serif;
-  font-size: 14px;
-  background: #9dd53a;
-  background: linear-gradient(to bottom, rgba(157,213,58,0.6) 0%, rgba(161,213,79,0.6) 50%, rgba(128,194,23,0.6) 51%, rgba(124,188,10,0.6) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 );
 }
 
 .search {
@@ -1045,11 +1035,11 @@ div.global {
   height: 100%;
 }
 
-.navbar {
-  min-height: 42px !important;
+.navbar_local {
+  margin-bottom: 0;
 }
 
-.navbar li>a {
+.navbar_local li>a {
   cursor: pointer;
 }
 .clearfix:before,
@@ -1223,7 +1213,7 @@ nav a#pull {
 }
 header {
   width: auto;
-  height: 156px;
+  height: 154px;
   margin: 0;
   padding: 0;
   display: block;
@@ -1234,15 +1224,7 @@ header {
   float: right;
   width: 100%;
 }
-nav {
-  width: 100%;
-  position: relative;
-  font-family: Verdana, 'PT Sans', Arial, sans-serif;
-  font-size: 14px;
-  background: #9dd53a;
-  background: linear-gradient(to bottom, rgba(157,213,58,0.6) 0%, rgba(161,213,79,0.6) 50%, rgba(128,194,23,0.6) 51%, rgba(124,188,10,0.6) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 );
-}
+
 .search {
   width: auto;
   height: auto;
