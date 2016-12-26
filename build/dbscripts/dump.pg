@@ -1,1 +1,0 @@
-pg_dump --host 127.0.0.1 --port 5432 --username "postgres"  --format custom --blobs --section pre-data --section data --section post-data --inserts --column-inserts --verbose --file "./backup.backup" --schema "public" "postgres"

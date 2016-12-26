@@ -1,1 +1,0 @@
-pg_restore --host 127.0.0.1 --port 5432 --username "postgres" --dbname "postgres"  --section pre-data --section data --section post-data --clean --schema public --verbose "./backup.backup"
