@@ -1,0 +1,11 @@
+npm i express
+npm i pg
+npm i body-parser
+npm i morgan
+npm i bootstrap
+npm i morgan
+npm i jwt-simple
+npm i moment
+npm install connect-gzip-static
+npm install compression
+npm install prerender-node
