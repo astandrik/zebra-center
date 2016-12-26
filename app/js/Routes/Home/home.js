@@ -4,8 +4,8 @@ var gridOptions = require('./gridOptions');
 function processArticle(article) {
     var newArticle = Object.assign({}, article);
     newArticle.size = article.size || {
-        x: 4,
-        y: 4
+        x: 8,
+        y: 8
     };
     newArticle.position = article.position;
     newArticle.tagid = "article_" + article.id;

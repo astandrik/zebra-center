@@ -1,5 +1,5 @@
 var options = {
-    columns: 8, // the width of the grid, in columns
+    columns: 16, // the width of the grid, in columns
     pushing: true, // whether to push other items out of the way on move or resize
     floating: true, // whether to automatically float items up so they stack (you can temporarily disable if you are adding unsorted items with ng-repeat)
     swapping: true, // whether or not to have items of the same size switch places instead of pushing down if they are the same size
@@ -21,20 +21,20 @@ var options = {
     minSizeY: 1, // minumum row height of an item
     maxSizeY: null, // maximum row height of an item
     resizable: {
-       enabled: true,
-       handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
-       start: function(event, $element, widget) {}, // optional callback fired when resize is started,
-       resize: function(event, $element, widget) {
+        enabled: true,
+        handles: ['n', 'e', 's', 'w', 'ne', 'se', 'sw', 'nw'],
+        start: function (event, $element, widget) {}, // optional callback fired when resize is started,
+        resize: function (event, $element, widget) {
 
-       }, // optional callback fired when item is resized,
-       stop: {}
+        }, // optional callback fired when item is resized,
+        stop: {}
     },
     draggable: {
-       enabled: true, // whether dragging items is supported
-       handle: '.dragger', // optional selector for drag handle
-       start: function(event, $element, widget) {}, // optional callback fired when drag is started,
-       drag: function(event, $element, widget) {}, // optional callback fired when item is moved,
-       stop: function(event, $element, widget) {}
+        enabled: true, // whether dragging items is supported
+        handle: '.dragger', // optional selector for drag handle
+        start: function (event, $element, widget) {}, // optional callback fired when drag is started,
+        drag: function (event, $element, widget) {}, // optional callback fired when item is moved,
+        stop: function (event, $element, widget) {}
     }
 };
 
