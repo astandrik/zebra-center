@@ -1,12 +1,24 @@
 
+@media all and (max-width: 420px) {
+  header { height: 85px;}
+}
+
+@media all and (min-width: 412px) and (max-width:425px) {
+  header {   height: 100px;}
+}
+
+@media all and (min-width: 425px) {
+  header {   height: 154px;}
+}
+
 header {
     width: auto;
-    height: 154px;
     margin: 0;
     padding: 0;
     display: block;
     clear: both;
 }
+
 
 .logo {
     float: right;

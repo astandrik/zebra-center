@@ -114,31 +114,6 @@ function gridsterDynamicHeight() {
 }
 
 $(document).ready(function () {
-
-    $(".fancybox").fancybox({
-        openEffect: 'none',
-        closeEffect: 'none',
-        closeBtn: true,
-        nextEffect: 'fade',
-        prevEffect: 'fade',
-        padding: [4, 4, 4, 4],
-        margin: 10,
-        helpers: {
-            title: {
-                type: 'inside'
-            },
-            // buttons	: {}, кнопки сверху
-            thumbs: { // эскизы снизу
-                width: 50,
-                height: 50
-            },
-            overlay: { // фон
-                css: {
-                    'background': 'rgba(0, 0, 0, 0.7)'
-                },
-            }
-        }
-    });
     var pull = $('#pull');
     var menu = $('nav ul');
     var menuHeight = menu.height();

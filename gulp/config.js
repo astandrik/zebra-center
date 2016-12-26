@@ -10,7 +10,7 @@ export default {
     buildDir: './build/',
 
     styles: {
-        src: ['app/styles/**/*.scss', 'app/styles/**/*.css', 'node_modules/bootstrap/dist/**/*.css', 'node_modules/textangular/**/*.css'],
+        src: ['app/styles/**/*.scss', 'app/styles/**/*.css'],
         dest: 'build/css',
         prodSourcemap: false,
         sassIncludePaths: []
