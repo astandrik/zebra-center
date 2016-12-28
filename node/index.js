@@ -7,10 +7,6 @@ var morgan = require('morgan');
 var jwt = require('jwt-simple');
 var app = require("./app").app;
 var express = require("./app").express;
-var compression = require('compression');
-var gzipStatic = require('connect-gzip-static');
-app.use(gzipStatic(appDir + '/build'));
-app.use(require('prerender-node').set('prerenderServiceUrl', 'http://127.0.0.1:3000'));
 
 app.set('jwtTokenSecret', 'Big Beardy Beary Gnome');
 
@@ -24,7 +20,7 @@ const accessLogStream = fs.createWriteStream(__dirname + '/server_logs.log', {
 });
 app.use(require('skipper')());
 
-var port = process.env.PORT || 80;
+var port = 8080;
 var server = app.listen(port, function () {
     console.log(this.address());
 });
@@ -66,8 +62,6 @@ const checkToken = function (req, res, callback) {
     }
 }
 
-app.use(express.static('build'));
-app.use(express.static(appDir));
 
 app.use(morgan(':method :url :response-time :remote-addr :date', {
     stream: accessLogStream
@@ -177,9 +171,6 @@ app.get('/data/articles/byViewId/:id', function (req, res) {
 });
 app.get('/data/articles/byViewAlias/:alias', function (req, res) {
     var result = dbWorker.entities['articles'].getSingleByViewAlias(req.params.alias, res);
-});
-app.get('/*', function (req, res) {
-    res.sendFile(appDir + '/app/index.html');
 });
 
 app.use(function (err, req, res, next) {

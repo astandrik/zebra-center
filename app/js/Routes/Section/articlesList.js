@@ -51,8 +51,10 @@ var entity = () => ({
                     }, 100);
                 }
                 var isUserAdmin = $rootScope.enableEditing;
-                gridOptions.resizable.enabled = isUserAdmin;
-                gridOptions.draggable.enabled = isUserAdmin;
+                $rootScope.$watch('enableEditing', function (newVal, oldVal) {
+                    gridOptions.resizable.enabled = newVal;
+                    gridOptions.draggable.enabled = newVal;
+                });
                 gridOptions.resizable.stop = stopFunction;
                 gridOptions.draggable.stop = stopFunction;
                 $scope.gridsterOpts = gridOptions;
