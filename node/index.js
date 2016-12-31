@@ -7,7 +7,9 @@ var morgan = require('morgan');
 var jwt = require('jwt-simple');
 var app = require("./app").app;
 var express = require("./app").express;
-
+var compression = require('compression');
+var gzipStatic = require('connect-gzip-static');
+app.use(gzipStatic(appDir + '/build'));
 app.set('jwtTokenSecret', 'Big Beardy Beary Gnome');
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
@@ -62,6 +64,8 @@ const checkToken = function (req, res, callback) {
     }
 }
 
+app.use(express.static('build'));
+app.use(express.static(appDir));
 
 app.use(morgan(':method :url :response-time :remote-addr :date', {
     stream: accessLogStream
