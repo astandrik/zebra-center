@@ -1,6 +1,7 @@
 var Articles = require('./models/Articles').article;
 var GridItem = require('./models/Articles').gridItem;
 var Structure = require('./models/Structure').structure;
+const sendErrors = require ("./models/errors").sendErrors;
 var Admin = require("./models/Admin");
 var qHelper = require('./queryHelper.js');
 var fs = require('fs');
@@ -44,11 +45,21 @@ entities['articles'].getSingleByViewAlias = function (alias, res) {
 }
 
 entities['articles'].update = function (item, res) {
-    Articles(item).Update(res);
+  const article = Articles(item);
+  if(article.data === false) {
+    sendErrors(res, article);
+  } else {
+    article.Update(res);
+  }
 };
 
 entities['articles'].create = function (item, res) {
-    Articles(item).Create(res);
+  const article = Articles(item);
+  if(article.data === false) {
+    sendErrors(res, article);
+  } else {
+    article.Create(res);
+  }
 }
 
 entities['articles'].updateGrid = function (item, res) {

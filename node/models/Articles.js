@@ -1,18 +1,47 @@
 var qHelper = require('../queryHelper.js');
 var crud = require('../CRUD.js');
+const err = require("./errors");
+const errorTypes = err.errorTypes;
+
+const restrictions = {
+  'alias': ["nonEmpty"],
+  "title": ["nonEmpty"],
+  "header": ["nonEmpty"],
+  "keywords": ["nonEmpty"],
+  "description": ["nonEmpty"],
+  "text": ["nonEmpty"]
+}
+function validateEntity(json) {
+  let errors = [];
+  (Object.keys(restrictions)).forEach((x) => {
+    restrictions[x].forEach(y => {
+        const error = errorTypes[y](json[x], x);
+        if(error) {
+          errors.push(error);
+        }
+    });
+  });
+  return errors;
+}
 var Article = function (item) {
     var obj = {};
     if (item) {
-        obj.Article = {};
-        obj.Article.ID = item.id;
-        obj.Article.TITLE = item.title ? item.title.replace(/\'/g, '\'\'') : '';
-        obj.Article.HEADER = item.header;
-        obj.Article.KEYWORDS = item.keywords;
-        obj.Article.DESCRIPTION = item.description ? item.description.replace(/\'/g, '\'\'') : '';
-        obj.Article.ANNOTATION = item.annotation ? item.annotation.replace(/\'/g, '\'\'') : '';
-        obj.Article.ALIAS = item.alias;
-        obj.Article.TEXT = item.text ? item.text.replace(/\'/g, '\'\'') : '';
-        obj.Article.VIEWID = item.viewid;
+        const validationErrors = validateEntity(item);
+        if(validationErrors.length == 0) {
+          obj.Article = {};
+          obj.Article.ID = item.id;
+          obj.Article.TITLE = item.title ? item.title.replace(/\'/g, '\'\'') : '';
+          obj.Article.HEADER = item.header;
+          obj.Article.KEYWORDS = item.keywords;
+          obj.Article.DESCRIPTION = item.description ? item.description.replace(/\'/g, '\'\'') : '';
+          obj.Article.ANNOTATION = item.annotation ? item.annotation.replace(/\'/g, '\'\'') : '';
+          obj.Article.ALIAS = item.alias;
+          obj.Article.TEXT = item.text ? item.text.replace(/\'/g, '\'\'') : '';
+          obj.Article.VIEWID = item.viewid;
+        } else {
+          obj.data = false;
+          obj.errors = validationErrors;
+        }
     }
     obj.SelectAll = function (res) {
         var body = (resolve, reject) =>

@@ -21,7 +21,8 @@ gulp.task('browserSync', function() {
         }
 
         return next();
-      }
+      },
+      injectChanges: true // this is new
     },
   	port: config.browserPort,
   	ui: {

@@ -41,13 +41,13 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
         const dataSaver = () => {
             if (data.editingArticle) {
                 $articles.update($scope.article, () => {
-                    $uibModalInstance.dismiss('Canceled');
-                    data.reloader();
+                      $uibModalInstance.dismiss('Canceled');
+                      data.reloader();
                 });
             } else {
                 $articles.add($scope.article, () => {
-                    $uibModalInstance.dismiss('Canceled');
-                    data.reloader();
+                      $uibModalInstance.dismiss('Canceled');
+                      data.reloader();
                 });
             }
         }

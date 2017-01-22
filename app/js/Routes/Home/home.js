@@ -66,7 +66,7 @@ var entity = () => ({
                 $scope.addArticle = function () {
                     dialogs.create('js/Routes/Articles/addArticle.html', articleCtrl, {
                         reloader: refreshView
-                    }, {}, 'lg');
+                    }, {size: "lg"});
                 }
             },
             resolve: {

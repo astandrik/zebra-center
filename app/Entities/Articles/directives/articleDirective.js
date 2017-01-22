@@ -47,7 +47,7 @@ var fn = function ($compile, $articles, $http, dialogs, $location) {
                 scope.article.viewid = newVal;
             });
             var refreshView = () => scope.$emit('refreshCurrent');
-            scope.toggleEditing = function (alias) {
+            scope.toggleEditing = function (alias) {              
                 return $http.get('/data/articles/' + alias.trim()).then(function (data) {
                     var article = {};
                     var item = data.data;
@@ -56,9 +56,7 @@ var fn = function ($compile, $articles, $http, dialogs, $location) {
                         reloader: refreshView,
                         editingArticle: article,
                         isEditing: true
-                    }, {
-                        backdrop: false
-                    }, 'lg');
+                    },{size: "lg"});
                 });
             }
             scope.options = {

@@ -40,5 +40,6 @@ function makeTransaction(transactionBody) {
 
 
 module.exports = {
-    makeTransaction
+    makeTransaction,
+    sendJson
 }

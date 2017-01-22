@@ -1,6 +1,7 @@
+var adminLoginCtrl = require('../../../Entities/Admin/adminLoginController');
 var sidebar = {
     templateUrl: 'views/components/sidebar.html',
-    controller: ['$timeout', '$scope', '$structure', function ($timeout, $scope, $structure) {
+    controller: ['$timeout', '$scope', '$structure', '$rootScope', 'dialogs', function ($timeout, $scope, $structure, $rootScope, dialogs) {
         var createDirective = () => {
             $structure.get().then((data) => {
                 $scope.nodes = data;
@@ -17,6 +18,24 @@ var sidebar = {
                     })($);
                 }, 1000);
             })
+        }
+        $scope.adminLogin = () => {
+            const dataHandler = (data, modalInstance) => {
+                if (!data || !data.length || !data[0].pswmatch) {
+                    dialogs.notify("ВНИМАНИЕ", "Неверный логин или пароль");
+                } else {
+                    $rootScope.setAdmin(data[0]);
+                    modalInstance.close();
+                }
+            }
+            var dlg = dialogs.create('views/components/adminLogin.html', adminLoginCtrl, {
+                dataHandler
+            }, {
+                backdrop: false
+            }, 'lg');
+        }
+        $scope.adminLogout = () => {
+            $rootScope.logout();
         }
         createDirective();
         $scope.$on('refreshNavbars', function () {

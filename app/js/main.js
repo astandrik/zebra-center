@@ -17,14 +17,15 @@ import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
 import 'angular-cookies';
+import "angular-dialog-service/dist/dialogs.min.js"; 
 import Promise from 'promise-polyfill';
+import utils from "./utils";
 
 // To add to window
 if (!window.Promise) {
     window.Promise = Promise;
 }
 
-require('./dialogs.js')();
 var mapPromise = require('./helpers.js').mapPromise;
 Array.prototype.mapPromise = mapPromise;
 // create and bootstrap application
@@ -69,6 +70,7 @@ app.config([
 ]);
 
 angular.module('app').constant('AppSettings', constants);
+angular.module('app').factory("$utils", utils);
 
 angular.module('app').run(onRun);
 

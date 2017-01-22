@@ -1,0 +1,13 @@
+<div style="display: flex; flex-direction: column">
+  <h2> Ошибка валидации</h2>
+
+  <ul class="errors-list">
+    <li ng-repeat="error in errors"><span>{{error}}</span></li>
+  </ul>
+
+  <div class="row">
+    <div class="btn-group addedit-buttons" role="group" aria-label="...">
+      <button type="button" class="btn btn-default" ng-click="close()">ОК</button>
+    </div>
+  </div>
+</div>

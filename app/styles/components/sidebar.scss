@@ -38,6 +38,7 @@
     transition: all .2s linear 0;
     background: linear-gradient(#ACE5A3, #6CBF59);
     margin: 0;
+    line-height: 20px;
     padding: 0;
 }
 
@@ -72,22 +73,6 @@ aside {
     /* border: 1px solid blue; */
 }
 
-.accordion .title_block:before {
-    content: '';
-    height: 8px;
-    width: 8px;
-    display: block;
-    border: 2px solid #fefefe;
-    border-right-width: 0;
-    border-top-width: 0;
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    position: absolute;
-    right: 20px;
-    top: 18px;
-}
-
 .accordion {
   h3 {
     height:39px;
@@ -115,6 +100,10 @@ aside {
     list-style-type: none;
     list-style-position: outside;
     border-bottom: 1px solid #3FCCBD;
+}
+
+.adminButton {
+  cursor: pointer;
 }
 
 @media (max-width: 700px) {

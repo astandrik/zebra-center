@@ -2,7 +2,7 @@
 
 export default {
 
-    browserPort: 3000,
+    browserPort: 80,
     UIPort: 3001,
     testPort: 3002,
 
@@ -10,7 +10,8 @@ export default {
     buildDir: './build/',
 
     styles: {
-        src: ['app/styles/**/*.scss', 'app/styles/**/*.css'],
+        src: ['app/styles/main.scss', 'app/styles/**/*.css'],
+        watchSrc: ['app/styles/main.scss', 'app/styles/**/*.scss','app/styles/**/*.css'],
         dest: 'build/css',
         prodSourcemap: false,
         sassIncludePaths: []

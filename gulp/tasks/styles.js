@@ -9,6 +9,7 @@ import handleErrors from '../util/handleErrors';
 import browserSync from 'browser-sync';
 import autoprefixer from 'gulp-autoprefixer';
 var concatCss = require('gulp-concat-css');
+import livereload from "../util/livereload";
 
 gulp.task('styles', function () {
 
@@ -30,6 +31,6 @@ gulp.task('styles', function () {
             sourcemaps.write(global.isProd ? './' : null)))
         .pipe(concatCss("styles/main.css"))
         .pipe(gulp.dest(config.styles.dest))
-        .pipe(browserSync.stream());
+        .pipe(livereload()); 
 
 });

@@ -16,7 +16,7 @@ function fillArticle(article, item) {
     return article;
 }
 /*@ngInject*/
-function fn($http, $cookies, $admin) {
+function fn($http, $cookies, $admin, $utils) {
     return {
         getAll: function () {
             return $http.get('/data/articles').then(function (data) {
@@ -66,8 +66,14 @@ function fn($http, $cookies, $admin) {
                     headers: {
                         'x-access-token': token
                     }
-                }).then(() => {
-                    if (postBack) postBack();
+                }).then((data) => {
+                    if(data.data.errors) {
+                      errors.handleErrors(data.data.errors);
+                      return false;
+                    } else {
+                      if (postBack) postBack(data);
+                      return true;
+                    }
                 });
             } else {
                 postBack();
@@ -94,8 +100,12 @@ function fn($http, $cookies, $admin) {
                     headers: {
                         'x-access-token': token
                     }
-                }).then(() => {
-                    if (postBack) postBack();
+                }).then((data) => {
+                    if(data.data.errors) {
+                      $utils.handleErrors(data.data.errors);
+                    } else {
+                      if (postBack) postBack(data);
+                    }
                 });
             } else {
                 postBack();

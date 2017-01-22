@@ -132,8 +132,9 @@
         "display: block; margin: 1em auto;" title="Давайте меняться баннерами!"
         width="190"> <img alt="metrics.png" height="105" src=
         "images/metrics.png" title="Имитация счётчика посещений" width=
-        "106"></div><!-- Если на странице используется галерея, то здесь скрипт отключить! -->
-        <!--    <script src="FancyBox-v2.1.5/lib/jquery-1.10.1.min.js"></script> -->
+        "106"></div>
+        <div class="adminButton" ng-show="!$ctrl.enableEditing"><a ng-click="adminLogin()">Вход для администратора</a></div>
+        <div class="adminButton" ng-show="$ctrl.enableEditing"><a ng-click="adminLogout()">Выход</a></div>
     </aside>
 </body>
 </html>

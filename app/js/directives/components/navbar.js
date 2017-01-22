@@ -1,5 +1,4 @@
 var articleCtrl = require('../../Routes/Articles/articleDialogController');
-var adminLoginCtrl = require('../../../Entities/Admin/adminLoginController');
 var navbar = {
     templateUrl: 'views/components/navbar.html',
     /*@ngInject*/
@@ -9,29 +8,10 @@ var navbar = {
             dialogs.create('js/Routes/Articles/addArticle.html', articleCtrl, {
                 reloader: refreshView,
                 isEditing: false
-            }, {
-                backdrop: false
-            }, 'lg');
+            }, { size: "lg"
+            });
         }
-        $scope.adminLogin = () => {
-            const dataHandler = (data, modalInstance) => {
-                if (!data || !data.length || !data[0].pswmatch) {
-                    dialogs.notify("ВНИМАНИЕ", "Неверный логин или пароль");
-                } else {
-                    $rootScope.setAdmin(data[0]);
-                    modalInstance.close();
-                }
-            }
-            var dlg = dialogs.create('views/components/adminLogin.html', adminLoginCtrl, {
-                dataHandler
-            }, {
-                backdrop: false
-            }, 'lg');
-        }
-        $scope.adminLogout = () => {
-            $rootScope.logout();
-        }
-    },
+    },   
     bindings: {
         enableEditing: '='
     }

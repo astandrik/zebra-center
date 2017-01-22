@@ -15,6 +15,7 @@ import debowerify from 'debowerify';
 import ngAnnotate from 'browserify-ngannotate';
 import handleErrors from '../util/handleErrors';
 import bundleLogger from '../util/bundleLogger';
+import livereload from "../util/livereload";
 import config from '../config';
 
 // Based on: http://blog.avisi.nl/2014/04/25/how-to-keep-a-fast-build-with-browserify-and-reactjs/
@@ -87,7 +88,7 @@ function buildScript(file) {
             }))))
             .pipe(gulpif(shouldCreateSourcemap, sourcemaps.write(sourceMapLocation)))
             .pipe(gulp.dest(config.scripts.dest))
-            .pipe(browserSync.stream());
+            .pipe(gulpif(!global.isProd, livereload()));
     }
 
     return rebundle();

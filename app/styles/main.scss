@@ -3,10 +3,15 @@
 @import "./components/header";
 @import "./components/navbar";
 @import "./components/sidebar";
-@import "./articles";
+@import "./components/modal.scss";
+@import "./articles.scss";
+@import "./Maket38.scss";
+@import "./structure.scss";
+@import "./responsive-menu.scss";
+@import "./Maket38.scss";
+@import "./accordion.scss";
 
-
-body {
+body {  
     font-family: Verdana, 'Trebuchet MS', Tahoma, Arial;
     font-size: 13px;
     color: #000;
@@ -50,7 +55,7 @@ div.global {
     height:100%
 }
 
-.navbar_local {      
+.navbar_local {
       margin-bottom: 0;
     li>a{
         cursor: pointer;
