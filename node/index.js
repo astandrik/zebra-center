@@ -77,6 +77,10 @@ app.get('/googlee*.html', function (req, res) {
     res.sendFile(appDir + "/node/googlee0b3bf85105efcd6.html");
 })
 
+app.get('/robots.txt', function (req, res) {
+    res.sendFile(appDir + "/robots.txt");
+})
+
 app.get('/dbprepare',
     function (req, res) {
         dbWorker.schemaOps.createCrypto();
