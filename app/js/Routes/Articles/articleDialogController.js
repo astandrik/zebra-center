@@ -82,8 +82,9 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
        { name: 'Правая врезка', element: 'p', attributes: { 'class': 'vrezka' } }
     ];
     $scope.options = {
-        language: 'en',
+        language: 'ru',
         allowedContent: true,
+        resize_dir : 'both',
         entities: false,
         stylesSet: stylesSet,
         contentsCss: "/css/styles/ckStyles.css",
