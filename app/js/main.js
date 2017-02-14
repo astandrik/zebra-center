@@ -11,6 +11,7 @@ require('./router.js');
 import '../Entities/entities.js';
 import 'angular-ui-bootstrap';
 import 'angular-translate';
+import 'angular-ckeditor/bower_components/ckeditor/ckeditor.js';
 import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
 import 'angular-sanitize';
