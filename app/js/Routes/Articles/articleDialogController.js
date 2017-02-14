@@ -78,10 +78,15 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
 
     }
     $scope.cancel = () => $uibModalInstance.dismiss('Canceled');
+    let stylesSet = [
+       { name: 'Правая врезка', element: 'p', attributes: { 'class': 'vrezka' } }
+    ];
     $scope.options = {
         language: 'en',
         allowedContent: true,
         entities: false,
+        stylesSet: stylesSet,
+        contentsCss: "/css/styles/ckStyles.css",
         baseHref: "/",
         filebrowserBrowseUrl: '/node_modules/angular-ckeditor/bower_components/ckeditor/plugins/filemanager/browser/default/browser.html?Connector=/browse_url',
         filebrowserUploadUrl: '/upload_url?Type=File',

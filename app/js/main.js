@@ -11,13 +11,12 @@ require('./router.js');
 import '../Entities/entities.js';
 import 'angular-ui-bootstrap';
 import 'angular-translate';
-import 'angular-ckeditor/bower_components/ckeditor/ckeditor.js';
 import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
 import 'angular-sanitize';
 import 'angular-ui-tree';
 import 'angular-cookies';
-import "angular-dialog-service/dist/dialogs.min.js"; 
+import "angular-dialog-service/dist/dialogs.min.js";
 import Promise from 'promise-polyfill';
 import utils from "./utils";
 

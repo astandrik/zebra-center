@@ -1,0 +1,13 @@
+p.vrezka {
+    background: #D3E6D0;
+    border-bottom-left-radius: 20px;
+    border-left: 10px solid #4A8140;
+    border-top-left-radius: 20px;
+    float: right;
+    font-size: 90%;
+    font-style: italic;
+    margin-left: 15px;
+    padding: 10px 20px;
+    text-align: justify;
+    width: 30%;
+}

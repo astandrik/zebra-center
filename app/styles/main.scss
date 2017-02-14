@@ -11,13 +11,27 @@
 @import "./Maket38.scss";
 @import "./accordion.scss";
 
-body {  
+body {
     font-family: Verdana, 'Trebuchet MS', Tahoma, Arial;
     font-size: 13px;
     color: #000;
     line-height: 1.5em;
     margin: 0;
     background: linear-gradient(to bottom, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%);
+}
+
+p.vrezka {
+    background: #D3E6D0;
+    border-bottom-left-radius: 20px;
+    border-left: 10px solid #4A8140;
+    border-top-left-radius: 20px;
+    float: right;
+    font-size: 90%;
+    font-style: italic;
+    margin-left: 15px;
+    padding: 10px 20px;
+    text-align: justify;
+    width: 30%;
 }
 
 .accordion .title_block.no_children_block:before {
