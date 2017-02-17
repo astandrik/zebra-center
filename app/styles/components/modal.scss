@@ -17,3 +17,14 @@ div[window-class="errors-window"] > div {
 .errors-list {
   list-style-type: none;
 }
+
+@media (min-width: 992px) {
+  .modal-lg {
+      width: 930px!important;
+  }
+}
+
+.cke_dialog_body{
+  max-height: 100vh;
+  overflow-y: auto;
+}

@@ -68,6 +68,7 @@ var browser = require('file-manager-js');
 app.all('/browse_url', browser.browse);
 app.post('/upload_url', browser.upload);
 
+
 app.get('/database/drop', function (req, res) {
     //dbWorker.schemaOps.drop();
     res.send("Don't even try")
