@@ -20,7 +20,7 @@ coverage
 # Dependency directories
 node_modules/*
 bower_components
-
+public/*
 
 #webstorm
 .idea
