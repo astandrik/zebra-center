@@ -16,7 +16,7 @@
                 </div>
                 <div ng-if="node.nodes.length > 0">
                     <h3 class="title_block" >{{node.title}}</h3>
-                    <div class="info">
+                    <div class="info" style="display:block">
                         <ul>
                             <li>
                                 <a ng-repeat="subnode in node.nodes" ng-href="/section/{{subnode.alias}}">{{subnode.title}}</a>

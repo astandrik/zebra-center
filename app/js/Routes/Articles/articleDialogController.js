@@ -96,6 +96,7 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
         filebrowserFlashUploadUrl: '/upload_url?Type=Flash',
         filebrowserWindowWidth: 800,
         filebrowserWindowHeight: 500,
+        fillEmptyBlocks:false,
         toolbarGroups: [
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
 		{ name: 'paragraph', groups: [ 'align', 'list', 'indent', 'blocks', 'bidi', 'paragraph' ] },
@@ -128,6 +129,7 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
         filebrowserFlashUploadUrl: '/upload_url?Type=Flash',
         filebrowserWindowWidth: 800,
         filebrowserWindowHeight: 500,
+        fillEmptyBlocks:false,
         toolbarGroups: [
     { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
     { name: 'paragraph', groups: [ 'align', 'list', 'indent', 'blocks', 'bidi', 'paragraph' ] },
