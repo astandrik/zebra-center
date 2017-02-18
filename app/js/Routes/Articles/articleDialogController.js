@@ -81,7 +81,7 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
     let stylesSet = [
        { name: 'Правая врезка', element: 'p', attributes: { 'class': 'vrezka' } }
     ];
-    $scope.options = {
+    $scope.options1 = {
         language: 'ru',
         allowedContent: true,
         resize_dir : 'both',
@@ -111,6 +111,38 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
 		{ name: 'others', groups: [ 'others' ] },
 		{ name: 'about', groups: [ 'about' ] }
 	],
+  removeButtons : 'BidiLtr,BidiRtl,Language,CreateDiv,Blockquote,Smiley,PageBreak,Iframe,About,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Scayt,SelectAll,Save,NewPage,Preview,Print'
+    };
+    $scope.options2 = {
+        language: 'ru',
+        allowedContent: true,
+        resize_dir : 'both',
+        entities: false,
+        stylesSet: stylesSet,
+        extraPlugins : 'html5video',
+        contentsCss: "/css/styles/ckStyles.css",
+        baseHref: "/",
+        filebrowserBrowseUrl: '/node_modules/angular-ckeditor/bower_components/ckeditor/plugins/filemanager/browser/default/browser.html?Connector=/browse_url',
+        filebrowserUploadUrl: '/upload_url?Type=File',
+        filebrowserImageUploadUrl: '/upload_url?Type=Image',
+        filebrowserFlashUploadUrl: '/upload_url?Type=Flash',
+        filebrowserWindowWidth: 800,
+        filebrowserWindowHeight: 500,
+        toolbarGroups: [
+    { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+    { name: 'paragraph', groups: [ 'align', 'list', 'indent', 'blocks', 'bidi', 'paragraph' ] },
+    { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+    { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+    { name: 'insert', groups: [ 'insert' ] },
+    { name: 'styles', groups: [ 'styles' ] },
+    { name: 'colors', groups: [ 'colors' ] },
+    { name: 'links', groups: [ 'links' ] },
+    { name: 'forms', groups: [ 'forms' ] },
+    { name: 'tools', groups: [ 'tools' ] },
+    { name: 'document', groups: [ 'document', 'doctools', 'mode' ] },
+    { name: 'others', groups: [ 'others' ] },
+    { name: 'about', groups: [ 'about' ] }
+  ],
   removeButtons : 'BidiLtr,BidiRtl,Language,CreateDiv,Blockquote,Smiley,PageBreak,Iframe,About,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Flash,Scayt,SelectAll,Save,NewPage,Preview,Print'
     };
     $scope.changeAlias = function () {
