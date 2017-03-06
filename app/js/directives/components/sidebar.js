@@ -12,9 +12,7 @@ var sidebar = {
                             o = i(this).parents(".accordion_item"),
                             n = o.find(".info"),
                             o.hasClass("active_block") ? (o.removeClass("active_block"), n.slideUp()) : (o.addClass("active_block"),
-                            n.stop(!0, !0).slideDown(100),
-                            o.siblings(".active_block").removeClass("active_block").children(
-                                        ".info").stop(!0, !0).slideUp(50))
+                            n.stop(!0, !0).slideDown(100))
                         })
                     })($);
                 }, 1000);
@@ -23,16 +21,18 @@ var sidebar = {
         $scope.adminLogin = () => {
             const dataHandler = (data, modalInstance) => {
                 if (!data || !data.length || !data[0].pswmatch) {
-                    dialogs.notify("ВНИМАНИЕ", "Неверный логин или пароль");
+                    dialogs.notify("ВНИМАНИЕ", "Неверный логин или пароль",{size:"sm"});
                 } else {
                     $rootScope.setAdmin(data[0]);
+                    $rootScope.loginOpened = false;
                     modalInstance.close();
                 }
             }
             var dlg = dialogs.create('views/components/adminLogin.html', adminLoginCtrl, {
                 dataHandler
             }, {
-                backdrop: false
+                backdrop: false,
+                size:"md"
             }, 'lg');
         }
         $scope.adminLogout = () => {

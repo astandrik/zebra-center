@@ -84,7 +84,7 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
     $scope.options1 = {
         language: 'ru',
         allowedContent: true,
-        resize_dir : 'both',
+        resize_dir : 'vertical',
         entities: false,
         basicEntities: false,
         stylesSet: stylesSet,

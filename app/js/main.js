@@ -10,7 +10,6 @@ require('./directives/index.js');
 require('./router.js');
 import '../Entities/entities.js';
 import 'angular-ui-bootstrap';
-import 'angular-translate';
 import 'angular-ckeditor/bower_components/ckeditor/ckeditor.js';
 import 'angular-ckeditor/angular-ckeditor.js';
 import 'angular-gridster';
@@ -124,7 +123,6 @@ $(document).ready(function () {
         e.preventDefault();
         menu.slideToggle();
     });
-
     $(window).resize(function () {
         var w = $(window).width();
         if (w > 320 && menu.is(':hidden')) {

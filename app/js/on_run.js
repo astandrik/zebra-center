@@ -31,7 +31,7 @@ function OnRun($rootScope, AppSettings, $state, $cookies, dialogs, $http, $admin
         currentUser.name = data.name;
         $rootScope.enableEditing = true;
         $cookies.put('currentUser', JSON.stringify(currentUser));
-        $timeout(() => dialogs.notify("", "Добро пожаловать!"), 500);
+        $timeout(() => dialogs.notify("", "Добро пожаловать!",{size:"sm"}), 500);
     }
     $rootScope.logout = function (sessionOver) {
         $rootScope.enableEditing = false;
@@ -43,7 +43,7 @@ function OnRun($rootScope, AppSettings, $state, $cookies, dialogs, $http, $admin
             } else {
                 var token = $admin.getToken();
                 $admin.logout();
-                $timeout(() => dialogs.notify("", "До свидания!"), 500);
+                $timeout(() => dialogs.notify("", "До свидания!",{size:"sm"}), 500);
             }
         }
         $cookies.put('currentUser', '');
