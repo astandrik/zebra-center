@@ -59,6 +59,11 @@ function fn($http, $cookies, $admin, $utils) {
                 return entities;
             });
         },
+        getViewIdByViewAlias: function (alias) {
+            return $http.get('/data/viewid/' + alias).then(function (data) {
+                return data;
+            });
+        },
         update: function (json, postBack) {
             var token = $admin.getToken();
             if (token) {

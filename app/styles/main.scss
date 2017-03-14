@@ -20,6 +20,13 @@ body {
     background: linear-gradient(to bottom, rgba(222,229,213,0) 28%,rgba(165,201,86,1) 97%);
 }
 
+.cke_combopanel__styles {
+  p.vrezka {
+    float:none!important;
+  }
+  width:190px!important;
+}
+
 p.vrezka {
     background: #D3E6D0;
     border-bottom-left-radius: 20px;

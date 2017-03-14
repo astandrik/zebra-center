@@ -1,7 +1,8 @@
 <ng-md-icon icon="close" size=30 style="float:right" ng-click="close()"></ng-md-icon>
 <div class="form-group-horizontal first">
     <label style="flex:3">Раздел</label>
-    <select style=" flex:10;background-color: white;border: 1px solid black;border-radius: 2px;" ng-model="article.viewid" ng-options="item.viewid as item.title for item in directories"></select>
+    <select style=" flex:10;background-color: white;border: 1px solid black;border-radius: 2px;" ng-model="article.viewid"
+     ng-options="item.viewid as item.title for item in directories"></select>
 </div>
 <div class="form-group-horizontal">
   <label>Заголовок статьи</label>

@@ -47,8 +47,9 @@ var entity = () => ({
         'content@': {
             templateUrl: 'js/Routes/Section/articles.html',
             /*@ngInject*/
-            controller: function (articles, $scope, $timeout, $articles, $rootScope) {
+            controller: function (articles, $scope, $timeout, $articles, $rootScope, viewid) {
                 $scope.articles = articles;
+                $rootScope.currentViewId = viewid;
                 window.currentScope = $scope;
                 var stopFunction = function (event, $element, widget) {
                     var $scope = window.currentScope;
@@ -90,6 +91,13 @@ var entity = () => ({
                     return $articles.getByViewAlias(viewAlias).then(function (data) {
                         return data;
                     });
+                },
+                /*@ngInject*/
+                viewid: function($articles,$stateParams) {
+                   var viewAlias = $stateParams.viewAlias;
+                   return $articles.getViewIdByViewAlias(viewAlias).then(function(data) {
+                     return data.data[0].viewid;
+                   })
                 }
             }
         }

@@ -68,6 +68,12 @@ inner join views b on b.viewid = a."VIEWID" WHERE b.alias=$1', [alias], res)
             .then((data) => resolve(data), () => reject(data));
         qHelper.makeTransaction(body);
     }
+    obj.GetViewIdByViewAlias = function (alias, res) {
+        var body = (resolve, reject) =>
+            crud.Read('select viewid from views WHERE alias=$1', [alias], res)
+            .then((data) => resolve(data), () => reject(data));
+        qHelper.makeTransaction(body);
+    }
     obj.Update = function (res) {
         var body = (resolve, reject) =>
             crud.Update("DRAFTS", obj.Article, res)

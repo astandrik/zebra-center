@@ -36,6 +36,10 @@ entities['articles'].getSingleByAlias = function (alias, res) {
     Articles().SelectByAlias(alias, res);
 }
 
+entities['articles'].getViewIdByViewAlias = function(alias, res) {
+    Articles().GetViewIdByViewAlias(alias, res);
+}
+
 entities['articles'].getSingleByViewId = function (id, res) {
     Articles().SelectByViewId(id, res);
 }

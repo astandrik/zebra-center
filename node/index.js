@@ -169,6 +169,9 @@ app.get('/data/articles', function (req, res) {
 app.get('/data/articles/:alias', function (req, res) {
     var result = dbWorker.entities['articles'].getSingleByAlias(req.params.alias, res);
 });
+app.get('/data/viewid/:alias', function (req, res) {
+    var result = dbWorker.entities['articles'].getViewIdByViewAlias(req.params.alias, res);
+});
 app.get('/data/articles/byViewId/:id', function (req, res) {
     var result = dbWorker.entities['articles'].getSingleByViewId(req.params.id, res);
 });

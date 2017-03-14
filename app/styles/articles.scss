@@ -41,18 +41,44 @@ p.readmore {
 p.readmore a:link, p.readmore a:visited { color: #000; }
 p.readmore a:hover { color: #CC0033; }
 
-.vrezka {
-	background: #D3E6D0;
-	border-bottom-left-radius: 20px;
-	border-left: 10px solid #4A8140;
-	border-top-left-radius: 20px;
-	float: right;
-	font-size: 90%;
-	font-style: italic;
-	margin-left: 15px;
-	padding: 10px 20px;
-	text-align: justify;
-	width: 30%; }
+p.vrezka-r {
+    width: 30%;
+    float: right;
+    border-left: 10px solid #4A8140;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: #D3E6D0;
+    padding: 10px 20px;
+    margin-left: 15px;
+    font-size: 90%;
+    font-style: italic; }
+
+p.vrezka-l {
+        width: 30%;
+        float: left;
+        border-right: 10px solid #4A8140;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background: #D3E6D0;
+        padding: 10px 20px;
+        margin-right: 15px;
+        font-size: 90%;
+        font-style: italic; }
+
+        p.stih {
+            font-style: italic;
+            margin: 0.8em 0 0.8em 3em;
+            line-height: 1.35em;
+            text-align: left; }
+
+            p.dialog { margin-left: 2em; }
+            @media all and (max-width: 600px) {
+               #articles p.cent img { max-width: 50%; height: auto; }
+               #articles p.dialog  { margin-left: 0.5em !important; }
+
+            }
+p.cent { text-align: center !important; }
+
 
 #articles p, #articles li {
 	text-align: justify;

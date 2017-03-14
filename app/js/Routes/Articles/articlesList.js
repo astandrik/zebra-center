@@ -4,8 +4,9 @@ var entity = () => ({
         'content@': {
             templateUrl: 'js/Routes/Articles/articles.html',
             /*@ngInject*/
-            controller: function (articles, $scope) {
+            controller: function (articles, $scope, $rootScope) {
                 $scope.articles = articles;
+                $rootScope.currentViewId=9999;
             },
             resolve: {
                 /*@ngInject*/

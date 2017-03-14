@@ -15,7 +15,7 @@ var transliterate = (
 )();
 
 /*@ngInject*/
-var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) {
+var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids, $rootScope) {
     $scope.isEditing = data.isEditing;
 
     $articleViewids.getList().then((data) => {
@@ -33,7 +33,7 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
         $scope.article = data.editingArticle;
     } else {
         $scope.article = {
-            viewid: 9999
+            viewid: (($rootScope.currentViewId || $rootScope.currentViewId === 0) ? $rootScope.currentViewId : 9999)
         };
     }
     $scope.close = () => $uibModalInstance.dismiss('Canceled');
@@ -79,7 +79,11 @@ var fn = function ($scope, $articles, $uibModalInstance, data, $articleViewids) 
     }
     $scope.cancel = () => $uibModalInstance.dismiss('Canceled');
     let stylesSet = [
-       { name: 'Правая врезка', element: 'p', attributes: { 'class': 'vrezka' } }
+       { name: 'Правая врезка', element: 'p', attributes: { 'class': 'vrezka-r' } },
+       { name: 'Левая врезка', element: 'p', attributes: { 'class': 'vrezka-l' } },
+        { name: 'Стихотворение', element: 'p', attributes: { 'class': 'stih' } },
+        { name: 'Центрирование', element: 'p', attributes: { 'class': 'cent' } }
+
     ];
     $scope.options1 = {
         language: 'ru',

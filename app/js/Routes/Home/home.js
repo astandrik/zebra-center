@@ -72,6 +72,7 @@ var entity = () => ({
                 gridOptions.draggable.stop = stopFunction;
                 $scope.gridsterOpts = gridOptions;
                 $scope.articles = articles.map(processArticle);
+                $rootScope.currentViewId = 0;
                 $scope.ids = $scope.articles.map(x => x.id);
                 $scope.articles.mapPromise(fitHeight.bind(this, $timeout))
                     .then((data) => {
