@@ -14,6 +14,7 @@ import browserSync from 'browser-sync';
 import debowerify from 'debowerify';
 import ngAnnotate from 'browserify-ngannotate';
 import handleErrors from '../util/handleErrors';
+var rename = require("gulp-rename");
 import bundleLogger from '../util/bundleLogger';
 import livereload from "../util/livereload";
 import config from '../config';
@@ -72,7 +73,6 @@ function buildScript(file) {
 
         const stream = bundler.bundle();
         const sourceMapLocation = global.isProd ? './' : '';
-
         return stream
             .on('error', handleErrors)
             .on('end', bundleLogger.end)
@@ -87,6 +87,7 @@ function buildScript(file) {
                 } // eslint-disable-line camelcase
             }))))
             .pipe(gulpif(shouldCreateSourcemap, sourcemaps.write(sourceMapLocation)))
+            .pipe(rename("main."+config.version+".js"))
             .pipe(gulp.dest(config.scripts.dest))
             .pipe(gulpif(!global.isProd, livereload()));
     }

@@ -46,6 +46,14 @@ function flatToArray(data) {
     data.forEach((item) => item.nodes = getChildren(item, data));
 }
 
+function enumerateRecursive(roots, start = 1) {
+  for(var i = 0; i < roots.length; i++) {
+    roots[i].order = start;
+    enumerateRecursive(roots[i].nodes, start+1);
+    start += roots[i].nodes.length+1;
+  }
+}
+
 var entity = () => ({
     url: '/Structure',
     views: {
@@ -66,9 +74,12 @@ var entity = () => ({
                             return;
                         }
                     }
+                    enumerateRecursive($scope.nodes);
                     $structure.update($scope.nodes, function (data) {
                         var entities = data.data;
                         flatToArray(entities);
+                        entities.sort((a,b) => a.order > b.order ? 1 : -1)
+                               .forEach(x=> x.nodes.sort((a,b) => a.order > b.order ? 1 : -1));
                         $scope.nodes = entities.filter((item) => {
                             return item.parentid == 10000;
                         });
@@ -110,16 +121,16 @@ var entity = () => ({
                         }
                     }
                     parentNode.nodes.splice(removeIndex, 1);
-                }
+                };
                 $scope.cancel = function () {
                     refreshData();
                     refreshNavbars();
-                }
+                };
             },
             resolve: {
                 /*@ngInject*/
                 structure: function ($structure) {
-                    return $structure.get().then(function (data) {
+                    return $structure.get().then(function (data) {  
                         return data;
                     })
                 }

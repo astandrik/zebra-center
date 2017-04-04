@@ -4,12 +4,14 @@ import config        from '../config';
 import gulp          from 'gulp';
 import merge         from 'merge-stream';
 import templateCache from 'gulp-angular-templatecache';
+var replace = require('gulp-replace');
 
 // Views task
 gulp.task('views', function() {
 
   // Put our index.html in the dist folder
   const indexFile = gulp.src(config.views.index)
+    .pipe(replace("$$VERSION$$", config.version))
     .pipe(gulp.dest(config.buildDir));
 
   // Process any other view files from app/views

@@ -35,6 +35,8 @@ function fn($http, $admin) {
             return $http.get('/structure/get').then(function (data) {
                 var entities = data.data;
                 flatToArray(entities);
+                entities.sort((a,b) => a.order > b.order ? 1 : -1)
+                       .forEach(x=> x.nodes.sort((a,b) => a.order > b.order ? 1 : -1));
                 return entities.filter((item) => {
                     return item.parentid == 10000;
                 });

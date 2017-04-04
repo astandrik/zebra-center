@@ -7,6 +7,7 @@ function createFlat(struct, parentId) {
             alias: current.alias,
             title: current.title,
             viewid: current.viewid,
+            order: current.order,
             parentId: (parentId || 10000)
         });
         if (current.nodes) {
@@ -40,7 +41,8 @@ var Structure = function (struct) {
                     promise: () => crud.Create('views', {
                         title: item.title,
                         viewid: item.viewid,
-                        alias: item.alias
+                        alias: item.alias,
+                        order: item.order
                     }, res)
                 }
             });
@@ -50,7 +52,8 @@ var Structure = function (struct) {
                     promise: () => crud.Create('views', {
                         title: item.title,
                         viewid: item.viewid,
-                        alias: item.alias
+                        alias: item.alias,
+                        order: item.order
                     }, res)
                 }
             });
@@ -58,7 +61,7 @@ var Structure = function (struct) {
             var insertJoins = (resolve, reject) => {
                 var chained_joins_promise = (i) => {
                     if (i == (joins_table.length)) {
-                        crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res)
+                        crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS, \"order\" FROM STRUCTURE", [], res)
                             .then((data) => resolve(data), (data) => reject(data));
                     } else {
                         crud.Create('views_joins', {
@@ -115,13 +118,13 @@ var Structure = function (struct) {
     };
     obj.getStructure = function (res) {
         var body = (resolve, reject) =>
-            crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE", [], res)
+            crud.Read("SELECT PARENTID,VIEWID, TITLE, CHILDID, ALIAS, \"order\" FROM STRUCTURE", [], res)
             .then((data) => resolve(data), (data) => reject(data));
         qHelper.makeTransaction(body);
     }
     obj.selectAllViews = function (res) {
         var body = (resolve, reject) =>
-            crud.Read("SELECT PARENTID, VIEWID, TITLE, CHILDID, ALIAS FROM STRUCTURE where childid[1] is null ", [], res)
+            crud.Read("SELECT PARENTID, VIEWID, TITLE, CHILDID, ALIAS, \"order\" FROM STRUCTURE where childid[1] is null ", [], res)
             .then((data) => resolve(data), (data) => reject(data));
         qHelper.makeTransaction(body);
     };

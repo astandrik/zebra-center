@@ -15,7 +15,23 @@
         border: 1px solid #dae2ea;
         color: #7c9eb2;
         padding: 10px 10px;
-        
+
+    }
+    .full-glyph {
+      padding-top:0;
+      padding-bottom: 0;
+    }
+    .tree-node {
+      background: #f8faff;
+      border: 1px solid #dae2ea;
+      color: #7c9eb2;
+      padding: 10px 10px;
+      cursor: auto;
+      text-decoration: none;
+      font-weight: 700;
+      box-sizing: border-box;
+      min-height: 20px;
+      line-height: 20px;
     }
     #tree-root {
         width:70%
