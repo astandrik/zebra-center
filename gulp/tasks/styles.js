@@ -7,6 +7,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import handleErrors from '../util/handleErrors';
 import browserSync from 'browser-sync';
+var rename = require("gulp-rename");
 import autoprefixer from 'gulp-autoprefixer';
 var concatCss = require('gulp-concat-css');
 import livereload from "../util/livereload";
@@ -30,7 +31,8 @@ gulp.task('styles', function () {
             createSourcemap,
             sourcemaps.write(global.isProd ? './' : null)))
         .pipe(concatCss("styles/main.css"))
+        .pipe(rename("styles/main."+config.version+".css"))
         .pipe(gulp.dest(config.styles.dest))
-        .pipe(livereload()); 
+        .pipe(livereload());
 
 });

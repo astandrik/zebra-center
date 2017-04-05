@@ -335,6 +335,10 @@ p.cent {
   text-align: center !important;
 }
 
+.add-article-form .form-control {
+  height: 25px;
+}
+
 #articles p,
 #articles li {
   text-align: justify;
@@ -413,7 +417,7 @@ p.cent {
 }
 
 .modal-content .form-group-horizontal {
-  margin: 10px 10px 0px 10px;
+  margin: 5px 10px 0px 10px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
@@ -423,8 +427,8 @@ p.cent {
 }
 
 .modal-content .form-group-horizontal label {
-  -ms-flex: 3;
-  flex: 3;
+  -ms-flex: 2;
+  flex: 2;
 }
 
 .modal-content .form-group-horizontal input {

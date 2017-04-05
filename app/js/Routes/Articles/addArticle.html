@@ -1,9 +1,10 @@
 <ng-md-icon icon="close" size=30 style="float:right" ng-click="close()"></ng-md-icon>
 <div class="form-group-horizontal first">
-    <label style="flex:3">Раздел</label>
+    <label>Раздел</label>
     <select style=" flex:10;background-color: white;border: 1px solid black;border-radius: 2px;" ng-model="article.viewid"
      ng-options="item.viewid as item.title for item in directories"></select>
 </div>
+<div class="add-article-form">
 <div class="form-group-horizontal">
   <label>Заголовок статьи</label>
   <input class='form-control' ng-keyup='changeAlias()' type='text' ng-model='article.header'></input>
@@ -25,11 +26,7 @@
   <input type="text" class="form-control" ng-model="article.description" id="usr">
 </div>
 <div class="form-group-horizontal">
-  <label for="usr">Описание статьи</label>
-  <input type="text" class="form-control" ng-model="article.description" id="usr">
-</div>
-<div class="form-group-horizontal">
-  <label for="usr" style="max-width:261px">Без аннотации</label>
+  <label for="usr" style="max-width:183px;">Без аннотации</label>
   <input type="checkbox" class="form-control annotation-checkbox" ng-model="article.standalone" id="usr">
 </div>
 <div class="form-group" ng-show="!article.standalone">
@@ -45,4 +42,5 @@
     <button type="button" class="btn btn-default" ng-click="cancel()">Отменить</button>
     <button type="button" class="btn btn-default" ng-click="save()">{{isEditing?"Сохранить":"Добавить"}}</button>
   </div>
+</div>
 </div>

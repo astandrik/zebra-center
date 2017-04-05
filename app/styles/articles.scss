@@ -85,6 +85,11 @@ p.vrezka-l {
             }
 p.cent { text-align: center !important; }
 
+.add-article-form{
+	.form-control {
+		height:25px;
+	}
+}
 
 #articles p, #articles li {
 	text-align: justify;
@@ -149,12 +154,12 @@ p.cent { text-align: center !important; }
     margin: 30px 10px 0px 10px;
   }
 	.form-group-horizontal {
-		margin: 10px 10px 0px 10px;
+		margin: 5px 10px 0px 10px;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		label {
-			flex:3;
+			flex:2;
 		}
 		input {
 			flex:10;
