@@ -26,6 +26,12 @@ div.blog h1, div.blog h2 {
 .current.active {
   font-weight: bold; text-decoration: underline; }
 
+
+.annotation-checkbox {
+	max-width: 40px;
+	max-height: 40px;
+}
+
 /* кнопки печати и почты */
 #articles ul.actions {
 	float: right;

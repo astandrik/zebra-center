@@ -251,6 +251,11 @@ div.blog h2 {
   text-decoration: underline;
 }
 
+.annotation-checkbox {
+  max-width: 40px;
+  max-height: 40px;
+}
+
 #articles ul.actions {
   float: right;
   position: relative;

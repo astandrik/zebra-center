@@ -9,6 +9,7 @@ function fillArticle(article, item) {
     article.description = item.DESCRIPTION;
     article.annotation = item.ANNOTATION;
     article.alias = item.ALIAS;
+    article.standalone = item.STANDALONE;
     article.viewid = parseInt(item.VIEWID);
     article.size = {
         x: item.SIZEX,
@@ -18,12 +19,12 @@ function fillArticle(article, item) {
     return article;
 }
 
-function htmlArticle(isShort, article) {
+function htmlArticle(isShort, article) {  
     var text = isShort ? article.annotation : article.text;
     var pencil = "<ng-md-icon class='pencil' ng-class='{\"non-visible\": !enableEditing,\"user-admin\":enableEditing}' ng-click='toggleEditing(\"" + article.alias + "\")' icon='mode_edit' size=30></ng-md-icon>";
     var header = "<div id='" + article.alias + article.id + "' class='article-header'><div></div><h1>" + article.header + "</h1>" +
         pencil + "</div>";
-    var showMore = isShort ? '<div ><a href="' + window.location.href +
+    var showMore = (isShort && (!article.standalone)) ? '<div ><a href="' + window.location.href +
         (window.location.href.toString()[window.location.href.toString().length - 1] == '/' ? '' : '/') +
         'article/' + article.alias + '">Подробнее...</a></div>' : '';
     var html = '<div>' + header + '<div>' + text + '</div>' + showMore + '</div></div>';
@@ -47,7 +48,7 @@ var fn = function ($compile, $articles, $http, dialogs, $location) {
                 scope.article.viewid = newVal;
             });
             var refreshView = () => scope.$emit('refreshCurrent');
-            scope.toggleEditing = function (alias) {              
+            scope.toggleEditing = function (alias) {
                 return $http.get('/data/articles/' + alias.trim()).then(function (data) {
                     var article = {};
                     var item = data.data;

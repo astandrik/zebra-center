@@ -7,6 +7,7 @@ function fillArticle(article, item) {
     article.description = item.DESCRIPTION;
     article.annotation = item.ANNOTATION;
     article.alias = item.ALIAS;
+    article.standalone = item.STANDALONE;
     article.viewid = parseInt(item.VIEWID);
     article.size = {
         x: item.SIZEX,
