@@ -1,7 +1,8 @@
 var adminLoginCtrl = require('../../../Entities/Admin/adminLoginController');
 var sidebar = {
     templateUrl: 'views/components/sidebar.html',
-    controller: ['$timeout', '$scope', '$structure', '$rootScope', 'dialogs', function ($timeout, $scope, $structure, $rootScope, dialogs) {
+    controller: ['$timeout', '$scope', '$structure', '$rootScope', 'dialogs',
+    '$state', function ($timeout, $scope, $structure, $rootScope, dialogs, $state) {
         var createDirective = () => {
             $structure.get().then((data) => {
                 $scope.nodes = data;
@@ -37,6 +38,14 @@ var sidebar = {
         }
         $scope.adminLogout = () => {
             $rootScope.logout();
+        }
+        $rootScope.$watch("searchQuery", function(val) {
+          $scope.searchQuery = $rootScope.searchQuery;
+        })
+        $scope.keyUp = function(e) {
+          if (e.keyCode==13) {
+            $state.go('search', {query: $scope.searchQuery}, {reload: true});
+          }
         }
         createDirective();
         $scope.$on('refreshNavbars', function () {

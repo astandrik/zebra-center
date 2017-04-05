@@ -61,6 +61,12 @@ var Article = function (item) {
             .then((data) => resolve(data), () => reject(data));
         qHelper.makeTransaction(body);
     }
+    obj.SearchByQuery = function(query, res) {
+      var body = (resolve, reject) =>
+          crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "TEXT" like $1 or "HEADER" like $1 ', ["%"+query+"%"], res)
+          .then((data) => resolve(data), () => reject(data));
+      qHelper.makeTransaction(body);
+    }
     obj.SelectByViewAlias = function (alias, res) {
         var body = (resolve, reject) =>
             crud.Read('SELECT a."ID",a."TITLE", a."TEXT", a."HEADER", a."DESCRIPTION", a."ANNOTATION", a."ALIAS", a."KEYWORDS", a."VIEWID", a."SIZEX", a."SIZEY", a."POSX", a."POSY" FROM "DRAFTS" a \

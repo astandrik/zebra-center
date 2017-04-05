@@ -59,6 +59,17 @@ function fn($http, $cookies, $admin, $utils) {
                 return entities;
             });
         },
+        getBySearchQuery: function(query) {
+          return $http.get('/data/articles/search/' + query).then(function (data) {
+              var entities = [];
+              data.data.forEach((item) => {
+                  var article = {};
+                  fillArticle(article, item);
+                  entities.push(article);
+              });
+              return entities;
+          });
+        },
         getViewIdByViewAlias: function (alias) {
             return $http.get('/data/viewid/' + alias).then(function (data) {
                 return data;

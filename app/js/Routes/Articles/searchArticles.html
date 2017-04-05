@@ -1,0 +1,6 @@
+<div ng-show="articles.length > 0" class="articles">
+  <article-template data="art" is-short="true" ng-repeat="art in articles | orderBy:'-id'"></article-template>
+</div>
+<div ng-show="articles.length === 0" class="articles">
+  <h2>По запросу "{{searchQuery}}" ничего не найдено</h2>
+</div>

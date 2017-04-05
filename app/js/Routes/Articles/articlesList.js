@@ -20,6 +20,31 @@ var entity = () => ({
     }
 })
 
+var entity_search = () => ({
+    url: '/Search?query',
+    views: {
+        'content@': {
+            templateUrl: 'js/Routes/Articles/searchArticles.html',
+            /*@ngInject*/
+            controller: function (articles, $scope, $rootScope, $stateParams) {
+                $rootScope.searchQuery = $stateParams.query;
+                $scope.searchQuery =   $rootScope.searchQuery;
+                $scope.articles = articles;
+                $rootScope.currentViewId=9999;
+            },
+            resolve: {
+                /*@ngInject*/
+                articles: function ($articles, $stateParams) {
+                    return $articles.getBySearchQuery($stateParams.query).then(function (data) {
+                        return data;
+                    });
+                }
+            }
+        }
+    }
+})
+
 module.exports = {
-    Drafts: entity
+    Drafts: entity,
+    Search: entity_search
 };

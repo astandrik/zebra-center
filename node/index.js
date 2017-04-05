@@ -179,6 +179,10 @@ app.get('/data/articles/byViewAlias/:alias', function (req, res) {
     var result = dbWorker.entities['articles'].getSingleByViewAlias(req.params.alias, res);
 });
 
+app.get('/data/articles/search/:query', function(req, res) {
+    var result = dbWorker.entities['articles'].getSearchArticles(req.params.query, res);
+});
+
 app.use(function (err, req, res, next) {
     console.error(err.stack);
     res.status(500).send('Something broke!');

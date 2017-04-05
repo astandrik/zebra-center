@@ -5,9 +5,7 @@
 </head>
 <body>
     <aside>
-        <div class="search" title="Имитатор модуля поиска">
-            <i>Поиск по сайту...</i>
-        </div>
+            <input class="search" placeholder="Поиск по статьям..." ng-model="searchQuery" ng-keyup="keyUp($event)"></input>        
         <div class="accordion">
 
             <script type="text/ng-template" id="section_renderer.html">
