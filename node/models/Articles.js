@@ -63,7 +63,7 @@ var Article = function (item) {
     }
     obj.SearchByQuery = function(query, res) {
       var body = (resolve, reject) =>
-          crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE "TEXT" like $1 or "HEADER" like $1 ', ["%"+query+"%"], res)
+          crud.Read('SELECT "ID","TITLE", "TEXT", "HEADER", "DESCRIPTION", "ANNOTATION", "ALIAS", "KEYWORDS", "VIEWID", "SIZEX", "SIZEY", "POSX", "POSY" FROM "DRAFTS" WHERE upper("TEXT") like upper($1) or upper("HEADER") like upper($1) ', ["%"+query+"%"], res)
           .then((data) => resolve(data), () => reject(data));
       qHelper.makeTransaction(body);
     }
