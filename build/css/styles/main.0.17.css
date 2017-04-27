@@ -416,22 +416,43 @@ p.cent {
   margin: 30px 10px 0px 10px;
 }
 
+.modal-content .form-group-vertical {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: 45%;
+  margin: 5px 10px 0px 10px;
+}
+
+.modal-content .form-group-vertical>label {
+  margin-bottom: 0;
+}
+
+.modal-content .form-group-vertical>select {
+  width: 100%;
+}
+
 .modal-content .form-group-horizontal {
   margin: 5px 10px 0px 10px;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
   -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-align: center;
   align-items: center;
 }
 
-.modal-content .form-group-horizontal label {
+.modal-content .form-group-horizontal>label {
   -ms-flex: 2;
   flex: 2;
 }
 
-.modal-content .form-group-horizontal input {
+.modal-content .form-group-horizontal>input {
   -ms-flex: 10;
   flex: 10;
   margin: 10px 0;

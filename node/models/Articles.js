@@ -11,11 +11,21 @@ const restrictions = {
   "description": ["nonEmpty"],
   "text": ["nonEmpty"]
 }
+
+const namesDict = {
+  'alias': "Алиас",
+  "title": "Заголовок статьи",
+  "header": "Заголовок в браузере",
+  "keywords": "Ключевые слова",
+  "description": "Описание статьи",
+  "text": "Текст статьи"
+}
+
 function validateEntity(json) {
   let errors = [];
   (Object.keys(restrictions)).forEach((x) => {
     restrictions[x].forEach(y => {
-        const error = errorTypes[y](json[x], x);
+        const error = errorTypes[y](json[x], '"'+namesDict[x]+'"');
         if(error) {
           errors.push(error);
         }

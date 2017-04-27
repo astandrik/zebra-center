@@ -153,15 +153,29 @@ p.cent { text-align: center !important; }
   .form-group {
     margin: 30px 10px 0px 10px;
   }
+	.form-group-vertical {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-width: 45%;
+		margin: 5px 10px 0px 10px;
+		&>label {
+			margin-bottom: 0;
+		}
+		&>select {
+			width: 100%;
+		}
+	}
 	.form-group-horizontal {
 		margin: 5px 10px 0px 10px;
 		display: flex;
+		justify-content: center;
 		flex-direction: row;
 		align-items: center;
-		label {
+		& > label {
 			flex:2;
 		}
-		input {
+		& > input {
 			flex:10;
 			margin:10px 0;
 			text-align:center;

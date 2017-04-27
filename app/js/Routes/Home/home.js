@@ -17,8 +17,8 @@ function fitHeight(timeout, article) {
         timeout(() => {
             let content = $('#article_' + article.id).find('article-template>div.ng-scope:first');
             var newArticle = Object.assign({}, article);
-            if(newArticle.size.y  < Math.floor((content.height() + 100) / 100)) {
-              newArticle.size.y = (content.height() + 100) / 100;
+            if(newArticle.size.y  < Math.floor((content.height() + 40) / 40)) {
+              newArticle.size.y = (content.height() + 40) / 40;
             }
             resolve(newArticle);
         }, 500);
@@ -53,8 +53,8 @@ var entity = () => ({
                     $timeout(() => {
                         for (var i = 0; i < $scope.ids.length; i++) {
                             var content = $('#article_' + $scope.ids[i]).find('article-template>div.ng-scope:first');
-                            if($scope.articles[i].size.y < Math.floor((content.height() + 100) / 100)) {
-                              $scope.articles[i].size.y = Math.floor((content.height() + 100) / 100);
+                            if($scope.articles[i].size.y < Math.floor((content.height() + 40) / 40)) {
+                              $scope.articles[i].size.y = Math.floor((content.height() + 40) / 40);
                             }
                             var article = $scope.articles[i];
                             $articles.updateGrid({

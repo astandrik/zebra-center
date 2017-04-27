@@ -85,7 +85,7 @@ function fn($http, $cookies, $admin, $utils) {
                     }
                 }).then((data) => {
                     if(data.data.errors) {
-                      errors.handleErrors(data.data.errors);
+                      $utils.handleErrors(data.data.errors);
                       return false;
                     } else {
                       if (postBack) postBack(data);
