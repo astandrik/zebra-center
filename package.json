@@ -5,11 +5,7 @@
   "description": "Boilerplate using AngularJS, SASS, Gulp, and Browserify while also utilizing best practices.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git",
-    "stop-prod": "./stop.sh",
-    "start-prod": "nohup npm start &",
-    "make-dump": "./node/dbscripts/dump.pg",
-    "restore-dump": "./node/dbscripts/dump.pg"
+    "url": "https://github.com/jakemmarsh/angularjs-gulp-browserify-boilerplate.git"
   },
   "keywords": [
     "express",
@@ -118,7 +114,11 @@
     "test": "istanbul cover ./spec/jasmine-runner.js",
     "start": "node node/index.js",
     "dev": "gulp dev",
-    "prod": "gulp prod"
+    "prod": "gulp prod",
+    "stop-prod": "./stop.sh",
+    "start-prod": "nohup npm start &",
+    "make-dump": "./node/dbscripts/dump.pg",
+    "restore-dump": "./node/dbscripts/dump.pg"
   },
   "license": "MIT",
   "dependencies": {
