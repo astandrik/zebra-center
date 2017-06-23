@@ -31,3 +31,5 @@ public
 !node_modules/multiparty
 !node_modules/angular-ckeditor/bower_components
 /node/dbscripts/connect
+dumps/*
+!dumps/1.txt
