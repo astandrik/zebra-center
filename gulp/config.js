@@ -1,7 +1,7 @@
 'use strict';
 
 export default {
-    version:0.17,
+    version:0.18,
     browserPort: 80,
     UIPort: 3001,
     testPort: 3002,
