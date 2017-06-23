@@ -118,7 +118,7 @@
     "stop-prod": "./stop.sh",
     "start-prod": "nohup npm start &",
     "make-dump": "./node/dbscripts/dump.pg",
-    "restore-dump": "./node/dbscripts/dump.pg"
+    "restore-dump": "./node/dbscripts/restore.pg"
   },
   "license": "MIT",
   "dependencies": {
