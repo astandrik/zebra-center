@@ -13,6 +13,8 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
+app.use(require('prerender-node').set('prerenderServiceUrl', 'http://127.0.0.1:3000'));
+app.use(express.static(path.join(__dirname +"/../build")));
 //app.use(compression());
 const accessLogStream = fs.createWriteStream(__dirname + '/server_logs.log', {
     flags: 'a'
@@ -187,5 +189,9 @@ app.use(function (err, req, res, next) {
     console.error(err.stack);
     res.status(500).send('Something broke!');
 });
+
+app.get("*", function(req, res) {
+   res.sendFile(path.join(__dirname + '/../build/index.html'));
+})
 
 module.exports = app;
