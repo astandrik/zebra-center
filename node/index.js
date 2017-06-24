@@ -190,6 +190,10 @@ app.use(function (err, req, res, next) {
     res.status(500).send('Something broke!');
 });
 
+app.get("/sitemap.xml", (req,res) => {
+  res.sendFile(path.join(__dirname + '/../sitemap.xml'));
+})
+
 app.get("*", function(req, res) {
    res.sendFile(path.join(__dirname + '/../build/index.html'));
 })

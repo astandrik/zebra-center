@@ -10,3 +10,8 @@ gulp.task('ckStyles', function() {
   return gulp.src(['node/dbscripts/ckStyles.css'])
   .pipe(gulp.dest('build/css/styles'));
 })
+
+gulp.task('sitemap', function() {
+  return gulp.src(['sitemap.xml'])
+  .pipe(gulp.dest('build'));
+})
